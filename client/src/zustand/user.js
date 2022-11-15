@@ -10,11 +10,10 @@ export const userStore = create((set) => ({
     set({ loading: true });
     try {
       const { data } = await api.post("/user/login", formData);
-      localStorage.setItem("profile", JSON.stringify(data.data));
+      localStorage.setItem("profile", JSON.stringify(data));
       navigate("/");
     } catch (err) {
-      console.log(err);
-      alert(err.message)
+      alert(err.response.data.message)
     }
     set({ loading: false });
   },
@@ -24,11 +23,11 @@ export const userStore = create((set) => ({
     set({ loading: true });
     try {
       const { data } = await api.post("/user/register", formData);
-      localStorage.setItem("profile", JSON.stringify(data.data));
+      localStorage.setItem("profile", JSON.stringify(data));
       navigate("/");
     } catch (err) {
       console.log(err.message);
-      alert(err.message)
+      alert(err.response.data.message)
     }
     set({ loading: false });
   },

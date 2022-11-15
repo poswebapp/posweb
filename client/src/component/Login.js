@@ -26,11 +26,11 @@ const Login = () => {
         Login
       </h4>
       <p className="text-zinc-500 mt-5">username</p>
-      <input type="text" name="" onChange={handleChange} className={input} />
+      <input type="text" name="username" onChange={handleChange} className={input} />
       <p className="text-zinc-500 mt-5">password</p>
       <input
         type="password"
-        name=""
+        name="password"
         onChange={handleChange}
         className={input}
       />
