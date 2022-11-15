@@ -1,0 +1,93 @@
+LOGIN ICON
+import { UserCircleIcon } from "@heroicons/react/solid";
+// <UserCircleIcon className="w-8 inline mr-2" />
+
+==============================================
+ROUTER 
+  const location = useLocation();
+  const path = location.pathname;
+  // const path = location.pathname.split("").filter((i)=>i!== "/").join("")
+  // const iconClass = "w-6 text-sm text-black";
+  // const solid = "w-7 text-gray-800";
+
+===========================================
+LOCAL STORAGE
+    // setUser(JSON.parse(localStorage.getItem("profile")));
+  // const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+
+===========================================
+LOGOUT
+const logout = () => {
+    dispatch({ type: actionType.LOGOUT });
+    history("/register");
+
+    setUser(null);
+  };
+
+
+===========================================
+REGE
+    // var number = /^[0-9]+$/;
+form.price.match(number) === true
+
+==============================================
+SEARCH
+  getListsBySearch: async (search) => {
+    set({ isLoading: true });
+    try {
+      const response = await API.get(`/list/search?searhQuery=${search.search || 'none'}`)
+    } catch (err) {
+      console.log(err.message)
+    }
+    set({ isLoading: false });
+  }
+================================================
+String to date 
+const dateString = "20200515";
+const year = +dateString.substring(0, 4);
+const month = +dateString.substring(4, 6);
+const day = +dateString.substring(6, 8);
+
+const date = new Date(year, month - 1, day);
+console.log(date)
+==================================================
+  //SELECTED DATE
+  const [start, setStart] = useState("")
+  const [end, setEnd] = useState("")
+
+  const handleStart = (e) => {
+    setStart(e.target.value)
+  }
+  const handleEnd = (e) => {
+    setEnd(e.target.value)
+  }
+
+  var startDate = new Date(start);
+  var endDate = new Date(end);
+
+  var selectedRange = lists.filter(function (a) {
+    var hitDates = a.date || {};
+    // extract all date strings
+    hitDates = Object.keys(hitDates);
+    // convert strings to Date objcts
+    hitDates = hitDates.map(function (date) {
+      return new Date(date);
+    });
+    // filter this dates by startDate and endDate
+    var hitDateMatches = hitDates.filter(function (date) {
+      return date >= startDate && date <= endDate;
+    });
+    // if there is more than 0 results keep it. if 0 then filter it away
+    return hitDateMatches.length > 0;
+  });
+
+=========================================
+
+      <hr className="w-full" />
+      <button
+        className={`p-2 text-xs text-gray-600 center text-center rounded-full font-semibold border-2 shadow-md px-4 ${isLoading ? "bg-none text-gray-400": "bg-primary"}`}
+        disable={isLoading.toString()}
+        onClick={() => getOwnLists(id)}
+      >
+        refresh
+      </button>
