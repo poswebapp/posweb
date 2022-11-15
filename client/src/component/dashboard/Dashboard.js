@@ -3,7 +3,7 @@ import TopContent from "./TopContent";
 
 const Dashboard = () => {
   return (
-    <div className="bg-zinc-200 shadow-md rounded-xl grid ml-48 mr-auto max-w-[58rem] h-[40rem] p-8 mt-10 mr-[4%] ">
+    <div className="bg-white shadow-md rounded-xl grid ml-[20%] mr-auto max-w-[48rem] h-[40rem] p-8 mt-10 border border-zinc-300">
       <TopContent />
     </div>
   );

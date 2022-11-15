@@ -12,14 +12,14 @@ import { useLocation } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <div className="grid grid-cols-1 place-content-start gap-4 min-w-44 md:w-[18%] h-screen bg-zinc-800 p-5 fixed top-0 left-0 z-40 ">
+    <div className="grid grid-cols-1 place-content-start gap-4 min-w-40 md:w-[18%] h-screen bg-zinc-800 p-5 fixed top-0 left-0 z-40 ">
    <h4 className="text-lg text-white text-xl font-bold mt-4 mb-3 ">Gasoline POS</h4>
     {/* content navbar */}
       <Content icon={<MdSpaceDashboard />} name={"Dashboard"} link={"/"} />
-      <Content icon={<BsFillGridFill/>} name={"Goods"} link={"/goods"} />
+      <Content icon={<BsFillGridFill/>} name={"Goods"} link={"/good"} />
       <span className="grid gap-4 ml-5">
-        <Content icon={<SiGridsome/>} name={"Incoming"} link={"/outgoing"} />
-        <Content icon={<SiGriddotai/>} name={"Outgoing"} link={"/incoming"} />
+        <Content icon={<SiGridsome/>} name={"Incoming"} link={"/incoming"} />
+        <Content icon={<SiGriddotai/>} name={"Outgoing"} link={"/outgoing"} />
         <Content icon={<FaUserTag/>} name={"Suppliers"} link={"/supplier"} />
       </span>
       <Content icon={<HiDocumentReport />} name={"Report"} link={"/reports"} />
@@ -40,7 +40,7 @@ export const Content = ({ link, icon, name }) => {
   return (
     <Link
       to={link}
-      className={`flex truncate justify-start content-center gap-2 text-white text-sm duration-300 transition-all ease-linear ${path && "bg-amber-200 rounded-lg p-2 text-zinc-800"}`}
+      className={`flex truncate justify-start content-center gap-2 text-white text-sm duration-300 transition-all ease-linear hover:bg-amber-200 hover:text-zinc-800 hover:p-2 hover:rounded-lg ${path && "bg-amber-200 rounded-lg p-2 text-zinc-800"}`}
     >
     <span className="mt-[.2rem]">
       {icon}
