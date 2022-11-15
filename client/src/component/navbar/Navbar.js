@@ -11,10 +11,6 @@ import { HiDocumentReport } from 'react-icons/hi'
 import { useLocation } from "react-router-dom";
 
 const Navbar = () => {
-  
-  const query = useLocation()
-  const path = query.pathname === "/login" || "/register" || "/admin"
-  console.log(path)
   return (
     <div className="grid grid-cols-1 place-content-start gap-4 w-44 h-screen bg-zinc-800 p-5 fixed top-0 left-0 z-40 ">
    <h4 className="text-lg text-white text-xl font-bold mt-4 mb-3 ">Gasoline POS</h4>
