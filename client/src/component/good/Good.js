@@ -4,7 +4,7 @@ const Good = () => {
   const th = "px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase ";
  const tr = "px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap" 
   return (
-    <div className=" bg-white shadow-md rounded-md ml-[23%] flex flex-col mr-auto mt-[15%] p-2">
+    <div className=" bg-white shadow-md rounded-md ml-[23%] flex flex-col mr-[5%] mt-[10%] mb-auto p-2">
       <div className="overflow-x-scroll">
         <div className="p-1.5 w-full inline-block align-middle">
           <div className="overflow-x-scroll border rounded-lg">

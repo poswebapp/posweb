@@ -21,7 +21,7 @@ const Login = () => {
   const input =
     "border border-zinc-400 text-zinc-500 font-[500] text-lg p-4 rounded-lg w-full bg-none my-4";
   return (
-    <form className="grid bg-white shadow-md ml-[35%] mt-[20%] m-auto w-[40%] h-auto border-2 border-zinc-400 rounded-lg p-5">
+    <form className="grid bg-white shadow-md ml-[35%] mt-[15%] m-auto w-[40%] h-auto border-2 border-zinc-400 rounded-lg p-5">
       <h4 className="font-semibold text-zinc-500 text-3xl text-center mb-5">
         Login
       </h4>
