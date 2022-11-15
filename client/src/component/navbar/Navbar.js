@@ -12,7 +12,7 @@ import { useLocation } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <div className="grid grid-cols-1 place-content-start gap-4 w-44 h-screen bg-zinc-800 p-5 fixed top-0 left-0 z-40 ">
+    <div className="grid grid-cols-1 place-content-start gap-4 min-w-44 md:w-[18%] h-screen bg-zinc-800 p-5 fixed top-0 left-0 z-40 ">
    <h4 className="text-lg text-white text-xl font-bold mt-4 mb-3 ">Gasoline POS</h4>
     {/* content navbar */}
       <Content icon={<MdSpaceDashboard />} name={"Dashboard"} link={"/"} />

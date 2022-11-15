@@ -2,7 +2,7 @@ import React from "react";
 import notfound from "./img/404.svg";
 const Notfound = () => {
   return (
-    <div className="grid max-w-sm m-auto">
+    <div className="grid max-w-sm my-auto ml-[40%] mr-auto">
       <img src={notfound} alt="404 page" className="w-64 mx-auto mt-24 mb-5 drop-shadow-md" />
       <p className="uppercase font-semibold text-lg text-center text-gray-500 mb-2 mt-5">
         pages not found

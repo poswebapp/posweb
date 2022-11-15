@@ -1,5 +1,5 @@
 import create from "zustand";
-import {api} from "api"
+import {api} from "./api"
 
 export const userStore = create((set) => ({
   user: [],
@@ -13,7 +13,7 @@ export const userStore = create((set) => ({
       localStorage.setItem("profile", JSON.stringify(data.data));
       navigate("/");
     } catch (err) {
-      console.log(err.message);
+      console.log(err);
       alert(err.message)
     }
     set({ loading: false });
@@ -24,7 +24,6 @@ export const userStore = create((set) => ({
     set({ loading: true });
     try {
       const { data } = await api.post("/user/register", formData);
-      set((state) => ({ user: [data, ...state.user] }));
       localStorage.setItem("profile", JSON.stringify(data.data));
       navigate("/");
     } catch (err) {
