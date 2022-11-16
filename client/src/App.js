@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import Navbar from "./component/navbar/Navbar";
 import Notfound from "./component/Notfound";
 import Good from "./component/good/Good";
 import Login from "./component/Login";
 import Dashboard from "./component/dashboard/Dashboard";
-import { Navigate } from "react-router-dom";
 import Outgoing from "./component/good/Outgoing";
 
 function App() {
