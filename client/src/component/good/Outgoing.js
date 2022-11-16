@@ -3,6 +3,7 @@ import BtnDelete from '../utility/BtnDelete'
 import BtnEdit from '../utility/BtnEdit'
 
 const Outgoing = () => {
+ const loading = false 
   const th = "px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase ";
   const tr = "px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap";
   const act = "px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap grid ";
