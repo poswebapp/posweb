@@ -5,6 +5,7 @@ import Good from "./component/good/Good";
 import Login from "./component/Login";
 import Dashboard from "./component/dashboard/Dashboard";
 import { Navigate } from "react-router-dom";
+import Outgoing from "./component/good/Outgoing";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={ <Secure> <Dashboard /> </Secure> } />
           <Route path="/good" element={ <Secure> <Good /> </Secure> } />
+          <Route path="/outgoing" element={ <Secure> <Outgoing /> </Secure> } />
           <Route path="/login" element={<Login />} />
           <Route path="/*" element={<Notfound />} />
         </Routes>
