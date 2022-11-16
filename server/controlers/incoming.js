@@ -22,11 +22,10 @@ export const getOwnIncomings = async (req, res) => {
 
 export const uploadIncoming = async (req, res) => {
   try {
-    const { name, number, quantity, date, price, supplier, user } = req.body;
+    const { name,  quantity, date, price, supplier, user } = req.body;
 
     const incoming = new Incoming({
       name,
-      number,
       quantity,
       date,
       price,
@@ -43,11 +42,10 @@ export const uploadIncoming = async (req, res) => {
 export const updateIncoming = async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, number, quantity, date, price, supplier, user } = req.body;
+    const { name, quantity, date, price, supplier, user } = req.body;
 
     const result = await Incoming.findByIdAndUpdate(id, {
       name,
-      number,
       quantity,
       date,
       price,

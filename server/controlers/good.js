@@ -22,11 +22,10 @@ export const getOwnGoods = async (req, res) => {
 
 export const uploadGood = async (req, res) => {
   try {
-    const { user, name, number, stock, price, type, unit } = req.body;
+    const { user, name, stock, price, type, unit } = req.body;
     const good = new Good({
       user,
       name,
-      number,
       stock,
       price,
       type,
@@ -42,11 +41,10 @@ export const uploadGood = async (req, res) => {
 export const updateGood = async (req, res) => {
   try {
     const { id } = req.params;
-    const { user, name, number, stock, price, type, unit, } = req.body;
+    const { user, name, stock, price, type, unit, } = req.body;
     const result = await Good.findByIdAndUpdate(id, {
       user,
       name,
-      number,
       stock,
       price,
       type,

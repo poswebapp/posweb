@@ -23,10 +23,9 @@ export const getOwnOutgoings = async (req, res) => {
 export const updateOutgoing = async (req, res) => {
   try {
     const { id } = req.params;
-    const { number, outDate, customer, discount, subtotal, total, amount } =
+    const {  outDate, customer, discount, subtotal, total, amount } =
       req.body;
     const result = await Outgoing.findByIdAndUpdate(id, {
-      number,
       outDate,
       customer,
       discount,

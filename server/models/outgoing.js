@@ -2,7 +2,6 @@ import mongoose from "mongoose";
 
 const outgoingSchema = mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: "User", require: true },
-  number: { type: Number, require: true },
   outDate: { type: Date, require: true },
   customer: { type: String, require: true },
   discount: { type: Number, require: true },

@@ -4,7 +4,6 @@ import User from "../models/user.js";
 export const login = async (req, res) => {
   try {
     const { username, password } = req.body;
-    console.log(username,password)
     const user = await User.findOne({ username });
     if (!user) {
       res.status(404).json({ message: "User Not Found" });
