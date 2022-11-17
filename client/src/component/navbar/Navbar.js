@@ -13,15 +13,19 @@ import { userStore } from "../../zustand/user";
 const Navbar = () => {
   const curUsr = userStore((state) => state.curUsr);
   const setCurUsr = userStore(state=> state.setCurUsr)
+  
 
   useEffect(() => {
-    if (localStorage.getItem("admin")) {
+ const admin =localStorage.getItem("admin")  
+ const profile =localStorage.getItem("profile")  
+    console.log("cursr",curUsr)
+    if (admin) {
       setCurUsr("admin")
     }
-    if (localStorage.getItem("profile")) {
+    if (profile) {
       setCurUsr("profile")
     }
-  }, [curUsr, setCurUsr]);
+  }, [ curUsr, setCurUsr]);
   return (
     <div className="grid grid-cols-1 place-content-start gap-4 w-[18%] min-w-40 max-w-52 h-screen bg-zinc-800 p-5 fixed top-0 left-0 z-40 ">
       <h4 className="text-lg text-white text-xl font-bold mt-4 mb-3 ">
@@ -56,7 +60,6 @@ export default Navbar;
 export const Content = ({ link, icon, name }) => {
   const query = useLocation();
   const path = query.pathname === link;
-  console.log(path);
   return (
     <Link
       to={link}

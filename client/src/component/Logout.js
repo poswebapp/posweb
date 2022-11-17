@@ -27,7 +27,7 @@ const Logout = () => {
           className="p-4 border-2 rounded-md text-white border-zinc-800 text-sm font-[400] bg-zinc-800"
           onClick={() => {
             localStorage.clear();
-            setCurUsr("");
+            setCurUsr(null);
             navigate("/login");
           }}
         >
