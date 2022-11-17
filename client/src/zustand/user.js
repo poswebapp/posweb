@@ -5,12 +5,14 @@ export const userStore = create((set) => ({
   user: [],
   loading: false,
   err: null,
+  curUser: "",
 
   login: async (formData, navigate) => {
     set({ loading: true });
     try {
       const { data } = await api.post("/user/login", formData);
       localStorage.setItem("profile", JSON.stringify(data));
+    set({ curUser: "profile" });
       navigate("/");
     } catch (err) {
       alert(err.response.data.message)
@@ -42,6 +44,10 @@ export const userStore = create((set) => ({
     }
     set({ loading: false });
   },
+  
+  setCurUsr : (data)=> {
+    set({ curUsr: data });
+  }
 
 
 }));

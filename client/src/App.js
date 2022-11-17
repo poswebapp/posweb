@@ -9,6 +9,7 @@ import Outgoing from "./component/good/Outgoing";
 import Incoming from "./component/good/Incoming";
 import User from "./component/user/User";
 import Manager from "./component/user/Manager";
+import Logout from "./component/Logout";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/profile" element={ <Admin> <User /> </Admin> } />
           <Route path="/password" element={ <Admin> <User /> </Admin> } />
           <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Logout />} />
           <Route path="/admin" element={<Manager />} />
           <Route path="/*" element={<Notfound />} />
         </Routes>
