@@ -1,4 +1,5 @@
 import Good from "../models/good.js";
+import mongoose from "mongoose";
 
 // getgood
 export const getGoods = async (req, res) => {
@@ -23,6 +24,8 @@ export const getOwnGoods = async (req, res) => {
 export const uploadGood = async (req, res) => {
   try {
     const { user, name, stock, price, type, unit } = req.body;
+    if (!mongoose.Types.ObjectId.isValid(user))
+      return res.status(404).send({ message: `Not a valid User: ${user}` });
     const good = new Good({
       user,
       name,
@@ -39,18 +42,26 @@ export const uploadGood = async (req, res) => {
 };
 
 export const updateGood = async (req, res) => {
+  console.log("try update");
   try {
     const { id } = req.params;
-    const { user, name, stock, price, type, unit, } = req.body;
-    const result = await Good.findByIdAndUpdate(id, {
-      user,
-      name,
-      stock,
-      price,
-      type,
-      unit,
-    });
+    const { name, stock, price, type, unit } = req.body;
+    if (!mongoose.Types.ObjectId.isValid(id))
+      return res.status(404).send({ message: `Not a valid User: ${id}` });
+
+    const result = await Good.findByIdAndUpdate(
+      id,
+      {
+        name,
+        stock,
+        price,
+        type,
+        unit,
+      },
+      { new: true }
+    );
     res.json(result);
+    console.log(result);
   } catch (error) {
     console.log(error);
   }

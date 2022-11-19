@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.get('/get', getGoods);
 router.get('/getOwn/:id', getOwnGoods);
-router.patch('/patch',updateGood);
+router.patch('/patch/:id',updateGood);
 router.post('/upload',uploadGood);
 router.delete('/delete/:id',deleteGood);
  
