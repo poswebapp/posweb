@@ -25,7 +25,7 @@ const List = ({setid,setshow}) => {
       <Table
         element={
           <>
-            {list?.map((a, index) => (
+            {list?.reverse().map((a, index) => (
               <tr key={a._id}>
                 <td className={tr}> {index + 1} </td>
                 <td className={tr}> {a.name} </td>

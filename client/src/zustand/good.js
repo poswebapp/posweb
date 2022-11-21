@@ -20,9 +20,10 @@ export const goodStore = create((set) => ({
     set({ loading: true });
     try {
       const result = await api.get("/good/get");
-      set({ goods: result.data });
+      set({ goods: result.data.reverse() });
     } catch (err) {
-      alert(err.message);
+      alert(err);
+      console.log(err)
       set({ err: err.message });
     }
     set({ loading: false });
@@ -32,9 +33,10 @@ export const goodStore = create((set) => ({
     set({ loading: true });
     try {
       const result = await api.post("/good/upload", data);
-      set((state) => ({ goods: [...state.goods, result.data] }));
+      set((state) => ({ goods: [...state.goods, result.data].reverse() }));
     } catch (err) {
-      alert(err.message);
+      console.log(err)
+      alert(err);
       set({ err: err.message });
     }
     set({ loading: false });
@@ -50,7 +52,8 @@ export const goodStore = create((set) => ({
         ],
       }));
     } catch (err) {
-      alert(err.message);
+      alert(err);
+      console.log(err)
       set({ err: err.message });
     }
     set({ loading: false });

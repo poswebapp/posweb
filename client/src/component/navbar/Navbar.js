@@ -18,7 +18,6 @@ const Navbar = () => {
   useEffect(() => {
  const admin =localStorage.getItem("admin")  
  const profile =localStorage.getItem("profile")  
-    console.log("cursr",curUsr)
     if (admin) {
       setCurUsr("admin")
     }

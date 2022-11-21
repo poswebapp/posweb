@@ -6,16 +6,17 @@ import Layout from "../Layout";
 import autoAnimate from "@formkit/auto-animate";
 
 const Good = () => {
-  const [id, setid] = useState(null);
+  const [id, setid] = useState(0);
   const [list, setlist] = useState(null);
   const [show, setshow] = useState(false);
   const [data, setdata] = useState({
     name: "",
     stock: "",
+    type: "",
     unit: "",
     price: "",
   });
-  
+
   const dom = React.useRef(null);
   useEffect(() => {
     dom.current && autoAnimate(dom.current);
@@ -48,7 +49,8 @@ const Good = () => {
     setdata({ ...data, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     if (id === 0) {
       if (
         data.name === "" ||
