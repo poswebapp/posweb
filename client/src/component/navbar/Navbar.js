@@ -40,7 +40,6 @@ const Navbar = () => {
         <Content icon={<FaUserTag />} name={"Suppliers"} link={"/supplier"} />
       </span>
       <Content icon={<HiDocumentReport />} name={"Report"} link={"/reports"} />
-      <Content icon={<FaUser />} name={"Manage User"} link={"/user"} />
       <Content icon={<FaUserCircle />} name={"Profile"} link={"/profile"} />
       <Content
         icon={<BsFillShieldLockFill />}
