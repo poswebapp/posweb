@@ -6,7 +6,7 @@ import Login from "./component/user/Login";
 import Dashboard from "./component/dashboard/Dashboard";
 import Outgoing from "./component/outgoing/Outgoing";
 import Incoming from "./component/incoming/Incoming";
-import User from "./component/user/User";
+// import User from "./component/user/User";
 import Manager from "./component/user/Manager";
 import Logout from "./component/Logout";
 
@@ -20,8 +20,8 @@ function App() {
           <Route path="/outgoing" element={ <Secure> <Outgoing /> </Secure> } />
           <Route path="/incoming" element={ <Secure> <Incoming /> </Secure> } />
     {/* todo */}
-          <Route path="/profile" element={ <Secure> <User /> </Secure> } />
-          <Route path="/password" element={ <Secure> <User /> </Secure> } />
+          {/* <Route path="/profile" element={ <Secure> <User /> </Secure> } /> */}
+          {/* <Route path="/password" element={ <Secure> <User /> </Secure> } /> */}
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/Secure" element={<Manager />} />

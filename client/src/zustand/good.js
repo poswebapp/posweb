@@ -22,9 +22,8 @@ export const goodStore = create((set) => ({
       const result = await api.get("/good/get");
       set({ goods: result.data.reverse() });
     } catch (err) {
-      alert(err);
-      console.log(err)
-      set({ err: err.message });
+      alert(err.response.data.message);
+      set({ err: err.response.data.message });
     }
     set({ loading: false });
   },
@@ -36,8 +35,8 @@ export const goodStore = create((set) => ({
       set((state) => ({ goods: [...state.goods, result.data].reverse() }));
     } catch (err) {
       console.log(err)
-      alert(err);
-      set({ err: err.message });
+      alert(err.response.data.message);
+      set({ err: err.response.data.message });
     }
     set({ loading: false });
   },
@@ -52,9 +51,8 @@ export const goodStore = create((set) => ({
         ],
       }));
     } catch (err) {
-      alert(err);
-      console.log(err)
-      set({ err: err.message });
+      alert(err.response.data.message);
+      set({ err: err.response.data.message });
     }
     set({ loading: false });
   },
@@ -65,8 +63,8 @@ export const goodStore = create((set) => ({
       await api.delete(`/good/delete/${id}`);
       set((state) => ({ goods: state.goods.filter((a) => a._id !== id) }));
     } catch (err) {
-      alert(err.message);
-      set({ err: err.message });
+      alert(err.response.data.message);
+      set({ err: err.response.data.message });
     }
     set({ loading: false });
   },
