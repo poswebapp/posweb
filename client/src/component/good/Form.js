@@ -1,9 +1,12 @@
 import React from "react";
 import Input from "../utility/Input";
+import { goodStore } from "../../zustand/good";
 
-const Form = ({ currentId, data, onChange }) => {
+const Form = ({ currentId, data, onChange , onSubmit }) => {
+  
+  const loading = goodStore((state) => state.loading);
   return (
-    <form className="w-[20rem] grid gap-2 h-auto p-4 place-content-start bg-white border rounded-lg mr-[28%] ml-auto shadow-md">
+    <form className="w-[20rem] grid gap-2 h-auto p-4 place-content-start bg-white border rounded-lg mr-[5%] ml-auto shadow-md">
       <h4 className="text-md text-zinc-500 font-bold ml-2">
         {currentId ? "Update Good" : "Upload Good"}
       </h4>
@@ -16,17 +19,24 @@ const Form = ({ currentId, data, onChange }) => {
         onChange={onChange}
       />
       <Input
+        placeholder={"Type"}
+        name={"type"}
+        value={data.type}
+        type={"text"}
+        onChange={onChange}
+      />
+      <Input
         placeholder={"Stock"}
         name={"stock"}
         value={data.stock}
-        type={"text"}
+        type={"number"}
         onChange={onChange}
       />
       <Input
         placeholder={"Unit"}
         name={"unit"}
         value={data.unit}
-        type={"number"}
+        type={"text"}
         onChange={onChange}
       />
       <Input
@@ -36,6 +46,15 @@ const Form = ({ currentId, data, onChange }) => {
         type={"number"}
         onChange={onChange}
       />
+    
+      <button
+        type="submit"
+        disabled={loading}
+        className={`p-3 px-4 font-[500] text-md border-2 rounded-md bg-zinc-800 mt-3 text-white mr-0 m-auto ${loading && "animate-pulse"}`}
+        onClick={onSubmit}
+      >
+        {loading ? "Processing" : "Submit"}
+      </button>
     </form>
   );
 };

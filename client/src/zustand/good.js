@@ -19,13 +19,40 @@ export const goodStore = create((set) => ({
   err: null,
 
   getGood: async () => {
-    console.log("get")
     set({ loading: true });
     try {
-      const result = await API.get("/good/get")
-      set({goods: result.data})
+      const result = await API.get("/good/get");
+      set({ goods: result.data });
     } catch (err) {
-      console.log(err.message);
+      alert(err.message);
+      set({ err: err.message });
+    }
+    set({ loading: false });
+  },
+
+  uploadGood: async (data) => {
+    set({ loading: true });
+    try {
+      const result = await API.post("/good/upload", data);
+      set((state) => ({ goods: [...state.goods, result.data] }));
+    } catch (err) {
+      alert(err.message);
+      set({ err: err.message });
+    }
+    set({ loading: false });
+  },
+
+  updateGood: async (data, id) => {
+    set({ loading: true });
+    try {
+      const result = await API.patch(`/good/patch/${id}`, data);
+      set((state) => ({
+        goods: [
+          ...state.goods.map((a) => (a._id === id ? result.data : a)),
+        ],
+      }));
+    } catch (err) {
+      alert(err.message);
       set({ err: err.message });
     }
     set({ loading: false });
@@ -34,10 +61,10 @@ export const goodStore = create((set) => ({
   deleteGood: async (id) => {
     set({ loading: true });
     try {
-      await API.delete(`/good/delete${id}`);
-      set((state) => ({ lists: state.lists.filter((list) => list.id !== id) }));
+      await API.delete(`/good/delete/${id}`);
+      set((state) => ({ goods: state.goods.filter((a) => a._id !== id) }));
     } catch (err) {
-      console.log(err.message);
+      alert(err.message);
       set({ err: err.message });
     }
     set({ loading: false });
