@@ -1,7 +1,8 @@
-export const Table = ({ element }) => {
+
+const Table = ({ element }) => {
   const th = "px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase whitespace-nowrap";
   return (
-    <div className=" bg-white shadow-md rounded-md ml-[23%] flex flex-col mr-[5%] mt-[10%] mb-auto p-2">
+    <div className=" bg-white shadow-md rounded-md ml-[23%] flex flex-col mt-10 mr-[5%] mb-auto p-2">
       <div className="overflow-x-scroll">
         <div className="p-1.5 w-full inline-block align-middle">
           <div className="overflow-x-scroll border rounded-lg">
@@ -42,3 +43,5 @@ export const Table = ({ element }) => {
     </div>
   );
 };
+
+export default Table
