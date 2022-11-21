@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Form from "./Form";
 import List from "./List";
 import { goodStore } from "../../zustand/good";
+import Layout from "../Layout";
 
 const Good = () => {
   const [id, setid] = useState(null);
@@ -60,7 +61,8 @@ const Good = () => {
     }
   };
   return (
-    <div className="w-screen grid pt-20">
+    <Layout element={
+    <div className="grid pt-20">
       <Form
         currentId={id}
         data={data}
@@ -68,7 +70,7 @@ const Good = () => {
         onSubmit={handleSubmit}
       />
       <List setid={setid} />
-    </div>
+    </div>}/>
   );
 };
 

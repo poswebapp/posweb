@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Navigate } from "react-router-dom";
-import Navbar from "./component/navbar/Navbar";
 import Notfound from "./component/Notfound";
 import Good from "./component/good/Good";
 import Login from "./component/user/Login";
@@ -15,7 +14,6 @@ function App() {
   return (
     <div>
       <Router>
-        <Navbar />
         <Routes>
           <Route path="/" element={ <Secure> <Dashboard /> </Secure> } />
           <Route path="/good" element={ <Secure> <Good /> </Secure> } />

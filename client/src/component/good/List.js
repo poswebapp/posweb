@@ -6,7 +6,7 @@ import { goodStore } from "../../zustand/good";
 
 const List = ({setid}) => {
   
-  const tr = "px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap";
+  const tr = "px-6 py-4 text-sm font-medium text-gray-800";
   const act =
     "px-6 py-4 text-sm font-medium text-gray-800 whitespace-wrap flex flex-rows gap-2";
   const list = goodStore((state) => state.goods);
@@ -20,7 +20,7 @@ const List = ({setid}) => {
   }, [getGood]);
 
   return (
-    <div>
+    <div className='w-auto grid mx-auto'>
       <Table
         element={
           <>
@@ -38,6 +38,7 @@ const List = ({setid}) => {
                     loading={loading}
                     onClick={() => {
                       setid(a._id);
+                      window.scroll(0,0);
                     }}
                   />
                   <BtnDelete
