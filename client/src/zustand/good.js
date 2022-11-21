@@ -1,10 +1,8 @@
 import create from "zustand";
-import axios from "axios";
+import {api} from './api'
 
-// const API = axios.create({ baseURL: "https://web--end.herokuapp.com" });
-const API = axios.create({ baseURL: "http://localhost:8000" });
 
-API.interceptors.request.use((req) => {
+api.interceptors.request.use((req) => {
   if (localStorage.getItem("profile")) {
     req.headers.Authorization = `Bearer ${
       JSON.parse(localStorage.getItem("profile")).token
@@ -21,7 +19,7 @@ export const goodStore = create((set) => ({
   getGood: async () => {
     set({ loading: true });
     try {
-      const result = await API.get("/good/get");
+      const result = await api.get("/good/get");
       set({ goods: result.data });
     } catch (err) {
       alert(err.message);
@@ -33,7 +31,7 @@ export const goodStore = create((set) => ({
   uploadGood: async (data) => {
     set({ loading: true });
     try {
-      const result = await API.post("/good/upload", data);
+      const result = await api.post("/good/upload", data);
       set((state) => ({ goods: [...state.goods, result.data] }));
     } catch (err) {
       alert(err.message);
@@ -45,7 +43,7 @@ export const goodStore = create((set) => ({
   updateGood: async (data, id) => {
     set({ loading: true });
     try {
-      const result = await API.patch(`/good/patch/${id}`, data);
+      const result = await api.patch(`/good/patch/${id}`, data);
       set((state) => ({
         goods: [
           ...state.goods.map((a) => (a._id === id ? result.data : a)),
@@ -61,7 +59,7 @@ export const goodStore = create((set) => ({
   deleteGood: async (id) => {
     set({ loading: true });
     try {
-      await API.delete(`/good/delete/${id}`);
+      await api.delete(`/good/delete/${id}`);
       set((state) => ({ goods: state.goods.filter((a) => a._id !== id) }));
     } catch (err) {
       alert(err.message);
