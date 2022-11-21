@@ -3,16 +3,23 @@ import Form from "./Form";
 import List from "./List";
 import { goodStore } from "../../zustand/good";
 import Layout from "../Layout";
+import autoAnimate from "@formkit/auto-animate";
 
 const Good = () => {
   const [id, setid] = useState(null);
   const [list, setlist] = useState(null);
+  const [show, setshow] = useState(false);
   const [data, setdata] = useState({
     name: "",
     stock: "",
     unit: "",
     price: "",
   });
+  
+  const dom = React.useRef(null);
+  useEffect(() => {
+    dom.current && autoAnimate(dom.current);
+  }, [dom]);
 
   const clear = () => {
     setid(0);
@@ -20,7 +27,7 @@ const Good = () => {
     setdata({
       name: "",
       stock: "",
-      type: "", 
+      type: "",
       unit: "",
       price: "",
     });
@@ -61,16 +68,30 @@ const Good = () => {
     }
   };
   return (
-    <Layout element={
-    <div className="grid pt-20">
-      <Form
-        currentId={id}
-        data={data}
-        onChange={handleChange}
-        onSubmit={handleSubmit}
-      />
-      <List setid={setid} />
-    </div>}/>
+    <Layout
+      element={
+        <div className="grid pt-20" ref={dom}>
+          <button
+            className="p-4 border-2 rounded-md text-white border-zinc-800 text-sm font-[400] bg-zinc-800 m-auto transition-all duration-300 ease-linear"
+            onClick={() => {
+              setshow(!show);
+            }}
+          >
+            {show ? "close" : "Open Form"}
+          </button>
+
+          {show && (
+            <Form
+              currentId={id}
+              data={data}
+              onChange={handleChange}
+              onSubmit={handleSubmit}
+            />
+          )}
+          <List setid={setid} setshow={setshow} />
+        </div>
+      }
+    />
   );
 };
 

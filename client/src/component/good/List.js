@@ -4,7 +4,8 @@ import BtnEdit from "../utility/BtnEdit";
 import  Table  from "./Table";
 import { goodStore } from "../../zustand/good";
 
-const List = ({setid}) => {
+
+const List = ({setid,setshow}) => {
   
   const tr = "px-6 py-4 text-sm font-medium text-gray-800";
   const act =
@@ -20,7 +21,7 @@ const List = ({setid}) => {
   }, [getGood]);
 
   return (
-    <div className='w-auto grid mx-auto'>
+    <div className='w-auto grid mx-auto' >
       <Table
         element={
           <>
@@ -38,6 +39,7 @@ const List = ({setid}) => {
                     loading={loading}
                     onClick={() => {
                       setid(a._id);
+                      setshow(true);
                       window.scroll(0,0);
                     }}
                   />

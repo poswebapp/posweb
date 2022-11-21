@@ -1,16 +1,30 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import notfound from "./img/404.svg";
 const Notfound = () => {
+  const navigate = useNavigate();
   return (
-    <div className="grid max-w-sm my-auto ml-[40%] mr-auto">
-      <img src={notfound} alt="404 page" className="w-64 mx-auto mt-24 mb-5 drop-shadow-md" />
-      <p className="uppercase font-semibold text-lg text-center text-gray-500 mb-2 mt-5">
+    <div className="grid max-w-sm m-auto ">
+      <img
+        src={notfound}
+        alt="404 page"
+        className="w-64 mx-auto mt-24 mb-5 drop-shadow-md"
+      />
+      <p className="uppercase font-bold text-lg text-center text-zinc-600 mb-2 mt-5">
         pages not found
       </p>
-      <p className="text-center text-sm text-gray-400">
-        The page you are looking for might have been removed had it name changed
-        or temporary unavailable.
+      <p className="text-center text-sm text-zinc-500">
+        The page you are looking for might have been removed had it name changed or temporary unavailable.
       </p>
+    
+        <button
+          className="p-4 px-6 border-2 rounded-md text-white border-zinc-800 text-sm font-[400] bg-zinc-800 mx-auto mt-10"
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
+          back
+        </button>
     </div>
   );
 };
