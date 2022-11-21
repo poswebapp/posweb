@@ -19,7 +19,6 @@ function App() {
           <Route path="/good" element={ <Secure> <Good /> </Secure> } />
           <Route path="/outgoing" element={ <Secure> <Outgoing /> </Secure> } />
           <Route path="/incoming" element={ <Secure> <Incoming /> </Secure> } />
-          <Route path="/user" element={ <Secure> <User /> </Secure> } />
     {/* todo */}
           <Route path="/profile" element={ <Secure> <User /> </Secure> } />
           <Route path="/password" element={ <Secure> <User /> </Secure> } />

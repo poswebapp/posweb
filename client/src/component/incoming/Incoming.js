@@ -1,9 +1,11 @@
 import React from "react";
+import Layout from "../Layout";
 import { InTable } from "./table";
 
 const Incoming = () => {
-  const tr = "px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap";
+  const tr = "px-5 py-4 text-sm font-medium text-gray-800 whitespace-nowrap";
   return (
+    <Layout element={
     <div>
       <InTable
         element={
@@ -40,7 +42,7 @@ const Incoming = () => {
           </>
         }
       />
-    </div>
+    </div>}/>
   );
 };
 
