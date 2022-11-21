@@ -1,8 +1,8 @@
 import create from "zustand";
 import axios from "axios";
 
-const API = axios.create({ baseURL: "https://web--end.herokuapp.com" });
-// const API = axios.create({ baseURL: "http://localhost:5000" });
+// const API = axios.create({ baseURL: "https://web--end.herokuapp.com" });
+const API = axios.create({ baseURL: "http://localhost:8000" });
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem("profile")) {
@@ -13,66 +13,33 @@ API.interceptors.request.use((req) => {
   return req;
 });
 
-export const useListStore = create((set) => ({
-  lists: [],
-  filteredList: [],
-  isLoading: false,
-  isError: false,
+export const goodStore = create((set) => ({
+  goods: [],
+  loading: false,
+  err: null,
 
-  searchLists: (search) => {
-    console.log("search:", search);
-    set((state) => ({
-      lists: state.lists.filter(
-        (list) =>
-          list.name.includes(search) ||
-          list.price.includes(search) ||
-          list.date.includes(search) ||
-          list.tag.includes(search)
-      ),
-    }));
-  },
-
-  createList: async (data) => {
-    set({ isLoading: true });
+  getGood: async () => {
+    console.log("get")
+    set({ loading: true });
     try {
-        let s4 = () => {
-          return Math.floor((1 + Math.random()) * 0x10000)
-            .toString(16)
-            .substring(1);
-        };
-      set((state) => ({ lists: [{...data,id: s4()}, ...state.lists] }));
+      const result = await API.get("/good/get")
+      set({goods: result.data})
     } catch (err) {
       console.log(err.message);
+      set({ err: err.message });
     }
-    set({ isLoading: false });
+    set({ loading: false });
   },
 
-  // updateList: async (updatedList, id) => {
-  //   set({ isLoading: true });
-  //   try {
-  //     const { data } = await API.patch(`/list/${id}`, updatedList);
-  //     set((state) => ({
-  //       lists: state.lists.map((list) => (list._id === id ? data : list)),
-  //     }));
-  //   } catch (err) {
-  //     console.log(err.message);
-  //   }
-  //   set({ isLoading: false });
-  // },
-
-  deleteList: async (id) => {
-    set({ isLoading: true });
+  deleteGood: async (id) => {
+    set({ loading: true });
     try {
-      set((state) => ({
-        lists: state.lists.filter((list) => list.id !== id),
-      }));
+      await API.delete(`/good/delete${id}`);
+      set((state) => ({ lists: state.lists.filter((list) => list.id !== id) }));
     } catch (err) {
       console.log(err.message);
+      set({ err: err.message });
     }
-    set({ isLoading: false });
-  },
-
-  setListByFilter: (data) => {
-    set({ filteredList: data });
+    set({ loading: false });
   },
 }));

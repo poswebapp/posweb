@@ -4,30 +4,20 @@ import mongoose from "mongoose";
 // getgood
 export const getGoods = async (req, res) => {
   try {
-    const good = await Good.find();
-    res.json(good);
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export const getOwnGoods = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const result = await Good.find({ user: id });
+    const result = await Good.find();
     res.json(result);
   } catch (error) {
+    res.status(500).json({ message: error.message });
     console.log(error);
   }
 };
 
 export const uploadGood = async (req, res) => {
   try {
-    const { user, name, stock, price, type, unit } = req.body;
-    if (!mongoose.Types.ObjectId.isValid(user))
-      return res.status(404).send({ message: `Not a valid User: ${user}` });
+    const {  name, stock, price, type, unit } = req.body;
+    // if (!mongoose.Types.ObjectId.isValid(user))
+    //   return res.status(404).send({ message: `Not a valid User: ${user}` });
     const good = new Good({
-      user,
       name,
       stock,
       price,
@@ -37,6 +27,7 @@ export const uploadGood = async (req, res) => {
     const result = await good.save();
     res.json(result);
   } catch (error) {
+    res.status(500).json({ message: error.message });
     console.log(error);
   }
 };
@@ -47,7 +38,7 @@ export const updateGood = async (req, res) => {
     const { id } = req.params;
     const { name, stock, price, type, unit } = req.body;
     if (!mongoose.Types.ObjectId.isValid(id))
-      return res.status(404).send({ message: `Not a valid User: ${id}` });
+      return res.status(404).send({ message: `Not a valid id: ${id}` });
 
     const result = await Good.findByIdAndUpdate(
       id,
@@ -61,8 +52,8 @@ export const updateGood = async (req, res) => {
       { new: true }
     );
     res.json(result);
-    console.log(result);
   } catch (error) {
+    res.status(500).json({ message: error.message });
     console.log(error);
   }
 };
@@ -74,5 +65,6 @@ export const deleteGood = async (req, res) => {
     res.json({ mesagge: "Good deleted" });
   } catch (error) {
     console.log(error);
+    res.status(500).json({ message: error.message });
   }
 };

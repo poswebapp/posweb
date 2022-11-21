@@ -21,13 +21,13 @@ function App() {
           <Route path="/good" element={ <Secure> <Good /> </Secure> } />
           <Route path="/outgoing" element={ <Secure> <Outgoing /> </Secure> } />
           <Route path="/incoming" element={ <Secure> <Incoming /> </Secure> } />
-          <Route path="/user" element={ <Admin> <User /> </Admin> } />
+          <Route path="/user" element={ <Secure> <User /> </Secure> } />
     {/* todo */}
-          <Route path="/profile" element={ <Admin> <User /> </Admin> } />
-          <Route path="/password" element={ <Admin> <User /> </Admin> } />
+          <Route path="/profile" element={ <Secure> <User /> </Secure> } />
+          <Route path="/password" element={ <Secure> <User /> </Secure> } />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
-          <Route path="/admin" element={<Manager />} />
+          <Route path="/Secure" element={<Manager />} />
           <Route path="/*" element={<Notfound />} />
         </Routes>
       </Router>
@@ -36,17 +36,17 @@ function App() {
 }
 export default App;
 export function Secure({ children }) {
-  if (localStorage.getItem("profile") || localStorage.getItem("admin")) {
+  if (localStorage.getItem("profile") || localStorage.getItem("Secure")) {
     return children;
   } else {
     return <Navigate to="/login" />;
   }
 }
 
-export function Admin({ children }) {
-  if (localStorage.getItem("admin")) {
-    return children;
-  } else {
-    return <Navigate to="/admin" />;
-  }
-}
+// export function Admin({ children }) {
+//   if (localStorage.getItem("admin")) {
+//     return children;
+//   } else {
+//     return <Navigate to="/Secure" />;
+//   }
+// }
