@@ -2,7 +2,7 @@ import React from "react";
 
 const TopContent = () => {
   return (
-    <content className="grid place-items-start grid-cols-4 gap-8 w-full mx-auto">
+    <content className="grid place-items-center place-content-start grid-cols-4 gap-8 w-full mx-auto">
       <Content name={"Total Goods"} value={130} border={"border-cyan-600"} />
       <Content name={"Total Suppliers"} value={8} border={"border-amber-600"} />
       <Content name={"Stocks of Goods"} value={130} border={"border-violet-400"} />
