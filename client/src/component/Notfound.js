@@ -20,7 +20,7 @@ const Notfound = () => {
         <button
           className="p-4 px-6 border-2 rounded-md text-white border-zinc-800 text-sm font-[400] bg-zinc-800 mx-auto mt-10"
           onClick={() => {
-            navigate(-1);
+            navigate("/");
           }}
         >
           back

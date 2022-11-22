@@ -19,15 +19,16 @@ const Login = () => {
   };
 
   const input =
-    "border border-zinc-400 text-zinc-500 font-[500] text-lg p-4 rounded-lg w-full bg-none my-4";
+    "border-2 focus:border-cyan-800 border-zinc-300 text-zinc-500 font-[500] text-lg p-4 rounded-lg w-full bg-none my-4 focus:outline-none  ";
   return (
-    <form className="grid bg-white shadow-md ml-[35%] mt-[15%] m-auto w-[40%] h-auto border-2 border-zinc-400 rounded-lg p-5">
-      <h4 className="font-semibold text-zinc-500 text-3xl text-center mb-5">
+    <span className="w-screen h-screen flex justify-center content-center">
+    <form className="grid bg-white shadow-md m-auto w-[23rem] h-auto border-2 border-zinc-300 rounded-xl p-5">
+      <h4 className="font-semibold text-zinc-700 text-3xl text-center mb-5">
         Login
       </h4>
-      <p className="text-zinc-500 mt-5">username</p>
+      <p className="text-zinc-600 mt-5 font-[500]">username</p>
       <input type="text" name="username" onChange={handleChange} className={input} />
-      <p className="text-zinc-500 mt-5">password</p>
+      <p className="text-zinc-600 mt-5 font-[500]">password</p>
       <input
         type="password"
         name="password"
@@ -43,6 +44,7 @@ const Login = () => {
         {loading ? "Processing" : "Login"}
       </button>
     </form>
+    </span>
   );
 };
 
