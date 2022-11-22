@@ -31,7 +31,6 @@ export const uploadIncoming = async (req, res) => {
 };
 
 export const updateIncoming = async (req, res) => {
-  console.log("try update");
   try {
     const { id } = req.params;
     const { date, supplier, name, quantity } = req.body;

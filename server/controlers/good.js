@@ -33,7 +33,6 @@ export const uploadGood = async (req, res) => {
 };
 
 export const updateGood = async (req, res) => {
-  console.log("try update");
   try {
     const { id } = req.params;
     const { name, stock, price, type, unit } = req.body;

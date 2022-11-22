@@ -1,36 +1,99 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Form from "./Form";
+import List from "./List";
+import { outgoingStore } from "../../zustand/outgoing";
 import Layout from "../Layout";
-import BtnDelete from '../utility/BtnDelete'
-import BtnEdit from "../utility/BtnEdit";
-import { OutTable } from "./table";
+import autoAnimate from "@formkit/auto-animate";
 
 const Outgoing = () => {
-  const loading = false;
-  const tr = "px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap";
-  const act = "px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap flex flex-rows gap-2  ";
+  const [id, setid] = useState(0);
+  const [list, setlist] = useState(null);
+  const [show, setshow] = useState(false);
+  const [data, setdata] = useState({
+    outdate: "",
+    customer: "",
+    discount: "",
+    subtotal: "",
+    total: "",
+  });
+
+  const dom = React.useRef(null);
+  useEffect(() => {
+    dom.current && autoAnimate(dom.current);
+  }, [dom]);
+
+  const clear = () => {
+    setid(0);
+    setlist(null);
+    setdata({
+      outdate: "",
+      customer: "",
+      discount: "",
+      subtotal: "",
+      total: "",
+    });
+  };
+
+  const outgoings = outgoingStore((state) => state.outgoings);
+  const updateOutgoing = outgoingStore((state) => state.updateOutgoing);
+  const uploadOutgoing = outgoingStore((state) => state.uploadOutgoing);
+  useEffect(() => {
+    setlist(id ? outgoings.find((r) => r._id === id) : null);
+  }, [outgoings, id]);
+
+  useEffect(() => {
+    if (list) setdata(list);
+  }, [id, list]);
+
+  const handleChange = (e) => {
+    setdata({ ...data, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (id === 0) {
+      if (
+        data.outdate === "" ||
+        data.customer === "" ||
+        data.discount === "" ||
+        data.subtotal === "" ||
+        data.total === ""
+      ) {
+        alert("Complete Form input");
+      } else {
+        await uploadOutgoing(data);
+        clear();
+      }
+    } else {
+      await updateOutgoing(data, id);
+      clear();
+    }
+  };
   return (
-    <Layout element={
-    <div>
-      <OutTable
-        element={<> 
-          <tr>
-            <td className={tr}> 1 </td>
-            <td className={tr}> 4e5jsh5dai8aw547bdndn </td>
-            <td className={tr}> Gas </td>
-            <td className={tr}> Regular </td>
-            <td className={tr}> 5 </td>
-            <td className={tr}> 4 </td>
-            <td className={tr}> 100 </td>
-            <td className={tr}> 100 </td>
-            <td className={act}>
-              <BtnEdit loading={loading} />
-              <BtnDelete loading={loading} />
-            </td>
-          </tr>
-          </>
-        }
-      />
-    </div> }/>
+    <Layout
+      element={
+        <div className="grid pt-20" ref={dom}>
+          <button
+            className="p-4 border-2 rounded-md text-white border-zinc-800 text-sm font-[400] bg-zinc-800 m-auto transition-all duration-300 ease-linear"
+            onClick={() => {
+              setshow(!show);
+            }}
+          >
+            {show ? "close" : "Open Form"}
+          </button>
+
+          {show && (
+            <Form
+              currentId={id}
+              data={data}
+              onChange={handleChange}
+              onSubmit={handleSubmit}
+            />
+          )}
+          <List setid={setid} setshow={setshow} />
+        </div>
+      }
+    />
   );
 };
 

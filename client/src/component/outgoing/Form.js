@@ -12,29 +12,36 @@ const Form = ({ currentId, data, onChange, onSubmit }) => {
       </h4>
       <hr className="text-zinc-400 " />
       <Date
-        placeholder={"Date"}
-        name={"date"}
-        value={data.date}
+        placeholder={"Out-Date"}
+        name={"outdate"}
+        value={data.outdate}
         onChange={onChange}
       />
       <Input
-        placeholder={"Supplier"}
-        name={"supplier"}
-        value={data.supplier}
+        placeholder={"Costumer"}
+        name={"customer"}
+        value={data.customer}
         type={"text"}
         onChange={onChange}
       />
       <Input
-        placeholder={"Name"}
-        name={"name"}
-        value={data.name}
-        type={"text"}
+        placeholder={"Discount"}
+        name={"discount"}
+        value={data.discount}
+        type={"number"}
         onChange={onChange}
       />
       <Input
-        placeholder={"Quantity"}
-        name={"quantity"}
-        value={data.quantity}
+        placeholder={"Subtotal"}
+        name={"subtotal"}
+        value={data.subtotal}
+        type={"number"}
+        onChange={onChange}
+      />
+      <Input
+        placeholder={"Total"}
+        name={"total"}
+        value={data.total}
         type={"number"}
         onChange={onChange}
       />

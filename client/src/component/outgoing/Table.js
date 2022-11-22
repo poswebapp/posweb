@@ -1,7 +1,8 @@
-export const OutTable = ({ element }) => {
-  const th = "px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase ";
+
+const Table = ({ element }) => {
+  const th = "px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase";
   return (
-    <div className=" bg-white shadow-md rounded-md flex flex-col mx-auto mt-10 mb-auto p-2">
+    <div className=" bg-white shadow-md rounded-md flex flex-col mt-10 mx-auto p-2 w-auto">
       <div className="overflow-x-scroll">
         <div className="p-1.5 w-full inline-block align-middle">
           <div className="overflow-x-scroll border rounded-lg">
@@ -12,13 +13,10 @@ export const OutTable = ({ element }) => {
                     #
                   </th>
                   <th scope="col" className={th}>
-                    ID
-                  </th>
-                  <th scope="col" className={th}>
                     Out-Date
                   </th>
                   <th scope="col" className={th}>
-                    Contact
+                    Customer
                   </th>
                   <th scope="col" className={th}>
                     Discount
@@ -30,7 +28,7 @@ export const OutTable = ({ element }) => {
                     Total
                   </th>
                   <th scope="col" className={th}>
-                    Amount
+                    ID
                   </th>
                   <th scope="col" className={th}>
                     Action
@@ -45,3 +43,5 @@ export const OutTable = ({ element }) => {
     </div>
   );
 };
+
+export default Table

@@ -51,11 +51,10 @@ const Incoming = () => {
     e.preventDefault();
     if (id === 0) {
       if (
+        data.date === "" ||
+        data.supplier === "" ||
         data.name === "" ||
-        data.unit === "" ||
-        data.price === "" ||
-        data.type === "" ||
-        data.stock === ""
+        data.quantity === "" 
       ) {
         alert("Complete Form input");
       } else {
