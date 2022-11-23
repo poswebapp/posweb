@@ -7,6 +7,7 @@ import goodRoutes from './routes/good.js';
 import outgoingRoutes from './routes/outgoing.js';
 import incomingRoutes from './routes/incoming.js';
 import supplierRoutes from './routes/supplier.js';
+import totalRoutes from './routes/total.js';
 import userRoutes from './routes/user.js';
 const app = express();
 dotenv.config();
@@ -19,6 +20,7 @@ app.use('/good', goodRoutes);
 app.use('/incoming', incomingRoutes);
 app.use('/outgoing', outgoingRoutes);
 app.use('/supplier', supplierRoutes);
+app.use('/total', totalRoutes);
 
 app.get('/',(req,res) => {res.send('Pos Web App');});
 
