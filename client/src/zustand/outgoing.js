@@ -1,6 +1,5 @@
 import create from "zustand";
-import {api} from './api'
-
+import { api } from "./api";
 
 api.interceptors.request.use((req) => {
   if (localStorage.getItem("profile")) {
@@ -20,7 +19,7 @@ export const outgoingStore = create((set) => ({
     set({ loading: true });
     try {
       const result = await api.get("/outgoing/get");
-      set({ outgoings: result.data.reverse() });
+      set({ outgoings: result.data });
     } catch (err) {
       alert(err.response.data.message);
       set({ err: err.response.data.message });
@@ -32,9 +31,9 @@ export const outgoingStore = create((set) => ({
     set({ loading: true });
     try {
       const result = await api.post("/outgoing/upload", data);
-      set((state) => ({ outgoings: [...state.outgoings, result.data].reverse() }));
+      set((state) => ({ outgoings: [...state.outgoings, result.data] }));
     } catch (err) {
-      console.log(err)
+      console.log(err);
       alert(err.response.data.message);
       set({ err: err.response.data.message });
     }
@@ -61,7 +60,9 @@ export const outgoingStore = create((set) => ({
     set({ loading: true });
     try {
       await api.delete(`/outgoing/delete/${id}`);
-      set((state) => ({ outgoings: state.outgoings.filter((a) => a._id !== id) }));
+      set((state) => ({
+        outgoings: state.outgoings.filter((a) => a._id !== id),
+      }));
     } catch (err) {
       alert(err.response.data.message);
       set({ err: err.response.data.message });

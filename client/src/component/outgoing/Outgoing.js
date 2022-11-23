@@ -4,6 +4,7 @@ import List from "./List";
 import { outgoingStore } from "../../zustand/outgoing";
 import Layout from "../Layout";
 import autoAnimate from "@formkit/auto-animate";
+import Loading from "../Loading";
 
 const Outgoing = () => {
   const [id, setid] = useState(0);
@@ -35,6 +36,7 @@ const Outgoing = () => {
   };
 
   const outgoings = outgoingStore((state) => state.outgoings);
+  const loading = outgoingStore((state) => state.loading);
   const updateOutgoing = outgoingStore((state) => state.updateOutgoing);
   const uploadOutgoing = outgoingStore((state) => state.uploadOutgoing);
   useEffect(() => {
@@ -90,6 +92,7 @@ const Outgoing = () => {
               onSubmit={handleSubmit}
             />
           )}
+          {loading && <Loading />}
           <List setid={setid} setshow={setshow} />
         </div>
       }

@@ -4,6 +4,7 @@ import List from "./List";
 import { incomingStore } from "../../zustand/incoming";
 import Layout from "../Layout";
 import autoAnimate from "@formkit/auto-animate";
+import Loading from "../Loading";
 
 const Incoming = () => {
   const [id, setid] = useState(0);
@@ -33,6 +34,7 @@ const Incoming = () => {
   };
 
   const incomings = incomingStore((state) => state.incomings);
+  const loading = incomingStore((state) => state.loading);
   const updateIncoming = incomingStore((state) => state.updateIncoming);
   const uploadIncoming = incomingStore((state) => state.uploadIncoming);
   useEffect(() => {
@@ -54,7 +56,7 @@ const Incoming = () => {
         data.date === "" ||
         data.supplier === "" ||
         data.name === "" ||
-        data.quantity === "" 
+        data.quantity === ""
       ) {
         alert("Complete Form input");
       } else {
@@ -87,6 +89,7 @@ const Incoming = () => {
               onSubmit={handleSubmit}
             />
           )}
+          {loading && <Loading />}
           <List setid={setid} setshow={setshow} />
         </div>
       }

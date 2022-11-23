@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { MdSpaceDashboard } from "react-icons/md";
 import { BsFillGridFill, BsFillShieldLockFill } from "react-icons/bs";
 import { SiGriddotai, SiGridsome } from "react-icons/si";
-import { FaUserTag, FaUserCircle } from "react-icons/fa";
+import { FaUserTag } from "react-icons/fa";
 import { HiDocumentReport } from "react-icons/hi";
 
 import { useLocation } from "react-router-dom";

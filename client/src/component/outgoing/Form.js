@@ -8,7 +8,7 @@ const Form = ({ currentId, data, onChange, onSubmit }) => {
   return (
     <form className="w-[20rem] grid gap-2 h-auto p-4 place-content-start bg-white border rounded-lg mx-auto shadow-md">
       <h4 className="text-md text-zinc-500 font-bold ml-2">
-        {currentId ? "Update Incoming" : "Upload Incoming"}
+        {currentId ? "Update Outgoing" : "Upload Outgoing"}
       </h4>
       <hr className="text-zinc-400 " />
       <Date

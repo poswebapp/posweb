@@ -5,7 +5,7 @@ const Notfound = () => {
   const navigate = useNavigate();
   return (
     <span className="flex justify-center content-center w-scree h-screen">
-    <div className="grid max-w-sm m-auto ">
+    <div className="grid max-w-sm mt-[40%] ">
       <img
         src={notfound}
         alt="404 page"

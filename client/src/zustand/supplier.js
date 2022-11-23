@@ -20,7 +20,7 @@ export const supplierStore = create((set) => ({
     set({ loading: true });
     try {
       const result = await api.get("/supplier/get");
-      set({ suppliers: result.data.reverse() });
+      set({ suppliers: result.data });
     } catch (err) {
       alert(err.response.data.message);
       set({ err: err.response.data.message });
@@ -32,7 +32,7 @@ export const supplierStore = create((set) => ({
     set({ loading: true });
     try {
       const result = await api.post("/supplier/upload", data);
-      set((state) => ({ suppliers: [...state.suppliers, result.data].reverse() }));
+      set((state) => ({ suppliers: [...state.suppliers, result.data] }));
     } catch (err) {
       console.log(err)
       alert(err.response.data.message);

@@ -4,6 +4,7 @@ import List from "./List";
 import { goodStore } from "../../zustand/good";
 import Layout from "../Layout";
 import autoAnimate from "@formkit/auto-animate";
+import Loading from "../Loading";
 
 const Good = () => {
   const [id, setid] = useState(0);
@@ -35,6 +36,7 @@ const Good = () => {
   };
 
   const goods = goodStore((state) => state.goods);
+  const loading = goodStore((state) => state.loading);
   const updateGood = goodStore((state) => state.updateGood);
   const uploadGood = goodStore((state) => state.uploadGood);
   useEffect(() => {
@@ -90,6 +92,7 @@ const Good = () => {
               onSubmit={handleSubmit}
             />
           )}
+          {loading && <Loading />}
           <List setid={setid} setshow={setshow} />
         </div>
       }
