@@ -1,0 +1,18 @@
+// import React, { useEffect, useRef } from "react";
+import { totalStore } from "../../zustand/total";
+import ChartBar from "../input/ChartBar";
+
+const Chart = () => {
+  const total = totalStore((state) => state.total);
+  
+  return (
+    <div className="p-3 flex flex-wrap justify-center gap-2 rounded-lg shad bg-white w-58 h-auto">
+      <div className="grid max-w-md p-3 mx-auto mt-10">
+        <ChartBar incoming={total.incoming} outgoing={total.outgoing} />
+      </div>
+    </div>
+  );
+};
+
+        // backgroundColor: ["#FDC639", "#A5DB73"],
+export default Chart;
