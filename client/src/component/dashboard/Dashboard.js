@@ -10,7 +10,7 @@ const Dashboard = () => {
   return (
     <Layout
       element={
-        <div className="flex flex-col justify-center mx-auto mt-[5%] content-start w-auto gap-5">
+        <div className="flex flex-col justify-center mx-auto mt-[5%] content-start w-auto">
       {loading && <Loading/>  }
           <div className="mx-auto bg-white shadow-md rounded-xl grid min-w-full  h-[40rem] p-8 border border-zinc-300">
             <TopContent />
