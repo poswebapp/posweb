@@ -4,12 +4,12 @@ import notfound from "./img/404.svg";
 const Notfound = () => {
   const navigate = useNavigate();
   return (
-    <span className="flex justify-center content-center w-scree h-screen">
-    <div className="grid max-w-sm mt-[40%] ">
+    <span className="w-screen h-screen flex ">
+    <div className="grid max-w-sm m-auto ">
       <img
         src={notfound}
         alt="404 page"
-        className="w-64 mx-auto mt-24 mb-5 drop-shadow-md"
+        className="w-64 mx-auto mb-5 drop-shadow-md"
       />
       <p className="uppercase font-bold text-lg text-center text-zinc-600 mb-2 mt-5">
         pages not found
@@ -19,7 +19,7 @@ const Notfound = () => {
       </p>
     
         <button
-          className="p-4 px-6 border-2 rounded-md text-white border-zinc-800 text-sm font-[400] bg-zinc-800 mx-auto mt-10"
+          className="p-4 px-6 border-2 rounded-md text-white border-zinc-800 text-sm font-[400] bg-zinc-800 mx-auto mt-5"
           onClick={() => {
             navigate("/");
           }}

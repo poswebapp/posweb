@@ -21,8 +21,8 @@ const Login = () => {
   const input =
     "border-2 focus:border-cyan-800 border-zinc-300 text-zinc-500 font-[500] text-lg p-4 rounded-lg w-full bg-none my-4 focus:outline-none  ";
   return (
-    <span className="w-screen h-screen flex justify-center content-center">
-    <form className="grid bg-white shadow-md m-auto w-[23rem] h-auto border-2 border-zinc-300 rounded-xl p-5">
+    <span className="w-screen h-screen flex">
+    <form className="m-auto grid bg-white shadow-md m-auto w-[23rem] h-auto border-2 border-zinc-300 rounded-xl p-5">
       <h4 className="font-semibold text-zinc-700 text-3xl text-center mb-5">
         Login
       </h4>
