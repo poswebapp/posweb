@@ -1,13 +1,17 @@
-import express from 'express';
-import { getSuppliers,deleteSupplier,updateSupplier, uploadSupplier } from '../controlers/supplier.js'
+import express from "express";
+import {
+  getIncomings,
+  deleteIncoming,
+  updateIncoming,
+  uploadIncoming,
+} from "../controlers/incoming.js";
 
 const router = express.Router();
 // import auth from '../middleware/auth.js'
 
+router.get("/get", getIncomings);
+router.patch("/patch/:id", updateIncoming);
+router.post("/upload", uploadIncoming);
+router.delete("/delete/:id", deleteIncoming);
 
-router.get('/get', getSuppliers);
-router.patch('/patch/:id',updateSupplier);
-router.post('/upload',uploadSupplier);
-router.delete('/delete/:id',deleteSupplier);
- 
 export default router;

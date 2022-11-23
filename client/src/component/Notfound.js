@@ -4,6 +4,7 @@ import notfound from "./img/404.svg";
 const Notfound = () => {
   const navigate = useNavigate();
   return (
+    <span className="flex justify-center content-center w-scree h-screen">
     <div className="grid max-w-sm m-auto ">
       <img
         src={notfound}
@@ -26,6 +27,7 @@ const Notfound = () => {
           back
         </button>
     </div>
+    </span>
   );
 };
 
