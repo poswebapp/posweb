@@ -1,29 +1,15 @@
 import React from "react";
 import Input from "../utility/Input";
-import Date from "../utility/Date";
-import { incomingStore } from "../../zustand/incoming";
+import { supplierStore } from "../../zustand/supplier";
 
 const Form = ({ currentId, data, onChange, onSubmit }) => {
-  const loading = incomingStore((state) => state.loading);
+  const loading = supplierStore((state) => state.loading);
   return (
     <form className="w-[20rem] grid gap-2 h-auto p-4 place-content-start bg-white border rounded-lg mx-auto shadow-md">
       <h4 className="text-md text-zinc-500 font-bold ml-2">
         {currentId ? "Update Incoming" : "Upload Incoming"}
       </h4>
       <hr className="text-zinc-400 " />
-      <Date
-        placeholder={"Date"}
-        name={"date"}
-        value={data.date}
-        onChange={onChange}
-      />
-      <Input
-        placeholder={"Supplier"}
-        name={"supplier"}
-        value={data.supplier}
-        type={"text"}
-        onChange={onChange}
-      />
       <Input
         placeholder={"Name"}
         name={"name"}
@@ -32,10 +18,17 @@ const Form = ({ currentId, data, onChange, onSubmit }) => {
         onChange={onChange}
       />
       <Input
-        placeholder={"Quantity"}
-        name={"quantity"}
-        value={data.quantity}
+        placeholder={"Contact"}
+        name={"contact"}
+        value={data.contact}
         type={"number"}
+        onChange={onChange}
+      />
+      <Input
+        placeholder={"Address"}
+        name={"address"}
+        value={data.address}
+        type={"text"}
         onChange={onChange}
       />
       <button

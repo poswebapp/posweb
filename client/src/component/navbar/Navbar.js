@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { MdSpaceDashboard } from "react-icons/md";
 import { BsFillGridFill, BsFillShieldLockFill } from "react-icons/bs";
 import { SiGriddotai, SiGridsome } from "react-icons/si";
-import { FaUserCircle } from "react-icons/fa";
+import { FaUserTag, FaUserCircle } from "react-icons/fa";
 import { HiDocumentReport } from "react-icons/hi";
 
 import { useLocation } from "react-router-dom";
@@ -36,7 +36,7 @@ const Navbar = () => {
       <span className="grid gap-4 ml-5">
         <Content icon={<SiGridsome />} name={"Incoming"} link={"/incoming"} />
         <Content icon={<SiGriddotai />} name={"Outgoing"} link={"/outgoing"} />
-        {/* <Content icon={<FaUserTag />} name={"Suppliers"} link={"/supplier"} /> */}
+        <Content icon={<FaUserTag />} name={"Suppliers"} link={"/supplier"} />
       </span>
       <Content icon={<HiDocumentReport />} name={"Report"} link={"/reports"} />
       <Content icon={<FaUserCircle />} name={"Profile"} link={"/profile"} />

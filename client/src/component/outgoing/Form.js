@@ -1,10 +1,10 @@
 import React from "react";
 import Input from "../utility/Input";
 import Date from "../utility/Date";
-import { goodStore } from "../../zustand/good";
+import { outgoingStore } from "../../zustand/outgoing";
 
 const Form = ({ currentId, data, onChange, onSubmit }) => {
-  const loading = goodStore((state) => state.loading);
+  const loading = outgoingStore((state) => state.loading);
   return (
     <form className="w-[20rem] grid gap-2 h-auto p-4 place-content-start bg-white border rounded-lg mx-auto shadow-md">
       <h4 className="text-md text-zinc-500 font-bold ml-2">

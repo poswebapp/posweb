@@ -13,13 +13,13 @@ const List = ({setid,setshow}) => {
     "px-6 py-4 text-sm font-medium text-gray-800 whitespace-wrap flex flex-rows gap-2";
   const list = outgoingStore((state) => state.outgoings);
   const loading = outgoingStore((state) => state.loading);
-  const getoutgoing = outgoingStore((state) => state.getOutgoing);
+  const getOutgoing = outgoingStore((state) => state.getOutgoing);
   const deleteOutgoing = outgoingStore((state) => state.deleteOutgoing);
   
 
   useEffect(() => {
-    getoutgoing();
-  }, [getoutgoing]);
+    getOutgoing();
+  }, [getOutgoing]);
 
   return (
     <div className='w-auto grid mx-auto' >
