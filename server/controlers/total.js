@@ -19,4 +19,4 @@ export const getTotals = async(req,res)=>{
     console.log(err)
   }
 }
-
+//TODO: sa month i base ang pag group ng total  hindi sa start at end ng month
