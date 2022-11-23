@@ -24,15 +24,16 @@ const Chart = () => {
       {
         label: "",
         data: [total.incoming, total.outgoing],
-        backgroundColor: ["#FDC639", "#A5DB73"],
-        borderColor: ["#FDC639", "#A5DB73"],
+        // backgroundColor: ["#FDC639", "#A5DB73"],
+        backgroundColor: ["#f79256", "#1d4e89"],
+        // borderColor: ["#FDC639", "#A5DB73"],
         borderWidth: 1,
       },
     ],
   };
 
   return (
-    <span className="p-5 rounded-lg bg-zinc-100 h-60 w-60 shadow-md grid border">
+    <span className="p-5 rounded-lg bg-zinc-100 h-80 w-80 shadow-md grid border">
       <Doughnut data={data} options={options} />
     </span>
   );
