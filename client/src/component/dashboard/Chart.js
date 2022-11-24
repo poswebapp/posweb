@@ -19,7 +19,7 @@ const Chart = () => {
     maintainAspectRatio: false,
   };
   const data = {
-    labels: ["Incoming", "Outgoing"],
+    labels: ["Incoming Goods", "Outgoing Goods"],
     datasets: [
       {
         label: "",

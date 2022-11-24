@@ -39,9 +39,8 @@ body {
     @apply text-sm text-gray-400 bg-none rounded-full p-2 w-full mt-4 font-bold border-2 border-gray-400 transition-all duration-300;
   }
 }
-.shad1 {
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
 .shad {
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
+  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
 }
