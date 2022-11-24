@@ -19,7 +19,7 @@ const Chart = () => {
     maintainAspectRatio: false,
   };
   const data = {
-    labels: ["incoming", "outgoing"],
+    labels: ["Incoming", "Outgoing"],
     datasets: [
       {
         label: "",
@@ -33,7 +33,7 @@ const Chart = () => {
   };
 
   return (
-    <span className="p-5 rounded-lg bg-zinc-100 h-80 w-80 shadow-md grid border">
+    <span className="p-5 rounded-lg bg-zinc-100 h-80 w-80 shad grid border">
       <Doughnut data={data} options={options} />
     </span>
   );
