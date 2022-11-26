@@ -31,7 +31,7 @@ const Chart = ({list}) => {
       },
       title: {
         display: true,
-        text: "Monthly Goofs",
+        text: "Monthly Goods This Year",
       },
     },
   };
@@ -55,7 +55,7 @@ const Chart = ({list}) => {
     labels,
     datasets: [
       {
-        label: "Dataset 1",
+        label: "Monthly Goods",
         data: list,
         borderColor:  "#1d4e89",
         backgroundColor: "#1d4e89",
