@@ -10,6 +10,7 @@ import Incoming from "./component/incoming/Incoming";
 // import User from "./component/user/User";
 import Manager from "./component/user/Manager";
 import Logout from "./component/Logout";
+import Report from "./component/report/Report";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/outgoing" element={ <Secure> <Outgoing /> </Secure> } />
           <Route path="/incoming" element={ <Secure> <Incoming /> </Secure> } />
           <Route path="/supplier" element={ <Secure> <Supplier /> </Secure> } />
+          <Route path="/report" element={ <Secure> <Report /> </Secure> } />
     {/* todo */}
           {/* <Route path="/profile" element={ <Secure> <User /> </Secure> } /> */}
           {/* <Route path="/password" element={ <Secure> <User /> </Secure> } /> */}

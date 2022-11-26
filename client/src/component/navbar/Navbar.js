@@ -12,19 +12,18 @@ import { userStore } from "../../zustand/user";
 
 const Navbar = () => {
   const curUsr = userStore((state) => state.curUsr);
-  const setCurUsr = userStore(state=> state.setCurUsr)
-  
+  const setCurUsr = userStore((state) => state.setCurUsr);
 
   useEffect(() => {
- const admin =localStorage.getItem("admin")  
- const profile =localStorage.getItem("profile")  
+    const admin = localStorage.getItem("admin");
+    const profile = localStorage.getItem("profile");
     if (admin) {
-      setCurUsr("admin")
+      setCurUsr("admin");
     }
     if (profile) {
-      setCurUsr("profile")
+      setCurUsr("profile");
     }
-  }, [ curUsr, setCurUsr]);
+  }, [curUsr, setCurUsr]);
   return (
     <div className="grid grid-cols-1 place-content-start gap-4 w-[18%] min-w-40 max-w-52 h-screen bg-zinc-800 p-5 ml-0 mr-auto">
       <h4 className="text-lg text-white text-xl font-bold mt-4 mb-3 ">
@@ -38,7 +37,7 @@ const Navbar = () => {
         <Content icon={<SiGriddotai />} name={"Outgoing"} link={"/outgoing"} />
         <Content icon={<FaUserTag />} name={"Suppliers"} link={"/supplier"} />
       </span>
-      <Content icon={<HiDocumentReport />} name={"Report"} link={"/reports"} />
+      <Content icon={<HiDocumentReport />} name={"Report"} link={"/report"} />
       {/* <Content icon={<FaUserCircle />} name={"Profile"} link={"/profile"} /> */}
       <Content
         icon={<BsFillShieldLockFill />}

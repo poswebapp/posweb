@@ -7,6 +7,7 @@ const goodSchema = mongoose.Schema({
   stock: { type: Number, require: true },
   unit: { type: String, require: true },
   price: { type: Number, require: true },
+  date: { type: Date, default: new Date() },
 });
 
 var Good = mongoose.model("Good", goodSchema);

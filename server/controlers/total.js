@@ -16,7 +16,7 @@ export const getTotals = async (req, res) => {
     const stock = stockList.reduce((accumulator, value) => {
       return accumulator + value;
     }, 0);
-    
+
     const outgoingList = await Outgoing.find();
     const earningList = outgoingList.map((a) => a.total);
     const earning = earningList.reduce((accumulator, value) => {
@@ -38,3 +38,23 @@ export const getTotals = async (req, res) => {
   }
 };
 //TODO: sa month i base ang pag group ng total  hindi sa start at end ng month
+
+export const getMontlyGood = async (req, res) => {
+  try {
+    const result = [];
+
+    // loop from jan to december
+    for (let i = 0; i < 12; i++) {
+      const now = new Date()
+      const firstDay = new Date(now.getFullYear(), i, 1);
+      const lastDay = new Date(now.getFullYear(), i + 1, 0);
+      const good = await Incoming.countDocuments({
+        date: { $gte: firstDay, $lte: lastDay },
+      });
+      result.push(good);
+    }
+    res.status(200).json(result);
+  } catch (err) {
+    console.log(err.message);
+  }
+};
