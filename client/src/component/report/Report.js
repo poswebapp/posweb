@@ -14,7 +14,7 @@ const Report = () => {
   return (
     <Layout
       element={
-        <span className=" flex flex-col justify-center content start mt-20 gap-5">
+        <span className=" flex flex-col justify-center content-center start gap-5 w-full h-full">
           {loading && <Loading />}
           <div className="rounded-lg shadow-md border p-8 w-auto h-auto bg-white">
             <Chart list={monthly} />
