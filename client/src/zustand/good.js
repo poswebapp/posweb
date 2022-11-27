@@ -13,6 +13,8 @@ api.interceptors.request.use((req) => {
 
 export const goodStore = create((set) => ({
   goods: [],
+  recent: [],
+  minimum: {},
   loading: false,
   err: null,
 
@@ -21,6 +23,30 @@ export const goodStore = create((set) => ({
     try {
       const result = await api.get("/good/get");
       set({ goods: result.data });
+    } catch (err) {
+      alert(err.response.data.message);
+      set({ err: err.response.data.message });
+    }
+    set({ loading: false });
+  },
+  
+  getRecentGood: async () => {
+    set({ loading: true });
+    try {
+      const result = await api.get("/good/getRecent");
+      set({ recent: result.data });
+    } catch (err) {
+      alert(err.response.data.message);
+      set({ err: err.response.data.message });
+    }
+    set({ loading: false });
+  },
+  
+  getMinimum: async () => {
+    set({ loading: true });
+    try {
+      const result = await api.get("/good/getMinimum");
+      set({ minimum: result.data });
     } catch (err) {
       alert(err.response.data.message);
       set({ err: err.response.data.message });

@@ -12,6 +12,27 @@ export const getGoods = async (req, res) => {
   }
 };
 
+export const getRecentGoods = async (req, res) => {
+  try {
+    const result = await Good.find().sort({updatedAt:-1}).limit(3);
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+    console.log(error);
+  }
+};
+
+export const getMinimum = async (req, res) => {
+  try {
+    const result = await Good.find({$min: stock}).limit(1)
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+    console.log(error);
+  }
+};
+
+
 export const uploadGood = async (req, res) => {
   try {
     const {  name, stock, price, type, unit } = req.body;
@@ -47,6 +68,7 @@ export const updateGood = async (req, res) => {
         price,
         type,
         unit,
+        updatedAt: new Date()
       },
       { new: true }
     );
