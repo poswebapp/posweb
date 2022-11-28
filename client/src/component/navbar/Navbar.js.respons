@@ -25,16 +25,18 @@ const Navbar = () => {
     }
   }, [curUsr, setCurUsr]);
   return (
-    <div className="grid grid-cols-1 place-content-start gap-4 w-48 min-w-40 max-w-52 h-screen bg-zinc-800 p-5 ml-0 mr-auto">
-      <h4 className="text-lg text-white text-xl font-bold mt-4 mb-3 ">
+    <div className="grid grid-cols-1 place-content-start gap-4 w-auto h-screen bg-zinc-800 p-5 ml-0 mr-auto">
+      <h4 className="text-lg text-white text-xl font-bold mt-4 mb-3 hidden md:block">
         Gasoline POS
       </h4>
       {/* content navbar */}
       <Content icon={<MdSpaceDashboard />} name={"Dashboard"} link={"/"} />
       <Content icon={<BsFillGridFill />} name={"Goods"} link={"/good"} />
-      <Content icon={<SiGridsome />} name={"Incoming"} link={"/incoming"} />
-      <Content icon={<SiGriddotai />} name={"Outgoing"} link={"/outgoing"} />
-      <Content icon={<FaUserTag />} name={"Suppliers"} link={"/supplier"} />
+      <span className="grid gap-4 md:ml-5">
+        <Content icon={<SiGridsome />} name={"Incoming"} link={"/incoming"} />
+        <Content icon={<SiGriddotai />} name={"Outgoing"} link={"/outgoing"} />
+        <Content icon={<FaUserTag />} name={"Suppliers"} link={"/supplier"} />
+      </span>
       <Content icon={<HiDocumentReport />} name={"Report"} link={"/report"} />
       {/* <Content icon={<FaUserCircle />} name={"Profile"} link={"/profile"} /> */}
       <Content
@@ -58,12 +60,12 @@ export const Content = ({ link, icon, name }) => {
   return (
     <Link
       to={link}
-      className={`flex truncate justify-start content-center gap-2 text-white text-sm duration-300 transition-all ease-linear hover:bg-amber-200 hover:text-zinc-800 hover:p-2 hover:rounded-lg ${
+      className={`flex truncate justify-start content-center gap-2 text-white text-sm duration-300 transition-all ease-linear hover:bg-amber-200 hover:text-zinc-800 px-2 hover:py-2  hover:rounded-lg ${
         path && "bg-amber-200 rounded-lg p-2 text-zinc-800"
       }`}
     >
       <span className="mt-[.2rem]">{icon}</span>
-      <h4 className="drop-shadow-sm font-semibold capitalize">{name}</h4>
+      <h4 className=" drop-shadow-sm font-semibold capitalize hidden md:block">{name}</h4>
     </Link>
   );
 };
