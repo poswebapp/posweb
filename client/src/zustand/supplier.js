@@ -34,7 +34,6 @@ export const supplierStore = create((set) => ({
       const result = await api.post("/supplier/upload", data);
       set((state) => ({ suppliers: [...state.suppliers, result.data] }));
     } catch (err) {
-      console.log(err)
       alert(err.response.data.message);
       set({ err: err.response.data.message });
     }

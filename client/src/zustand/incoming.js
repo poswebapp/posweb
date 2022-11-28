@@ -34,7 +34,6 @@ export const incomingStore = create((set) => ({
       const result = await api.post("/incoming/upload", data);
       set((state) => ({ incomings: [...state.incomings, result.data] }));
     } catch (err) {
-      console.log(err)
       alert(err.response.data.message);
       set({ err: err.response.data.message });
     }

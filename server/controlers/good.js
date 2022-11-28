@@ -14,7 +14,7 @@ export const getGoods = async (req, res) => {
 
 export const getRecentGoods = async (req, res) => {
   try {
-    const result = await Good.find().sort({updatedAt:-1}).limit(3);
+    const result = await Good.find().sort({ updatedAt: -1 }).limit(3);
     res.json(result);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -24,18 +24,27 @@ export const getRecentGoods = async (req, res) => {
 
 export const getMinimum = async (req, res) => {
   try {
-    const result = await Good.find({$min: stock}).limit(1)
+    const result = await Good.aggregate([
+      {
+        $group: {
+          _id: "$stock",
+          doc: { $push: "$$ROOT" },
+        },
+      },
+      { $sort: { _id: 1 } },
+      { $limit: 1 },
+    ]);
     res.json(result);
+    console.log(result);
   } catch (error) {
     res.status(500).json({ message: error.message });
     console.log(error);
   }
 };
 
-
 export const uploadGood = async (req, res) => {
   try {
-    const {  name, stock, price, type, unit } = req.body;
+    const { name, stock, price, type, unit } = req.body;
     // if (!mongoose.Types.ObjectId.isValid(user))
     //   return res.status(404).send({ message: `Not a valid User: ${user}` });
     const good = new Good({
@@ -68,7 +77,7 @@ export const updateGood = async (req, res) => {
         price,
         type,
         unit,
-        updatedAt: new Date()
+        updatedAt: new Date(),
       },
       { new: true }
     );

@@ -33,7 +33,6 @@ export const outgoingStore = create((set) => ({
       const result = await api.post("/outgoing/upload", data);
       set((state) => ({ outgoings: [...state.outgoings, result.data] }));
     } catch (err) {
-      console.log(err);
       alert(err.response.data.message);
       set({ err: err.response.data.message });
     }

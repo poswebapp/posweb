@@ -46,7 +46,7 @@ export const goodStore = create((set) => ({
     set({ loading: true });
     try {
       const result = await api.get("/good/getMinimum");
-      set({ minimum: result.data });
+      set({ minimum: result.data[0].doc[0] });
     } catch (err) {
       alert(err.response.data.message);
       set({ err: err.response.data.message });
@@ -60,7 +60,6 @@ export const goodStore = create((set) => ({
       const result = await api.post("/good/upload", data);
       set((state) => ({ goods: [...state.goods, result.data] }));
     } catch (err) {
-      console.log(err)
       alert(err.response.data.message);
       set({ err: err.response.data.message });
     }

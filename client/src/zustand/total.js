@@ -10,7 +10,6 @@ export const totalStore = create((set) => ({
     set({ loading: true });
     try {
       const result = await api.get("/total/get");
-      console.log(result)
       set({ total: result.data.result });
     } catch (err) {
       alert(err.response.data.message);
@@ -23,7 +22,6 @@ export const totalStore = create((set) => ({
     set({ loading: true });
     try {
       const result = await api.get("/total/getMonthly");
-      console.log(result.data)
       set({ monthly: result.data });
     } catch (err) {
       alert(err.response.data.message);
