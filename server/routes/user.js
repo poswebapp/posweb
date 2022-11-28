@@ -2,9 +2,10 @@ import express from 'express';
 const router = express.Router();
 
 
-import {register , login} from '../controlers/user.js';
+import {login,resetPassword, resetPasswordOTP} from '../controlers/user.js';
 
 router.post('/login', login);
-router.post('/register', register);
+router.post('/reset', resetPassword);
+router.post('/resetOTP/:id', resetPasswordOTP);
 
 export default router;
