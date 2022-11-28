@@ -25,7 +25,7 @@ const Navbar = () => {
     }
   }, [curUsr, setCurUsr]);
   return (
-    <div className="grid grid-cols-1 place-content-start gap-4 w-48 min-w-40 max-w-52 h-screen bg-zinc-800 p-5  mr-auto mb-0 fixed top-0 left-0 bottom-0">
+    <div className="grid grid-cols-1 place-content-start gap-4 w-48 min-w-40 max-w-52 h-screen bg-zinc-800 p-5 ml-0 mr-auto">
       <h4 className="text-lg text-white text-xl font-bold mt-4 mb-3 ">
         Gasoline POS
       </h4>
