@@ -11,7 +11,7 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 
-const Chart = ({list}) => {
+const Chart = ({ list }) => {
   ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -57,13 +57,17 @@ const Chart = ({list}) => {
       {
         label: "Monthly Goods",
         data: list,
-        borderColor:  "#1d4e89",
+        borderColor: "#1d4e89",
         backgroundColor: "#1d4e89",
       },
     ],
   };
 
-  return <Line options={options} data={data} />;
+  return (
+    <div className="rounded-lg shadow-md border p-8 w-auto h-[20rem] bg-white">
+      <Line options={options} data={data} />;
+    </div>
+  );
 };
 
 export default Chart;

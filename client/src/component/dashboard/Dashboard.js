@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "../Layout";
 import Chart from "./Chart";
+import ReportChart from "./ReportChart";
 import TopContent from "./TopContent";
 import { totalStore } from "../../zustand/total";
 import Loading from "../Loading";
@@ -8,6 +9,11 @@ import Recent from "./Recent";
 
 const Dashboard = () => {
   const loading = totalStore((state) => state.loading);
+  const getMonthly = totalStore((state) => state.getMonthly);
+  const monthly = totalStore((state) => state.monthly);
+  useEffect(() => {
+    getMonthly();
+  }, [getMonthly]);
   return (
     <Layout
       element={
@@ -19,6 +25,7 @@ const Dashboard = () => {
               <Chart />
               <Recent />
             </span>
+            <ReportChart list={monthly} />
           </div>
           {/* minimum stock  */}
           {/* recent */}
