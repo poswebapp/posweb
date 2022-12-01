@@ -17,7 +17,7 @@ const Dashboard = () => {
   return (
     <Layout
       element={
-        <div className="flex flex-col justify-center content-start w-full h-auto md:px-10 lg:px-20 xl:px-40">
+        <div className="flex flex-col justify-center content-start w-full h-auto">
           {loading && <Loading />}
           <div className="mx-auto bg-white shadow-md rounded-xl grid h-auto w-full p-4 border border-zinc-300 gap-y-5">
             <TopContent />
