@@ -38,9 +38,7 @@ const Navbar = () => {
       <Content icon={<HiDocumentReport />} name={"Report"} link={"/report"} />
       {/* <Content icon={<FaUserCircle />} name={"Profile"} link={"/profile"} /> */}
       <Content
-        icon={<BsFillShieldLockFill />}
-        name={"Password"}
-        link={"/password"}
+        icon={<BsFillShieldLockFill />} name={"Setting"} link={"/setting"}
       />
       {curUsr && (
         <Content icon={<RiLogoutBoxRFill />} name={"Logout"} link={"/logout"} />
