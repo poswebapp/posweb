@@ -19,7 +19,7 @@ const Dashboard = () => {
       element={
         <div className="flex flex-col justify-center content-start w-full h-auto">
           {loading && <Loading />}
-          <div className="mx-auto bg-white shadow-md rounded-xl grid min-w-full  h-auto p-4 border border-zinc-300 gap-y-5">
+          <div className="mx-auto bg-white shadow-md rounded-xl grid min-w-full  h-auto p-4 border border-zinc-300 gap-y-5 max-w-[50rem]">
             <TopContent />
             <span className="flex w-full justify-between gap-5 flex-row">
               <Chart />

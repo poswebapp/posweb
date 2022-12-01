@@ -64,7 +64,7 @@ const Chart = ({ list }) => {
   };
 
   return (
-    <div className="rounded-lg shadow-md border p-3 w-auto h-[15rem] bg-white">
+    <div className="rounded-lg shadow-md border p-1 w-auto h-[14rem] bg-white">
       <Line options={options} data={data} />
     </div>
   );

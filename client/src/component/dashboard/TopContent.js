@@ -22,7 +22,7 @@ export default TopContent;
 
 export const Content = ({ name, value, border }) => {
   return (
-    <span className={`flex justify-start content-between border-l-8 bg-zinc-100 h-24 w-40 shad rounded-lg p-4 text-md font-bold text-zinc-600 ${border}`}>
+    <span className={`flex justify-start content-between border-l-8 bg-zinc-100 h-20 w-40 shad rounded-lg p-4 text-md font-bold text-zinc-600 ${border}`}>
       <span className="grid gap-2">
         <h4 className="text-zinc-500 font-[500] rale text-sm w-full whitespace-wrap">{name}</h4>
         <p>{value}</p>
