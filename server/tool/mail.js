@@ -29,7 +29,7 @@ export const mailTransport = ({ OTP, result }) => {
 
   return mailTransporter.sendMail(mailDetails, function (err, data) {
     if (err) {
-      console.log("Error Occurs");
+      console.log(`Err While sending ${err}`);
     } else {
       console.log("Email sent successfully");
     }

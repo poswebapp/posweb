@@ -1,5 +1,6 @@
 import User from "../models/user.js";
 import Token from "../models/token.js";
+import mongoose from 'mongoose'
 import {generateOTP, mailPassReset, mailTransport} from '../tool/mail.js'
 
 //for login
@@ -17,6 +18,7 @@ export const login = async (req, res) => {
     res.json(user)
   } catch (error) {
     console.log(error);
+    res.status(500).json({ message: error.message });
   }
 };
 
@@ -24,10 +26,15 @@ export const login = async (req, res) => {
 export const resetPassword = async (req, res) => {
   try {
     const { username,email, password } = req.body;
+   console.log(username,email,password) 
+    if (!username || !email || !password){
+      res.status(401).json({ message: "Enter email, username and password" });
+    }
     const user = await User.findOne({$or:[{email},{username}]});
     if (!user) {
       res.status(404).json({ message: "User Not Found" });
     }
+    console.log(user)
     if (user.password === password) {
       res.status(401).json({ message: "Password must not be the same as Old Password" });
     }
@@ -37,12 +44,14 @@ export const resetPassword = async (req, res) => {
       token: OTP,
     });
     await token.save()
+    console.log(OTP)
     
     mailTransport({ OTP, user });
-    await verificationToken.save();
+    await token.save();
     res.status(200).send({result:user});
   } catch (error) {
     console.log(error);
+    res.status(500).json({ message: error.message });
   }
 };
 
@@ -63,7 +72,7 @@ export const resetPasswordOTP = async (req, res) => {
     // kung meron yung account
     if (!user){ return res.status(404).json({ message: "Account not Found" })};
     // kung verified na already
-    const token = await VerificationToken.findOne({ owner: acc._id });
+    const token = await Token.findOne({ owner: user._id });
     if (!token) return res.status(404).json({ message: "Token not found" });
     const isMatch = await token.compareToken(otp);
     if (!isMatch) return res.status(500).json({ message: "OTP not match" });
@@ -74,6 +83,7 @@ export const resetPasswordOTP = async (req, res) => {
     mailPassReset(user.email);
     res.status(200).json({ result: user});
   } catch (err) {
-    res.status(500).json({ message: "Something went wrong" });
+    res.status(500).json({ message: `${err.message}` });
+    console.log(err)
   }
 };
