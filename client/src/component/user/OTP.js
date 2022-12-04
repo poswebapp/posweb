@@ -1,5 +1,5 @@
 import React from "react";
-import { userStore } from "../../state/user";
+import { userStore } from "../../zustand/user";
 import { useNavigate } from "react-router-dom";
 
 const OTP = () => {
@@ -29,12 +29,18 @@ const OTP = () => {
 
   return (
     <span className=" flex h-screen w-screen">
-      <form className="m-auto grid bg-white shadow-lg m-auto max-w-[23rem] min-w-[23rem] h-auto border-2 border-zinc-300 rounded-xl p-5">
-        <div className="">
+      <form className="m-auto grid bg-white shadow-lg m-auto max-w-[23rem] min-w-[25rem] h-auto border-2 border-zinc-300 rounded-xl p-5">
+        <h4 className="font-[600] text-zinc-600 text-xl drop-shadow-sm my-3 mx-auto">
+          ENTER OTP
+        </h4>
+        <h4 className="mx-auto text-md text-zinc-600">
+          Enter the code sent to your Email
+        </h4>
+        <div className="mx-auto my-10 flex justify-center flex-row gap-2">
           {otp.map((data, index) => {
             return (
               <input
-                className="text-center h-10 w-8 border-2 rounded-md space-mono text-zinc-800 text-xl m-1 focus:outline-none bg-white focus:border-cyan-800"
+                className="text-center font-[500] h-14 w-10 border border-zinc-800 rounded-md space-mono text-zinc-800 text-[2rem] m-1 focus:outline-none bg-white focus:border-cyan-800"
                 type="number"
                 name="otp"
                 maxLength={"1"}
@@ -46,12 +52,25 @@ const OTP = () => {
             );
           })}
         </div>
-        <span className="flex flex-wrap justify-between w-[12rem] mt-5 mb-10 mx-auto">
-          <button onClick={() => setOtp([...otp.map(() => "")])}> clear</button>
-          <button onClick={handleReset} disabled={loading}>
-            submit
+        <span className="flex flex-wrap flex-row gap-10 justify-center mb-10 mx-auto w-full">
+          <button onClick={() => setOtp([...otp.map(() => "")])}
+          className="text-lg text-zinc-600 border-2 border-zinc-600 p-4 px-8 rounded-md"> clear</button>
+          <button
+            onClick={handleReset}
+            disabled={loading}
+            className={`p-4 px-6 text-lg bg-zinc-800 text-white rounded-md drop-shadow-md border-2 border-zinc-800 transiton-all duration-300 ease-linear hover:bg-zinc-500 ${
+              loading && "animate-pulse"
+            } `}
+          >
+            {loading ? "processing" : "submit"}
           </button>
         </span>
+        {/* <h4 */}
+        {/*   className="underline text-sm my-4 ml-4 text-zinc-500" */}
+        {/*   onClick={() => navigate("/reset")} */}
+        {/* > */}
+        {/*   Try Again */}
+        {/* </h4> */}
       </form>
     </span>
   );

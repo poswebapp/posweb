@@ -26,7 +26,7 @@ export const userStore = create((set) => ({
     try {
       const result = await api.post("/user/reset", data);
       console.log(result);
-      navigate("/");
+      navigate("/otp");
       localStorage.setItem(
         "resetPW",
         JSON.stringify({ password: data.password, id: result.data.result._id })

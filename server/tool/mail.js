@@ -11,7 +11,7 @@ export const generateOTP = () => {
   return output;
 };
 
-export const mailTransport = ({ OTP, result }) => {
+export const mailTransport = ({ otp, user }) => {
   let mailTransporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -22,9 +22,9 @@ export const mailTransport = ({ OTP, result }) => {
 
   let mailDetails = {
     from: "websitepos02@gmail.com",
-    to: `${result.email}`,
+    to: `${user?.email}`,
     subject: "OTP",
-    html: `<h1>${OTP}</h1>`,
+    html: `<h1>${otp}</h1>`,
   };
 
   return mailTransporter.sendMail(mailDetails, function (err, data) {
@@ -36,30 +36,6 @@ export const mailTransport = ({ OTP, result }) => {
   });
 };
 
-export const mailVerified = (email) => {
-  let mailTransporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: "websitepos02@gmail.com",
-      pass: "skhzifvkxsgomqlw",
-    },
-  });
-
-  let mailDetails = {
-    user: "websitepos02@gmail.com",
-    to: `${email}`,
-    subject: "OTP",
-    html: `<h1>Email Verified Successfully</h1>`,
-  };
-
-  return mailTransporter.sendMail(mailDetails, function (err, data) {
-    if (err) {
-      console.log("Error Occurs");
-    } else {
-      console.log("Email sent successfully");
-    }
-  });
-};
 
 export const mailPassReset = (email) => {
   let mailTransporter = nodemailer.createTransport({

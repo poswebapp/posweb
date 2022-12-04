@@ -26,7 +26,6 @@ export const login = async (req, res) => {
 export const resetPassword = async (req, res) => {
   try {
     const { email, password } = req.body;
-    console.log(email,password)
     if (!email || !password) {
       return res.status(401).json({ message: "Enter email and password" });
     }
@@ -34,21 +33,20 @@ export const resetPassword = async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: "No Account Found with this Email" });
     }
-    console.log(user);
     if (user.password === password) {
       return res
         .status(401)
         .json({ message: "Password must not be the same as Old Password" });
     }
-    const OTP = generateOTP();
+    const otp = generateOTP();
     const token = new Token({
       owner: user._id,
-      token: OTP,
+      token: otp,
     });
     await token.save();
-    console.log(OTP);
+    console.log(otp);
 
-    mailTransport({ OTP, user });
+    mailTransport({ otp, user });
     await token.save();
     return res.status(200).send({ result: user });
   } catch (error) {
@@ -83,7 +81,7 @@ export const resetPasswordOTP = async (req, res) => {
     await Token.findOneAndDelete(token._id);
     await user.save();
 
-    mailPassReset(user.email);
+    mailPassReset(user?.email);
     res.status(200).json({ result: user });
   } catch (err) {
     console.log(err);

@@ -10,6 +10,7 @@ import Incoming from "./component/incoming/Incoming";
 // import User from "./component/user/User";
 import Logout from "./component/Logout";
 import Reset from "./component/user/Reset";
+import OTP from "./component/user/OTP";
 // import Report from "./component/report/Report";
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/reset" element={ <Reset/> } />
+          <Route path="/otp" element={ <OTP/> } />
           <Route path="/*" element={<Notfound />} />
         </Routes>
       </Router>

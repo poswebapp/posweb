@@ -17,6 +17,9 @@ body {
   /* background: #F5F4EE; */
 }
 
+.space-mono{
+  font-family: "Space Mono", sans-serif;
+}
 .gradient-night {
   background: linear-gradient(to bottom left, #403f44, #1e1b32);
 }
