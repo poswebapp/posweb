@@ -21,7 +21,7 @@ const Login = () => {
   };
 
   const input =
-    "border-2 focus:border-cyan-800 border-zinc-300 text-zinc-500 font-[500] text-lg p-4 rounded-md w-full bg-none my-4 focus:outline-none";
+    "border-2 focus:border-cyan-800 border-zinc-300 text-zinc-500 font-[500] text-lg p-4 rounded-md w-full bg-none my-4 focus:outline-none focus:border-cyan-600";
   return (
     <span className="w-screen h-screen flex">
       <form className="m-auto grid bg-white shadow-lg m-auto w-[23rem] h-auto border-2 border-zinc-300 rounded-xl p-5">
@@ -57,6 +57,12 @@ const Login = () => {
         >
           {loading ? "Processing" : "Login"}
         </button>
+        <h4
+          className="underline text-sm my-4 ml-4 text-zinc-500"
+          onClick={() => navigate("/reset")}
+        >
+          Forgot Password?
+        </h4>
       </form>
     </span>
   );

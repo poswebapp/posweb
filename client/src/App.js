@@ -8,8 +8,8 @@ import Outgoing from "./component/outgoing/Outgoing";
 import Supplier from "./component/supplier/Supplier";
 import Incoming from "./component/incoming/Incoming";
 // import User from "./component/user/User";
-import Manager from "./component/user/Manager";
 import Logout from "./component/Logout";
+import Reset from "./component/user/Reset";
 // import Report from "./component/report/Report";
 
 function App() {
@@ -24,11 +24,10 @@ function App() {
           <Route path="/supplier" element={ <Secure> <Supplier /> </Secure> } />
           {/* <Route path="/report" element={ <Secure> <Report /> </Secure> } /> */}
     {/* todo */}
-          {/* <Route path="/profile" element={ <Secure> <User /> </Secure> } /> */}
           {/* <Route path="/password" element={ <Secure> <User /> </Secure> } /> */}
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
-          <Route path="/Secure" element={<Manager />} />
+          <Route path="/reset" element={ <Reset/> } />
           <Route path="/*" element={<Notfound />} />
         </Routes>
       </Router>

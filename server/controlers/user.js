@@ -1,60 +1,61 @@
 import User from "../models/user.js";
 import Token from "../models/token.js";
-import mongoose from 'mongoose'
-import {generateOTP, mailPassReset, mailTransport} from '../tool/mail.js'
+import mongoose from "mongoose";
+import { generateOTP, mailPassReset, mailTransport } from "../tool/mail.js";
 
 //for login
 export const login = async (req, res) => {
   try {
-    const { username,email, password } = req.body;
-    
-    const user = await User.findOne({$or:[{email},{username}]});
+    const { username, email, password } = req.body;
+
+    const user = await User.findOne({ $or: [{ email }, { username }] });
     if (!user) {
-      res.status(404).json({ message: "User Not Found" });
+      return res.status(404).json({ message: "User Not Found" });
     }
     if (user.password !== password) {
-      res.status(401).json({ message: "Password Incorect" });
+      return res.status(401).json({ message: "Password Incorect" });
     }
-    res.json(user)
+    return res.json(user);
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: error.message });
+    return res.status(500).json({ message: error.message });
   }
 };
 
 //for register
 export const resetPassword = async (req, res) => {
   try {
-    const { username,email, password } = req.body;
-   console.log(username,email,password) 
-    if (!username || !email || !password){
-      res.status(401).json({ message: "Enter email, username and password" });
+    const { email, password } = req.body;
+    console.log(email,password)
+    if (!email || !password) {
+      return res.status(401).json({ message: "Enter email and password" });
     }
-    const user = await User.findOne({$or:[{email},{username}]});
+    const user = await User.findOne({ email });
     if (!user) {
-      res.status(404).json({ message: "User Not Found" });
+      return res.status(404).json({ message: "No Account Found with this Email" });
     }
-    console.log(user)
+    console.log(user);
     if (user.password === password) {
-      res.status(401).json({ message: "Password must not be the same as Old Password" });
+      return res
+        .status(401)
+        .json({ message: "Password must not be the same as Old Password" });
     }
     const OTP = generateOTP();
     const token = new Token({
       owner: user._id,
       token: OTP,
     });
-    await token.save()
-    console.log(OTP)
-    
+    await token.save();
+    console.log(OTP);
+
     mailTransport({ OTP, user });
     await token.save();
-    res.status(200).send({result:user});
+    return res.status(200).send({ result: user });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: error.message });
+    return res.status(500).json({ message: error.message });
   }
 };
-
 
 export const resetPasswordOTP = async (req, res) => {
   try {
@@ -62,7 +63,7 @@ export const resetPasswordOTP = async (req, res) => {
     const { id } = req.params;
     //check if the valid params
     if (!id || !otp.trim() || !password)
-      return res.status(400).json({ message: "Invalid Request no parameters" });
+      return res.status(400).json({ message: "Invalid Request no ID or OTP" });
     // check if tama yung id
     if (!mongoose.isValidObjectId(id)) {
       return res.status(404).json({ message: "Invalid Accommodator" });
@@ -70,7 +71,9 @@ export const resetPasswordOTP = async (req, res) => {
 
     const user = await User.findById(id);
     // kung meron yung account
-    if (!user){ return res.status(404).json({ message: "Account not Found" })};
+    if (!user) {
+      return res.status(404).json({ message: "Account not Found" });
+    }
     // kung verified na already
     const token = await Token.findOne({ owner: user._id });
     if (!token) return res.status(404).json({ message: "Token not found" });
@@ -81,9 +84,9 @@ export const resetPasswordOTP = async (req, res) => {
     await user.save();
 
     mailPassReset(user.email);
-    res.status(200).json({ result: user});
+    res.status(200).json({ result: user });
   } catch (err) {
-    res.status(500).json({ message: `${err.message}` });
-    console.log(err)
+    console.log(err);
+    return res.status(500).json({ message: `${err.message}` });
   }
 };
