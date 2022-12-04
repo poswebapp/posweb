@@ -65,12 +65,6 @@ const OTP = () => {
             {loading ? "processing" : "submit"}
           </button>
         </span>
-        {/* <h4 */}
-        {/*   className="underline text-sm my-4 ml-4 text-zinc-500" */}
-        {/*   onClick={() => navigate("/reset")} */}
-        {/* > */}
-        {/*   Try Again */}
-        {/* </h4> */}
       </form>
     </span>
   );

@@ -17,7 +17,6 @@ export const login = async (req, res) => {
     }
     return res.json(user);
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: error.message });
   }
 };
@@ -68,11 +67,10 @@ export const resetPasswordOTP = async (req, res) => {
     }
 
     const user = await User.findById(id);
-    // kung meron yung account
+    // kung tama yung yung account
     if (!user) {
       return res.status(404).json({ message: "Account not Found" });
     }
-    // kung verified na already
     const token = await Token.findOne({ owner: user._id });
     if (!token) return res.status(404).json({ message: "Token not found" });
     const isMatch = await token.compareToken(otp);
@@ -81,10 +79,9 @@ export const resetPasswordOTP = async (req, res) => {
     await Token.findOneAndDelete(token._id);
     await user.save();
 
-    mailPassReset(user?.email);
+    mailPassReset(user.email);
     res.status(200).json({ result: user });
   } catch (err) {
-    console.log(err);
     return res.status(500).json({ message: `${err.message}` });
   }
 };

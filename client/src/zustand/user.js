@@ -25,7 +25,6 @@ export const userStore = create((set) => ({
     console.log(data);
     try {
       const result = await api.post("/user/reset", data);
-      console.log(result);
       navigate("/otp");
       localStorage.setItem(
         "resetPW",
@@ -41,7 +40,8 @@ export const userStore = create((set) => ({
   resetOTP: async (data, navigate) => {
     set({ loading: true });
     try {
-      await api.post(`/user/resetOTP/${JSON.parse(localStorage.getItem("resetPW")?.id)}`, data);
+     const id =JSON.parse(localStorage.getItem("resetPW"))?.id 
+      await api.post(`/user/resetOTP/${id}`, data);
       navigate("/login");
       localStorage.clear();
       alert("Password Changed!")

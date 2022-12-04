@@ -35,7 +35,6 @@ export const getMinimum = async (req, res) => {
       { $limit: 1 },
     ]);
     res.json(result);
-    console.log(result);
   } catch (error) {
     res.status(500).json({ message: error.message });
     console.log(error);
