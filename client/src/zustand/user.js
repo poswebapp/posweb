@@ -15,6 +15,7 @@ export const userStore = create((set) => ({
       set({ curUsr: "profile" });
       navigate("/");
     } catch (err) {
+      console.log(err)
       alert(err.response.data.message);
     }
     set({ loading: false });
