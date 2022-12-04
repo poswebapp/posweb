@@ -17,7 +17,7 @@ const Dashboard = () => {
   return (
     <Layout
       element={
-        <div className="flex flex-col justify-center content-center w-full h-auto min-h-screen">
+        <div className="flex flex-col justify-center content-center w-full h-auto">
           {loading && <Loading />}
           <div className="m-auto bg-white shadow-md rounded-xl flex flex-col flex-wrap h-auto w-full p-4 border border-zinc-300 gap-y-5">
             <TopContent />
@@ -27,8 +27,6 @@ const Dashboard = () => {
             </span>
             <ReportChart list={monthly} />
           </div>
-          {/* minimum stock  */}
-          {/* recent */}
         </div>
       }
     />
