@@ -21,10 +21,10 @@ const Login = () => {
   };
 
   const input =
-    "border-2 focus:border-cyan-800 border-zinc-300 text-zinc-500 font-[500] text-lg p-4 rounded-md w-full bg-none my-4 focus:outline-none focus:border-cyan-600";
+    "border-2 focus:border-cyan-800 border-zinc-300 text-zinc-500 font-[500] text-lg p-4 rounded-md w-full bg-none my-4 focus:outline-none focus:border-cyan-700";
   return (
     <span className="w-screen h-screen flex">
-      <form className="m-auto grid bg-white shadow-lg m-auto w-[23rem] h-auto border-2 border-zinc-300 rounded-xl p-5">
+      <form className="m-auto grid bg-white shadow-lg m-auto min-w-[23rem] max-w-[26rem] h-auto border-2 border-zinc-300 rounded-xl p-5">
         <h4 className="font-semibold text-zinc-700 text-3xl text-center mb-5">
           Login
         </h4>

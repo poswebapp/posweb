@@ -34,7 +34,7 @@ const Reset = () => {
   return (
     <div className="h-screen w-screen flex flex-col justify-center content-center">
       <form
-        className="m-auto grid bg-white shadow-lg m-auto max-w-[23rem] min-w-[23rem] h-auto border-2 border-zinc-300 rounded-xl p-5"
+        className="m-auto grid bg-white shadow-lg m-auto max-w-[23rem] min-w-[26rem] h-auto border-2 border-zinc-300 rounded-xl p-5"
         onSubmit={handleSubmit(onSubmit)}
       >
         <h4 className="font-semibold text-zinc-700 text-3xl text-center mb-5">
