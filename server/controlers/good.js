@@ -8,7 +8,6 @@ export const getGoods = async (req, res) => {
     res.json(result);
   } catch (error) {
     res.status(500).json({ message: error.message });
-    console.log(error);
   }
 };
 
@@ -18,7 +17,6 @@ export const getRecentGoods = async (req, res) => {
     res.json(result);
   } catch (error) {
     res.status(500).json({ message: error.message });
-    console.log(error);
   }
 };
 
@@ -37,7 +35,6 @@ export const getMinimum = async (req, res) => {
     res.json(result);
   } catch (error) {
     res.status(500).json({ message: error.message });
-    console.log(error);
   }
 };
 
