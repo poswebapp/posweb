@@ -47,6 +47,14 @@ const Login = () => {
           onChange={handleChange}
           className={input}
         />
+    
+        <h4
+          className="underline text-sm my-4 ml-4 text-zinc-500"
+          onClick={() => navigate("/reset")}
+        >
+          Forgot Password?
+        </h4>
+    
         <button
           type="submit"
           disabled={loading}
@@ -57,12 +65,6 @@ const Login = () => {
         >
           {loading ? "Processing" : "Login"}
         </button>
-        <h4
-          className="underline text-sm my-4 ml-4 text-zinc-500"
-          onClick={() => navigate("/reset")}
-        >
-          Forgot Password?
-        </h4>
       </form>
     </span>
   );
