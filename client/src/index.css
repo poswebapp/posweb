@@ -20,6 +20,10 @@ body {
 .space-mono{
   font-family: "Space Mono", sans-serif;
 }
+.lato {
+  font-family: "Red Hat Display", sans-serif;
+
+}
 .gradient-night {
   background: linear-gradient(to bottom left, #403f44, #1e1b32);
 }

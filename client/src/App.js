@@ -11,7 +11,6 @@ import Logout from "./component/Logout";
 import Reset from "./component/user/Reset";
 import OTP from "./component/user/OTP";
 import Setting from "./component/setting/Setting";
-import Report from "./component/report/Report";
 
 
 function App() {
@@ -25,7 +24,6 @@ function App() {
           <Route path="/incoming" element={ <Secure> <Incoming /> </Secure> } />
           <Route path="/supplier" element={ <Secure> <Supplier /> </Secure> } />
           <Route path="/setting" element={ <Secure> <Setting /> </Secure> } />
-          <Route path="/report" element={ <Secure> <Report /> </Secure> } />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/reset" element={ <Reset/> } />
@@ -45,10 +43,3 @@ export function Secure({ children }) {
   }
 }
 
-// export function Admin({ children }) {
-//   if (localStorage.getItem("admin")) {
-//     return children;
-//   } else {
-//     return <Navigate to="/Secure" />;
-//   }
-// }

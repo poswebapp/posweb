@@ -5,7 +5,6 @@ import { MdSpaceDashboard } from "react-icons/md";
 import { BsFillGridFill, BsFillShieldLockFill } from "react-icons/bs";
 import { SiGriddotai, SiGridsome } from "react-icons/si";
 import { FaUserTag } from "react-icons/fa";
-import { HiDocumentReport } from "react-icons/hi";
 
 import { useLocation } from "react-router-dom";
 import { userStore } from "../../zustand/user";
@@ -35,11 +34,7 @@ const Navbar = () => {
       <Content icon={<SiGridsome />} name={"Incoming"} link={"/incoming"} />
       <Content icon={<SiGriddotai />} name={"Outgoing"} link={"/outgoing"} />
       <Content icon={<FaUserTag />} name={"Suppliers"} link={"/supplier"} />
-      <Content icon={<HiDocumentReport />} name={"Report"} link={"/report"} />
-      {/* <Content icon={<FaUserCircle />} name={"Profile"} link={"/profile"} /> */}
-      <Content
-        icon={<BsFillShieldLockFill />} name={"Setting"} link={"/setting"}
-      />
+      <Content icon={<BsFillShieldLockFill />} name={"Profile"} link={"/setting"} />
       {curUsr && (
         <Content icon={<RiLogoutBoxRFill />} name={"Logout"} link={"/logout"} />
       )}

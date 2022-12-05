@@ -38,7 +38,6 @@ const Login = () => {
           className={input}
         />
         <p className="text-lg text-zinc-600 mt-5 font-[500]">
-          {" "}
           <BsShieldLock className="text-xl ml-2 mr-1 inline lato" /> Password
         </p>
         <input
