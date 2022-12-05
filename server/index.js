@@ -22,12 +22,10 @@ app.use('/outgoing', outgoingRoutes);
 app.use('/supplier', supplierRoutes);
 app.use('/total', totalRoutes);
 
-app.get('/',(req,res) => {res.send('Pos Web App');});
+app.get('/',(req,res) => {res.send('Pos Web App API');});
 
 const PORT = process.env.PORT|| 8000;
 
 mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => app.listen(PORT, () => console.log(`Server Running on Port: http://localhost:${PORT}`)))
   .catch((error) => console.log(`${error} did not connect`));
-
-//mongoose.set('useFindAndModify', false);
