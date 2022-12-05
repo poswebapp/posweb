@@ -32,7 +32,7 @@ const Setting = () => {
               icon={<MdPermContactCalendar />}
               text={"contact"}
               value={"09866312345"}
-              color={"text-rose-900"}
+              color={"text-fuchsia-900"}
               onClick={null}
             />
 
@@ -59,8 +59,8 @@ const Content = ({ icon, text, value, color, onClick }) => {
       className="flex content-start flex-col bg-white rounded-2xl shad4 w-[16rem] h-[10rem] p-6 "
       onClick={onClick}
     >
-      <span className={`text-[3rem] ${color}`}>{icon}</span>
-      <h4 className="font-[500] mr-2 text-zinc-700 text-[1.8rem] font-[800] lato">
+      <span className={`text-[2.8rem] ${color}`}>{icon}</span>
+      <h4 className="font-[500] mr-2 text-zinc-700 text-[1.6rem] font-[800] lato">
         {text}
       </h4>
       <p className="mt-1 text-zinc-500 font-[400]">{value}</p>
