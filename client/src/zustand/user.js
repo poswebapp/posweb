@@ -47,7 +47,6 @@ export const userStore = create((set) => ({
       localStorage.clear();
       alert("Password Changed!")
     } catch (err) {
-      console.log(err.message);
       alert(err.response.data.message);
     }
     set({ loading: false });

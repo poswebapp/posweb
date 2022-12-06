@@ -11,6 +11,8 @@ import Logout from "./component/Logout";
 import Reset from "./component/user/Reset";
 import OTP from "./component/user/OTP";
 import Setting from "./component/setting/Setting";
+import PatchContact from "./component/setting/PatchContact";
+import PatchEmail from "./component/setting/PatchEmail";
 
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
           <Route path="/incoming" element={ <Secure> <Incoming /> </Secure> } />
           <Route path="/supplier" element={ <Secure> <Supplier /> </Secure> } />
           <Route path="/setting" element={ <Secure> <Setting /> </Secure> } />
+          <Route path="/patchContact" element={ <Secure> <PatchContact /> </Secure> } />
+          <Route path="/PatchEmail" element={ <Secure> <PatchEmail /> </Secure> } />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/reset" element={ <Reset/> } />

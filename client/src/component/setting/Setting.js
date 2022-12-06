@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../Layout";
 import { FaUserShield } from "react-icons/fa";
 import { MdPermContactCalendar, MdAttachEmail } from "react-icons/md";
@@ -7,6 +7,12 @@ import { useNavigate } from "react-router-dom";
 
 const Setting = () => {
   const navigate = useNavigate();
+  const [user, setuser] = useState(JSON.parse(localStorage.getItem("profile")));
+  
+  useEffect(() => {
+    setuser(JSON.parse(localStorage.getItem("profile")));
+  },[]);
+  
   return (
     <Layout
       element={
@@ -15,7 +21,7 @@ const Setting = () => {
             <Content
               icon={<FaUserShield />}
               text={"username"}
-              value={"Admin"}
+              value={user?.username}
               color={"text-cyan-900"}
               onClick={null}
             />
@@ -23,17 +29,17 @@ const Setting = () => {
             <Content
               icon={<MdAttachEmail />}
               text={"email"}
-              value={"xample@email.com"}
+              value={user?.email}
               color={"text-amber-900"}
-              onClick={() => navigate("/patchInfo")}
+              onClick={() => navigate("/patchEmail")}
             />
 
             <Content
               icon={<MdPermContactCalendar />}
               text={"contact"}
-              value={"09866312345"}
+              value={user?.contact}
               color={"text-fuchsia-900"}
-              onClick={() => navigate("/patchInfo")}
+              onClick={() => navigate("/patchContact")}
             />
 
             <Content
