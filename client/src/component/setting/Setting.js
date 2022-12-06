@@ -11,7 +11,7 @@ const Setting = () => {
     <Layout
       element={
         <span className="flex justify-center content-center w-full h-screen">
-          <span className="w-[40rem] h-auto flex flex-wrap gap-14 content-start justify-center ">
+          <span className="w-[40rem] h-auto flex flex-wrap gap-14 m-auto content-center justify-center ">
             <Content
               icon={<FaUserShield />}
               text={"username"}
@@ -25,7 +25,7 @@ const Setting = () => {
               text={"email"}
               value={"xample@email.com"}
               color={"text-amber-900"}
-              onClick={null}
+              onClick={() => navigate("/patchInfo")}
             />
 
             <Content
@@ -33,7 +33,7 @@ const Setting = () => {
               text={"contact"}
               value={"09866312345"}
               color={"text-fuchsia-900"}
-              onClick={null}
+              onClick={() => navigate("/patchInfo")}
             />
 
             <Content
@@ -56,7 +56,7 @@ export default Setting;
 const Content = ({ icon, text, value, color, onClick }) => {
   return (
     <span
-      className="flex content-start flex-col bg-white rounded-2xl shad4 w-[16rem] h-[10rem] p-6 "
+      className="flex content-start flex-col bg-white rounded-2xl shad1 w-[16rem] h-[10rem] p-6 hover:skew-y-6 hover:skew-x-9 hover:shadow-xl transition-all duration-300 ease-linear"
       onClick={onClick}
     >
       <span className={`text-[2.8rem] ${color}`}>{icon}</span>
