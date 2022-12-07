@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Input from "../utility/Input";
 import Layout from "../Layout";
+import { MdPermContactCalendar } from "react-icons/md";
 import { patchStore } from "../../zustand/patch";
 import { useNavigate } from "react-router-dom";
 
@@ -16,7 +17,13 @@ const PatchContact = () => {
   return (
     <Layout
       element={
-        <form className="w-[20rem] grid gap-2 h-auto p-4 place-content-start bg-white border rounded-lg mx-auto shadow-md">
+        <form className="w-[22rem] grid gap-2 h-auto p-5 place-content-start bg-white border rounded-lg mx-auto shadow-md">
+          <h4 className="text-2xl text-zinc-600 font-[700] flex flex-row gap-2 mb-2">
+            <span className="text-[2.5rem] inline">
+              <MdPermContactCalendar />
+            </span>
+            Change Contact
+          </h4>
           <Input
             placeholder={"New Contact"}
             type={"number"}

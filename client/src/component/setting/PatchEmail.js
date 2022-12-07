@@ -27,9 +27,9 @@ const PatchEmail = () => {
   return (
     <Layout
       element={
-        <form className="w-[20rem] grid gap-2 h-auto p-4 place-content-start bg-white border rounded-lg mx-auto shadow-md">
-          <h4 className="text-3xl text-zinc-800 font-[800]">
-            <span className="text-amber-900 text-[3rem] inline">
+        <form className="w-[22rem] grid gap-2 h-auto p-5 place-content-start bg-white border rounded-lg mx-auto shadow-md">
+          <h4 className="text-2xl text-zinc-600 font-[700] flex flex-row gap-2 mb-2">
+            <span className="text-[2.5rem] inline">
               <MdAttachEmail />
             </span>
             Change Email
