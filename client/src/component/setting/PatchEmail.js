@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Input from "../utility/Input";
 import Layout from "../Layout";
+import { MdAttachEmail } from "react-icons/md";
 import { patchStore } from "../../zustand/patch";
 import { useNavigate } from "react-router-dom";
 
@@ -15,8 +16,8 @@ const PatchEmail = () => {
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(data)
+    e.preventDefault();
+    console.log(data);
     if (data.email !== data.confirmEmail) {
       alert("Email not Match!");
     } else {
@@ -27,12 +28,18 @@ const PatchEmail = () => {
     <Layout
       element={
         <form className="w-[20rem] grid gap-2 h-auto p-4 place-content-start bg-white border rounded-lg mx-auto shadow-md">
+          <h4 className="text-3xl text-zinc-800 font-[800]">
+            <span className="text-amber-900 text-[3rem] inline">
+              <MdAttachEmail />
+            </span>
+            Change Email
+          </h4>
           <Input
             placeholder={"New Email"}
             type={"email"}
             value={data.email}
             onChange={(e) => {
-              setdata({...data, email: e.target.value });
+              setdata({ ...data, email: e.target.value });
             }}
           />
           <Input
@@ -40,7 +47,7 @@ const PatchEmail = () => {
             type={"email"}
             value={data.confirmEmail}
             onChange={(e) => {
-              setdata({...data, confirmEmail: e.target.value });
+              setdata({ ...data, confirmEmail: e.target.value });
             }}
           />
 

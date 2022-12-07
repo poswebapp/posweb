@@ -8,11 +8,11 @@ import { useNavigate } from "react-router-dom";
 const Setting = () => {
   const navigate = useNavigate();
   const [user, setuser] = useState(JSON.parse(localStorage.getItem("profile")));
-  
+
   useEffect(() => {
     setuser(JSON.parse(localStorage.getItem("profile")));
-  },[]);
-  
+  }, []);
+
   return (
     <Layout
       element={
@@ -24,6 +24,7 @@ const Setting = () => {
               value={user?.username}
               color={"text-cyan-900"}
               onClick={null}
+              desc={"username for login"}
             />
 
             <Content
@@ -32,6 +33,7 @@ const Setting = () => {
               value={user?.email}
               color={"text-amber-900"}
               onClick={() => navigate("/patchEmail")}
+              desc={"change email"}
             />
 
             <Content
@@ -39,6 +41,7 @@ const Setting = () => {
               text={"contact"}
               value={user?.contact}
               color={"text-fuchsia-900"}
+              desc={"change contact"}
               onClick={() => navigate("/patchContact")}
             />
 
@@ -48,6 +51,7 @@ const Setting = () => {
               value={"********"}
               color={"text-lime-900"}
               onClick={() => navigate("/reset")}
+              desc={"change password"}
             />
           </span>
         </span>
@@ -59,11 +63,12 @@ const Setting = () => {
 export default Setting;
 
 // eslint-disable-next-line no-unused-vars
-const Content = ({ icon, text, value, color, onClick }) => {
+const Content = ({ icon, text, value, color, onClick, desc }) => {
   return (
     <span
       className="flex content-start flex-col bg-white rounded-2xl shad1 w-[16rem] h-[10rem] p-6 hover:skew-y-6 hover:skew-x-9 hover:shadow-xl transition-all duration-300 ease-linear"
       onClick={onClick}
+      title={desc}
     >
       <span className={`text-[2.8rem] ${color}`}>{icon}</span>
       <h4 className="font-[500] mr-2 text-zinc-700 text-[1.6rem] font-[800] lato">
