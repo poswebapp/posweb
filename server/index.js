@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import goodRoutes from './routes/good.js';
 import outgoingRoutes from './routes/outgoing.js';
 import incomingRoutes from './routes/incoming.js';
+import invoiceRoutes from './routes/invoice.js';
 import supplierRoutes from './routes/supplier.js';
 import totalRoutes from './routes/total.js';
 import userRoutes from './routes/user.js';
@@ -17,6 +18,7 @@ app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors());
 app.use('/user',userRoutes)
 app.use('/good', goodRoutes);
+app.use('/invoice', invoiceRoutes);
 app.use('/incoming', incomingRoutes);
 app.use('/outgoing', outgoingRoutes);
 app.use('/supplier', supplierRoutes);

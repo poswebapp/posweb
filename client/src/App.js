@@ -13,6 +13,7 @@ import OTP from "./component/user/OTP";
 import Setting from "./component/setting/Setting";
 import PatchContact from "./component/setting/PatchContact";
 import PatchEmail from "./component/setting/PatchEmail";
+import Invoice from "./component/invoice/Invoice";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/good" element={ <Secure> <Good /> </Secure> } />
           <Route path="/outgoing" element={ <Secure> <Outgoing /> </Secure> } />
           <Route path="/incoming" element={ <Secure> <Incoming /> </Secure> } />
+          <Route path="/invoice" element={ <Secure> <Invoice /> </Secure> } />
           <Route path="/supplier" element={ <Secure> <Supplier /> </Secure> } />
           <Route path="/setting" element={ <Secure> <Setting /> </Secure> } />
           <Route path="/patchContact" element={ <Secure> <PatchContact /> </Secure> } />
