@@ -36,13 +36,9 @@ const List = ({ setid, setshow }) => {
                 <td className={tr}> {a.transactionNo} </td>
                 <td className={tr}> {a.invoiceNo} </td>
                 <td className={tr}>
-                  {" "}
-                  <Moment date={a.date} format="MMM-DD-YYYY" />{" "}
+                  <Moment date={a.date} format="MMM-DD-YYYY" />
                 </td>
-                <td className={tr}>
-                  {" "}
-                  <Moment date={a.date} format="HH:MM A" />{" "}
-                </td>
+                <td className={tr}>{a.time}</td>
                 <td className={tr}> {a.quantity} </td>
                 <td className={tr}> {a.amount} </td>
                 <td className={act}>

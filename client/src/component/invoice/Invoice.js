@@ -28,6 +28,7 @@ const Invoice = () => {
     setlist(null);
     setdata({
       date: "",
+      time: "",
       quantity: "",
       amount: "",
       transactionNo: "",

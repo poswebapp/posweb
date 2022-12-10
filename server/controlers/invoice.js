@@ -41,9 +41,10 @@ export const getDailyTotal = async (req, res) => {
 
 export const uploadInvoice = async (req, res) => {
   try {
-    const { date, transactionNo, invoiceNo, quantity, amount } = req.body;
+    const { date, transactionNo, invoiceNo, quantity, amount, time } = req.body;
     const invoice = new Invoice({
       date,
+      time,
       transactionNo,
       invoiceNo,
       quantity,
@@ -60,7 +61,7 @@ export const uploadInvoice = async (req, res) => {
 export const updateInvoice = async (req, res) => {
   try {
     const { id } = req.params;
-    const { date, transactionNo, invoiceNo, quantity, amount } = req.body;
+    const { date, transactionNo, invoiceNo, quantity, amount,time } = req.body;
     if (!mongoose.Types.ObjectId.isValid(id))
       return res.status(404).send({ message: `Not a valid id: ${id}` });
 
@@ -68,6 +69,7 @@ export const updateInvoice = async (req, res) => {
       id,
       {
         date,
+        time,
         transactionNo,
         invoiceNo,
         quantity,

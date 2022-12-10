@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const invoiceSchema = mongoose.Schema({
   date: { type: Date, require: true },
+  time: { type: String, require: true },
   transactionNo: { type: String, require: true },
   invoiceNo: { type: String, require: true },
   quantity: { type: Number, require: true },
