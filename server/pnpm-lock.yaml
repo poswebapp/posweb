@@ -7,6 +7,7 @@ specifiers:
   dotenv: ^16.0.0
   express: ^4.17.3
   jsonwebtoken: ^8.5.1
+  moment: ^2.29.4
   mongoose: ^6.2.6
   nodemailer: ^6.8.0
   nodemon: ^2.0.15
@@ -19,6 +20,7 @@ dependencies:
   dotenv: 16.0.1
   express: 4.18.1
   jsonwebtoken: 8.5.1
+  moment: 2.29.4
   mongoose: 6.4.0
   nodemailer: 6.8.0
   nodemon: 2.0.18
@@ -892,6 +894,10 @@ packages:
 
   /minimist/1.2.6:
     resolution: {integrity: sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==}
+    dev: false
+
+  /moment/2.29.4:
+    resolution: {integrity: sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==}
     dev: false
 
   /mongodb-connection-string-url/2.5.2:

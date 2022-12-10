@@ -1,9 +1,37 @@
 import Invoice from "../models/invoice.js";
 import mongoose from "mongoose";
+import moment from "moment";
 
 export const getInvoices = async (req, res) => {
   try {
-    const result = await Invoice.find();
+    const today = moment().startOf("day");
+    const result = await Invoice.find({
+      date: {
+        $gte: today.toDate(),
+        $lte: moment(today).endOf("day").toDate(),
+      },
+    });
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+    console.log(error);
+  }
+};
+
+export const getDailyTotal = async (req, res) => {
+  try {
+    const today = moment().startOf("day");
+    const list = await Invoice.find({
+      date: {
+        $gte: today.toDate(),
+        $lte: moment(today).endOf("day").toDate(),
+      },
+    });
+    // TOTAL OF INVOICE IN A DAY
+    const total = list.map((a) => a.amount);
+    const result = total.reduce((accumulator, value) => {
+      return accumulator + value;
+    }, 0);
     res.json(result);
   } catch (error) {
     res.status(500).json({ message: error.message });

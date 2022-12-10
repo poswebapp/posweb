@@ -39,6 +39,7 @@ const Invoice = () => {
   const loading = invoiceStore((state) => state.loading);
   const updateInvoice = invoiceStore((state) => state.updateInvoice);
   const uploadInvoice = invoiceStore((state) => state.uploadInvoice);
+  
   useEffect(() => {
     setlist(id ? invoices.find((r) => r._id === id) : null);
   }, [invoices, id]);

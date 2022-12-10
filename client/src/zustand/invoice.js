@@ -15,12 +15,26 @@ export const invoiceStore = create((set) => ({
   invoices: [],
   loading: false,
   err: null,
+  total: 0,
 
   getInvoice: async () => {
     set({ loading: true });
     try {
       const result = await api.get("/invoice/get");
       set({ invoices: result.data });
+    } catch (err) {
+      console.log(err)
+      alert(err.response.data.message);
+      set({ err: err.response.data.message });
+    }
+    set({ loading: false });
+  },
+  
+  getDailyTotal: async () => {
+    set({ loading: true });
+    try {
+      const result = await api.get("/invoice/getDaily");
+      set({ total: result.data });
     } catch (err) {
       console.log(err)
       alert(err.response.data.message);
