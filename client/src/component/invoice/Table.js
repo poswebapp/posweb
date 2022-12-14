@@ -1,8 +1,29 @@
+import React, { useRef } from "react";
+import ReactToPrint from "react-to-print";
+
 const Table = ({ element, total }) => {
+  let componentRef = useRef();
   const th = "px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase";
   return (
-    <div className=" bg-white shadow-md rounded-md flex flex-col mt-10 mx-auto p-2 w-auto">
-      <Content border={"border-amber-800"}  name ={"Daily Total"} value={total}/>
+    <div
+      className=" bg-white shadow-md rounded-md flex flex-col mt-10 mx-auto p-2 w-auto"
+      ref={(el) => (componentRef = el)}
+    >
+      <span className="flex flex-row justify-between">
+        <Content
+          border={"border-amber-800"}
+          name={"Daily Total"}
+          value={total}
+        />
+        <ReactToPrint
+          trigger={() => (
+            <button className="p-4 border-2 rounded-md text-white border-zinc-700 text-sm font-[600] bg-zinc-700  mr-5 mt-4 m-auto transition-all duration-300 ease-linear">
+              Print this out!
+            </button>
+          )}
+          content={() => componentRef}
+        />
+      </span>
 
       <div className="overflow-x-scroll">
         <div className="p-1.5 w-full inline-block align-middle">
