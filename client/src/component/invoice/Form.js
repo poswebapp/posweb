@@ -35,7 +35,7 @@ const Form = ({ currentId, data, onChange, onSubmit }) => {
       <Time
         placeholder={"Time"}
         name={"time"}
-        value={data.time}
+        value={data.time }
         onChange={onChange}
       />
       <Input

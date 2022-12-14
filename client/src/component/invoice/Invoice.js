@@ -7,6 +7,11 @@ import autoAnimate from "@formkit/auto-animate";
 import Loading from "../Loading";
 
 const Invoice = () => {
+  const invoices = invoiceStore((state) => state.invoices);
+  const loading = invoiceStore((state) => state.loading);
+  const updateInvoice = invoiceStore((state) => state.updateInvoice);
+  const uploadInvoice = invoiceStore((state) => state.uploadInvoice);
+  
   const [id, setid] = useState(0);
   const [list, setlist] = useState(null);
   const [show, setshow] = useState(false);
@@ -14,7 +19,7 @@ const Invoice = () => {
     date: "",
     quantity: "",
     amount: "",
-    transactionNo: "",
+    transactionNo: "35353",
     invoiceNo: "",
   });
 
@@ -36,10 +41,6 @@ const Invoice = () => {
     });
   };
 
-  const invoices = invoiceStore((state) => state.invoices);
-  const loading = invoiceStore((state) => state.loading);
-  const updateInvoice = invoiceStore((state) => state.updateInvoice);
-  const uploadInvoice = invoiceStore((state) => state.uploadInvoice);
   
   useEffect(() => {
     setlist(id ? invoices.find((r) => r._id === id) : null);
@@ -50,6 +51,7 @@ const Invoice = () => {
   }, [id, list]);
 
   const handleChange = (e) => {
+    console.log(e.target.value)
     setdata({ ...data, [e.target.name]: e.target.value });
   };
 
