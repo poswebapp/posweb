@@ -19,7 +19,7 @@ const Invoice = () => {
     date: "",
     quantity: "",
     amount: "",
-    transactionNo: "35353",
+    transactionNo: "",
     invoiceNo: "",
   });
 
