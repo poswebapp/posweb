@@ -44,7 +44,7 @@ const Table = ({ element, total }) => {
             onChange={(e) => setonhand(e.target.value)}
           />
           <Content
-            border={"border-rose-800"}
+            border={total - cash - out - onhand <= 0 ? "border-rose-800 " : "border-green "}
             name={total - cash - out - onhand <= 0 ? "Deficiet" : "Gain"}
             value={total - cash - out - onhand}
           />
@@ -119,7 +119,7 @@ export const Input = ({ name, value, border, onChange }) => {
           value={value}
           type="number"
           onChange={onChange}
-          className="border border-zinc-300 bg-none w-20 px-2"
+          className="border border-zinc-300 bg-none w-28 px-2"
         />
       </span>
     </span>

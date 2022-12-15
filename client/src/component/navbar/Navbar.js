@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { MdSpaceDashboard } from "react-icons/md";
 import { BsFillGridFill, BsFillShieldLockFill } from "react-icons/bs";
 import { SiGriddotai, SiGridsome } from "react-icons/si";
-import { FaUserTag } from "react-icons/fa";
+import { FaFileInvoiceDollar, FaUserTag } from "react-icons/fa";
 
 import { useLocation } from "react-router-dom";
 import { userStore } from "../../zustand/user";
@@ -31,7 +31,7 @@ const Navbar = () => {
       {/* content navbar */}
       <Content icon={<MdSpaceDashboard />} name={"Dashboard"} link={"/"} />
       <Content icon={<BsFillGridFill />} name={"Goods"} link={"/good"} />
-      <Content icon={<SiGridsome />} name={"Invoice"} link={"/invoice"} />
+      <Content icon={<FaFileInvoiceDollar />} name={"Invoice"} link={"/invoice"} />
       <Content icon={<SiGridsome />} name={"Incoming"} link={"/incoming"} />
       <Content icon={<SiGriddotai />} name={"Outgoing"} link={"/outgoing"} />
       <Content icon={<FaUserTag />} name={"Suppliers"} link={"/supplier"} />
