@@ -44,9 +44,9 @@ const Table = ({ element, total }) => {
             onChange={(e) => setonhand(e.target.value)}
           />
           <Content
-            border={total - cash - out - onhand <= 0 ? "border-rose-800 " : "border-green "}
-            name={total - cash - out - onhand <= 0 ? "Deficiet" : "Gain"}
-            value={total - cash - out - onhand}
+            border={total + cash - out - onhand <= 0 ? "border-rose-800 " : "border-green "}
+            name={total + cash - out - onhand <= 0 ? "Deficiet" : "Gain"}
+            value={parseInt(total) + parseInt(cash) - out - onhand}
           />
         </span>
 
