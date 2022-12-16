@@ -1,10 +1,16 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ReactToPrint from "react-to-print";
 
 const Table = ({ element, total }) => {
   const [cash, setcash] = useState(0);
   const [out, setout] = useState(0);
   const [onhand, setonhand] = useState(0);
+  const [gain, setgain] = useState(0);
+  
+  useEffect(() => {
+    setgain(parseInt(total) + parseInt(cash) - out - onhand);
+  }, [cash, onhand, out, total]);
+  
   let componentRef = useRef();
   const th = "px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase";
   return (
@@ -44,9 +50,9 @@ const Table = ({ element, total }) => {
             onChange={(e) => setonhand(e.target.value)}
           />
           <Content
-            border={total + cash - out - onhand <= 0 ? "border-rose-800 " : "border-green "}
-            name={total + cash - out - onhand <= 0 ? "Deficiet" : "Gain"}
-            value={parseInt(total) + parseInt(cash) - out - onhand}
+            border={gain <= 0 ? "border-rose-800 " : "border-green "}
+            name={gain <= 0 ? "Deficiet" : "Gain"}
+            value={gain}
           />
         </span>
 
