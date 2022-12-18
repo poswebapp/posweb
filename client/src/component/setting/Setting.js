@@ -16,8 +16,8 @@ const Setting = () => {
   return (
     <Layout
       element={
-        <span className="flex justify-center content-center w-full h-screen">
-          <span className="w-[40rem] h-auto flex flex-wrap gap-14 m-auto content-center justify-center ">
+        <span className="flex justify-center content-center w-full h-full">
+          <span className="w-[40rem] h-auto flex flex-wrap gap-14 m-auto content-center justify-center">
             <Content
               icon={<FaUserShield />}
               text={"username"}

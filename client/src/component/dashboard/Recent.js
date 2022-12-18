@@ -17,7 +17,7 @@ const Recent = () => {
 
   const tr = "p-2 text-xs font-medium text-gray-600 whitespace-wrap truncate capitalize ";
   return (
-    <div className="p-3 rounded-lg bg-zinc-100 h-80 w-full shad border flex flex-1 flex-col gap-4 content-start">
+    <div className="p-3 rounded-lg bg-white h-80 w-full shad border flex flex-1 flex-col gap-4 content-start">
       <Table
         element={
           <>
