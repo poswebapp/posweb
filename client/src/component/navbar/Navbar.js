@@ -24,8 +24,8 @@ const Navbar = () => {
     }
   }, [curUsr, setCurUsr]);
   return (
-    <div className="grid grid-cols-1 place-content-start gap-4 w-48 min-w-40 max-w-52 h-screen bg-zinc-800 p-5 ml-0 mr-auto">
-      <h4 className="text-lg text-white text-xl font-bold mt-4 mb-3 ">
+    <div className="grid grid-cols-1 place-content-start gap-4 w-14 md:w-48 min-w-40 max-w-52 h-screen bg-zinc-800 ml-0 mr-auto py-5 px-2">
+      <h4 className="text-lg text-white text-xl font-bold mt-4 mb-3 hidden md:block">
         Gasoline POS
       </h4>
       {/* content navbar */}
@@ -52,12 +52,12 @@ export const Content = ({ link, icon, name }) => {
   return (
     <Link
       to={link}
-      className={`flex truncate justify-start content-center gap-2 text-white text-sm duration-300 transition-all ease-linear hover:bg-amber-200 hover:text-zinc-800 hover:p-2 hover:rounded-lg ${
-        path && "bg-amber-200 rounded-lg p-2 text-zinc-800"
+      className={`flex truncate justify-start content-center gap-2 text-white text-sm duration-300 transition-all ease-linear hover:bg-amber-200 hover:text-zinc-800 p-2 hover:rounded-lg py-0 hover:py-2 ${
+        path && "bg-amber-200 py-2 rounded-lg text-zinc-800"
       }`}
     >
       <span className="mt-[.2rem]">{icon}</span>
-      <h4 className="drop-shadow-sm font-semibold capitalize">{name}</h4>
+      <h4 className="drop-shadow-sm font-semibold capitalize md:block hidden">{name}</h4>
     </Link>
   );
 };
