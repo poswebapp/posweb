@@ -17,7 +17,7 @@ const Setting = () => {
     <Layout
       element={
         <span className="flex justify-center content-center w-full h-full">
-          <span className="w-[40rem] h-auto flex flex-wrap gap-14 m-auto content-center justify-center">
+          <span className="w-[40rem] h-auto flex flex-wrap gap-14 m-auto content-center justify-center py-5">
             <Content
               icon={<FaUserShield />}
               text={"username"}

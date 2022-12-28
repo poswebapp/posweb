@@ -1,5 +1,5 @@
 import create from "zustand";
-import { api } from "./api";
+import { alertErr, api } from "./api";
 
 export const userStore = create((set) => ({
   user: [],
@@ -15,8 +15,8 @@ export const userStore = create((set) => ({
       set({ curUsr: "profile" });
       navigate("/");
     } catch (err) {
-      console.log(err)
-      alert(err.response.data.message);
+      console.log(err);
+      alertErr(err);
     }
     set({ loading: false });
   },
@@ -41,11 +41,11 @@ export const userStore = create((set) => ({
   resetOTP: async (data, navigate) => {
     set({ loading: true });
     try {
-     const id =JSON.parse(localStorage.getItem("resetPW"))?.id 
+      const id = JSON.parse(localStorage.getItem("resetPW"))?.id;
       await api.post(`/user/resetOTP/${id}`, data);
       navigate("/login");
       localStorage.clear();
-      alert("Password Changed!")
+      alert("Password Changed!");
     } catch (err) {
       alert(err.response.data.message);
     }
