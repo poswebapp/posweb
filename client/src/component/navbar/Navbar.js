@@ -53,7 +53,7 @@ export const Content = ({ link, icon, name }) => {
     <Link
       to={link}
       className={`flex truncate justify-start content-center gap-2 text-white text-sm duration-300 transition-all ease-linear hover:bg-amber-200 hover:text-zinc-800 p-2 hover:rounded-lg py-0 hover:py-2 ${
-        path && "bg-amber-200 py-2 rounded-lg text-zinc-800"
+        path && "bg-amber-200 py-2 rounded-lg text-zinc-800 nav"
       }`}
     >
       <span className="mt-[.2rem]">{icon}</span>

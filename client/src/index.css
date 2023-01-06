@@ -17,12 +17,11 @@ body {
   /* background: #F5F4EE; */
 }
 
-.space-mono{
+.space-mono {
   font-family: "Space Mono", sans-serif;
 }
 .lato {
   font-family: "Red Hat Display", sans-serif;
-
 }
 .gradient-night {
   background: linear-gradient(to bottom left, #403f44, #1e1b32);
@@ -51,13 +50,25 @@ body {
     rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
 }
 .shad1 {
-  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+    rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 }
-.shad4{
+.shad4 {
   /* box-shadow: rgba(0, 0, 0, 0.1) 0px 30px 90px; */
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 8px 40px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px 0px, rgba(255, 255, 255, 0.03) 0px 0px 0px 0.4px inset;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 8px 40px 0px,
+    rgba(0, 0, 0, 0.1) 0px 1px 2px 0px,
+    rgba(255, 255, 255, 0.03) 0px 0px 0px 0.4px inset;
 }
 
 .lato {
   font-family: "Lato", sans-serif;
+}
+
+.nav {
+  /* background: rgba(74, 74, 74, 0.55); */
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  /* border-radius: 10px; */
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
