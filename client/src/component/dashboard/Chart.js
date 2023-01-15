@@ -33,7 +33,7 @@ const Chart = () => {
   };
 
   return (
-    <span className="p-5 rounded-lg bg-white h-80 w-80 shad grid border">
+    <span className="p-5 rounded-3xl bg-white h-80 w-80 shadow-md grid border">
       <Doughnut data={data} options={options} />
     </span>
   );
