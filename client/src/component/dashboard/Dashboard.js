@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Layout from "../Layout";
-import Chart from "./Chart";
+// import Chart from "./Chart";
 import ReportChart from "./ReportChart";
 import TopContent from "./TopContent";
 import { totalStore } from "../../zustand/total";
@@ -22,7 +22,7 @@ const Dashboard = () => {
           <div className="m-auto md:bg-white md:shadow-lg rounded-2xl flex flex-col flex-wrap h-auto w-full p-4 md:border md:border-zinc-300 gap-y-5 justify-start content-start">
             <TopContent />
             <span className="flex flex-wrap w-auto justify-between gap-5 flex-row">
-              <Chart />
+              {/* <Chart /> */}
               <Recent />
             </span>
             <ReportChart list={monthly} />

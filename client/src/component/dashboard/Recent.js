@@ -15,7 +15,8 @@ const Recent = () => {
     getMinimum();
   }, [getMinimum, getRecentGood]);
 
-  const tr = "p-2 text-xs font-medium text-gray-600 whitespace-wrap truncate capitalize ";
+  const tr =
+    "p-2 text-xs font-medium text-gray-600 whitespace-wrap truncate capitalize ";
   return (
     <div className="p-3 rounded-lg bg-white h-80 w-full shad border flex flex-1 flex-col gap-4 content-start">
       <Table
@@ -27,7 +28,12 @@ const Recent = () => {
                   <Moment date={a.date} format="MMM-DD-YYYY" />
                 </td>
                 <td className={tr}> {a.name} </td>
-                <td className={tr}> {a.stock} </td>
+                <td className={tr}>
+                  {a.stock}
+                  <p className=" lowercase ml-2  inline text-zinc-400 text-[.7rem] ">
+                    litter
+                  </p>
+                </td>
               </tr>
             ))}
           </>
@@ -38,7 +44,10 @@ const Recent = () => {
           <>
             <tr key={minimum._id}>
               <td className={tr}>{minimum?.name}</td>
-              <td className={tr}> {minimum?.stock} </td>
+              <td className={tr}> {minimum?.stock}
+                  <p className=" lowercase ml-2 inline text-zinc-400 text-[.7rem] ">
+                    litter</p>
+          </td>
               <td className={tr}>
                 <Moment date={minimum?.date} format="MMM-DD-YYYY" />
               </td>

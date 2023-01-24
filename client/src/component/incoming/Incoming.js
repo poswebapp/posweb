@@ -4,6 +4,7 @@ import List from "./List";
 import { incomingStore } from "../../zustand/incoming";
 import Layout from "../Layout";
 import Loading from "../Loading";
+import PagesTitle from "../utility/PagesTitle";
 // import autoAnimate from "@formkit/auto-animate";
 
 const Incoming = () => {
@@ -72,6 +73,7 @@ const Incoming = () => {
     <Layout
       element={
         <div className="grid pt-20">
+        <PagesTitle text={"incoming"}/>
           <button
             className="p-4 border-2 rounded-md text-white border-zinc-800 text-sm font-[400] bg-zinc-800 m-auto transition-all duration-300 ease-linear fixed right-10 bottom-10 z-50"
             onClick={() => {

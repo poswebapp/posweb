@@ -4,6 +4,7 @@ import { FaUserShield } from "react-icons/fa";
 import { MdPermContactCalendar, MdAttachEmail } from "react-icons/md";
 import { BsFileEarmarkLockFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import PagesTitle from "../utility/PagesTitle";
 
 const Setting = () => {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ const Setting = () => {
     <Layout
       element={
         <span className="flex justify-center content-center w-full h-full">
+        <PagesTitle text={"profile"}/>
           <span className="w-[40rem] h-auto flex flex-wrap gap-14 m-auto content-center justify-center py-5">
             <Content
               icon={<FaUserShield />}
