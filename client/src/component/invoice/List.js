@@ -23,7 +23,7 @@ const List = ({ setid, setshow }) => {
   useEffect(() => {
     getDailyTotal();
   }, [getDailyTotal, invoices]);
-  console.log("render");
+  console.log("total",total);
   return (
     <div className="w-auto grid mx-auto">
       <Table
