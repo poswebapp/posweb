@@ -3,8 +3,8 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { MdSpaceDashboard } from "react-icons/md";
 import { BsFillGridFill, BsFillShieldLockFill } from "react-icons/bs";
-import { SiGriddotai, SiGridsome } from "react-icons/si";
-import { FaFileInvoiceDollar, FaUserTag } from "react-icons/fa";
+import { SiGridsome } from "react-icons/si";
+import { FaUserTag } from "react-icons/fa";
 
 import { useLocation } from "react-router-dom";
 import { userStore } from "../../zustand/user";

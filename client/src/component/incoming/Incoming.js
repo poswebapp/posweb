@@ -3,8 +3,8 @@ import Form from "./Form";
 import List from "./List";
 import { incomingStore } from "../../zustand/incoming";
 import Layout from "../Layout";
-import autoAnimate from "@formkit/auto-animate";
 import Loading from "../Loading";
+// import autoAnimate from "@formkit/auto-animate";
 
 const Incoming = () => {
   const [id, setid] = useState(0);
@@ -17,10 +17,10 @@ const Incoming = () => {
     quantity: "",
   });
 
-  const dom = React.useRef(null);
-  useEffect(() => {
-    dom.current && autoAnimate(dom.current);
-  }, [dom]);
+  // const dom = React.useRef(null);
+  // useEffect(() => {
+  //   dom.current && autoAnimate(dom.current);
+  // }, [dom]);
 
   const clear = () => {
     setid(0);
@@ -71,9 +71,9 @@ const Incoming = () => {
   return (
     <Layout
       element={
-        <div className="grid pt-20" ref={dom}>
+        <div className="grid pt-20">
           <button
-            className="p-4 border-2 rounded-md text-white border-zinc-800 text-sm font-[400] bg-zinc-800 m-auto transition-all duration-300 ease-linear"
+            className="p-4 border-2 rounded-md text-white border-zinc-800 text-sm font-[400] bg-zinc-800 m-auto transition-all duration-300 ease-linear fixed right-10 bottom-10 z-50"
             onClick={() => {
               setshow(!show);
             }}
