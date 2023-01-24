@@ -27,9 +27,9 @@ const Table = ({ element }) => {
                   <th scope="col" className={th}>
                     Price
                   </th>
-                  <th scope="col" className={th}>
-                    ID
-                  </th>
+                  {/* <th scope="col" className={th}> */}
+                  {/*   ID */}
+                  {/* </th> */}
                   <th scope="col" className={th}>
                     Action
                   </th>

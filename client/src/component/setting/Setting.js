@@ -66,7 +66,7 @@ export default Setting;
 const Content = ({ icon, text, value, color, onClick, desc }) => {
   return (
     <span
-      className="flex content-start flex-col bg-white rounded-2xl shad1 hover:w-[16.5rem] hover:h-[10.5rem] hover:border-2 hover:rotate-[-8deg] w-[16rem] h-[10rem] p-6 transition-all duration-300 ease-linear"
+      className="flex content-start flex-col bg-white rounded-2xl shad1 w-[16rem] h-[10rem] p-6 transition-all duration-300 ease-linear"
       onClick={onClick}
       title={desc}
     >

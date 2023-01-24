@@ -31,10 +31,10 @@ const Navbar = () => {
       {/* content navbar */}
       <Content icon={<MdSpaceDashboard />} name={"Dashboard"} link={"/"} />
       <Content icon={<BsFillGridFill />} name={"Goods"} link={"/good"} />
-      <Content icon={<FaFileInvoiceDollar />} name={"Invoice"} link={"/invoice"} />
+      <Content icon={<FaUserTag />} name={"Invoice"} link={"/invoice"} />
       <Content icon={<SiGridsome />} name={"Incoming"} link={"/incoming"} />
-      <Content icon={<SiGriddotai />} name={"Outgoing"} link={"/outgoing"} />
-      <Content icon={<FaUserTag />} name={"Suppliers"} link={"/supplier"} />
+      {/* <Content icon={<SiGriddotai />} name={"Outgoing"} link={"/outgoing"} /> */}
+      {/* <Content icon={<FaUserTag />} name={"Suppliers"} link={"/supplier"} /> */}
       <Content icon={<BsFillShieldLockFill />} name={"Profile"} link={"/setting"} />
       {curUsr && (
         <Content icon={<RiLogoutBoxRFill />} name={"Logout"} link={"/logout"} />

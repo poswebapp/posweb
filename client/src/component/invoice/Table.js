@@ -28,7 +28,7 @@ const Table = ({ element, total }) => {
         <span className="flex flex-row justify-start gap-10">
           <Content
             border={"border-amber-800"}
-            name={"Daily Total"}
+            name={"Gross Income"}
             value={total}
           />
           <Input
@@ -39,13 +39,13 @@ const Table = ({ element, total }) => {
           />
           <Input
             border={"border-slate-800"}
-            name={"Cash Out"}
+            name={"Expenses"}
             value={out}
             onChange={(e) => setout(e.target.value)}
           />
           <Input
             border={"border-yellow-800"}
-            name={"On Hand"}
+            name={"Net Income"}
             value={onhand}
             onChange={(e) => setonhand(e.target.value)}
           />

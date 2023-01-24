@@ -33,7 +33,7 @@ const List = ({setid,setshow}) => {
                 <td className={tr}> {a.supplier} </td>
                 <td className={tr}> {a.name} </td>
                 <td className={tr}> {a.quantity} </td>
-                <td className={tr}> {a._id} </td>
+                {/* <td className={tr}> {a._id} </td> */}
                 <td className={act}>
                   <BtnEdit
                     loading={loading}
