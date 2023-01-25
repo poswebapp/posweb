@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Form from "./Form";
 import List from "./List";
-import { invoiceStore } from "../../zustand/invoice";
+import { expenseStore } from "../../zustand/expense";
 import Layout from "../Layout";
 // import autoAnimate from "@formkit/auto-animate";
 import Loading from "../Loading";
 import PagesTitle from "../utility/PagesTitle";
 
-const Invoice = () => {
-  const invoices = invoiceStore((state) => state.invoices);
-  const loading = invoiceStore((state) => state.loading);
-  const updateInvoice = invoiceStore((state) => state.updateInvoice);
-  const uploadInvoice = invoiceStore((state) => state.uploadInvoice);
+const Expense = () => {
+  const expenses = expenseStore((state) => state.expenses);
+  const loading = expenseStore((state) => state.loading);
+  const updateExpense = expenseStore((state) => state.updateExpense);
+  const uploadExpense = expenseStore((state) => state.uploadExpense);
 
   const [id, setid] = useState(0);
   const [list, setlist] = useState(null);
@@ -19,8 +19,8 @@ const Invoice = () => {
   const [data, setdata] = useState({
     date: "",
     quantity: "",
-    time: "",
     amount: "",
+    time: "",
   });
 
   // const dom = React.useRef(null);
@@ -40,8 +40,8 @@ const Invoice = () => {
   };
 
   useEffect(() => {
-    setlist(id ? invoices.find((r) => r._id === id) : null);
-  }, [invoices, id]);
+    setlist(id ? expenses.find((r) => r._id === id) : null);
+  }, [expenses, id]);
 
   useEffect(() => {
     if (list) setdata(list);
@@ -56,17 +56,17 @@ const Invoice = () => {
     if (id === 0) {
       if (
         data.date === "" ||
+        data.time === "" ||
         data.quantity === "" ||
-        data.amount === "" || 
-        data.time === ""
+        data.amount === ""
       ) {
         alert("Complete Form input");
       } else {
-        await uploadInvoice(data);
+        await uploadExpense(data);
         clear();
       }
     } else {
-      await updateInvoice(data, id);
+      await updateExpense(data, id);
       clear();
     }
   };
@@ -76,7 +76,7 @@ const Invoice = () => {
       element={
         // <div className="grid pt-20" ref={dom}>
         <div className="grid pt-20">
-          <PagesTitle text={"invoice"} />
+          <PagesTitle text={"expense"} />
           <button
             className="p-4 border-2 rounded-md text-white border-zinc-800 text-sm font-[400] bg-zinc-800 m-auto transition-all duration-300 ease-linear fixed right-10 bottom-10 z-50"
             onClick={() => {
@@ -102,4 +102,4 @@ const Invoice = () => {
   );
 };
 
-export default Invoice;
+export default Expense;

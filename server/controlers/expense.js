@@ -2,15 +2,11 @@ import Expense from "../models/expense.js";
 import mongoose from "mongoose";
 import moment from "moment";
 
+
 export const getExpenses = async (req, res) => {
   try {
-    const today = moment().startOf("day");
     const result = await Expense.find({
-      date: {
-        $gte: today.toDate(),
-        $lte: moment(today).endOf("day").toDate(),
-      },
-    });
+    }).sort({date: -1}).limit(50);
     res.json(result);
   } catch (error) {
     res.status(500).json({ message: error.message });

@@ -11,16 +11,42 @@ api.interceptors.request.use((req) => {
   return req;
 });
 
-export const supplierStore = create((set) => ({
-  suppliers: [],
+export const saleStore = create((set) => ({
+  sales: [],
   loading: false,
   err: null,
 
-  getSupplier: async () => {
+  getSale: async () => {
     set({ loading: true });
     try {
-      const result = await api.get("/supplier/get");
-      set({ suppliers: result.data });
+      const result = await api.get("/sale/get");
+      set({ sales: result.data });
+    } catch (err) {
+      alert(err.response.data.message);
+      set({ err: err.response.data.message });
+    }
+    set({ loading: false });
+  },
+  
+  getDailyTotal: async () => {
+    set({ loading: true });
+    try {
+      const result = await api.get("/sale/getDaily");
+      set({ total: result.data });
+    } catch (err) {
+      console.log(err)
+      alert(err.response.data.message);
+      set({ err: err.response.data.message });
+    }
+    set({ loading: false });
+  },
+
+
+  uploadSale: async (data) => {
+    set({ loading: true });
+    try {
+      const result = await api.post("/sale/upload", data);
+      set((state) => ({ sales: [...state.sales, result.data] }));
     } catch (err) {
       alert(err.response.data.message);
       set({ err: err.response.data.message });
@@ -28,25 +54,13 @@ export const supplierStore = create((set) => ({
     set({ loading: false });
   },
 
-  uploadSupplier: async (data) => {
+  updateSale: async (data, id) => {
     set({ loading: true });
     try {
-      const result = await api.post("/supplier/upload", data);
-      set((state) => ({ suppliers: [...state.suppliers, result.data] }));
-    } catch (err) {
-      alert(err.response.data.message);
-      set({ err: err.response.data.message });
-    }
-    set({ loading: false });
-  },
-
-  updateSupplier: async (data, id) => {
-    set({ loading: true });
-    try {
-      const result = await api.patch(`/supplier/patch/${id}`, data);
+      const result = await api.patch(`/sale/patch/${id}`, data);
       set((state) => ({
-        suppliers: [
-          ...state.suppliers.map((a) => (a._id === id ? result.data : a)),
+        sales: [
+          ...state.sales.map((a) => (a._id === id ? result.data : a)),
         ],
       }));
     } catch (err) {
@@ -56,11 +70,11 @@ export const supplierStore = create((set) => ({
     set({ loading: false });
   },
 
-  deleteSupplier: async (id) => {
+  deleteSale: async (id) => {
     set({ loading: true });
     try {
-      await api.delete(`/supplier/delete/${id}`);
-      set((state) => ({ suppliers: state.suppliers.filter((a) => a._id !== id) }));
+      await api.delete(`/sale/delete/${id}`);
+      set((state) => ({ sales: state.sales.filter((a) => a._id !== id) }));
     } catch (err) {
       alert(err.response.data.message);
       set({ err: err.response.data.message });

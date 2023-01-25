@@ -2,27 +2,27 @@ import React, { useEffect } from "react";
 import BtnDelete from "../utility/BtnDelete";
 import BtnEdit from "../utility/BtnEdit";
 import Table from "./Table";
-import { invoiceStore } from "../../zustand/invoice";
+import { expenseStore } from "../../zustand/expense";
 import Moment from "react-moment";
 
 const List = ({ setid, setshow }) => {
   const tr = "px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap ";
   const act =
     "px-6 py-4 text-sm font-medium text-gray-800 whitespace-wrap flex flex-rows gap-2";
-  const invoices = invoiceStore((state) => state.invoices);
-  const loading = invoiceStore((state) => state.loading);
-  const total = invoiceStore((state) => state.total);
-  const getInvoice = invoiceStore((state) => state.getInvoice);
-  const getDailyTotal = invoiceStore((state) => state.getDailyTotal);
-  const deleteInvoice = invoiceStore((state) => state.deleteInvoice);
+  const expenses = expenseStore((state) => state.expenses);
+  const loading = expenseStore((state) => state.loading);
+  const total = expenseStore((state) => state.total);
+  const getExpense = expenseStore((state) => state.getExpense);
+  const getDailyTotal = expenseStore((state) => state.getDailyTotal);
+  const deleteExpense = expenseStore((state) => state.deleteExpense);
 
   useEffect(() => {
-    getInvoice();
-  }, [getInvoice]);
+    getExpense();
+  }, [getExpense]);
 
   useEffect(() => {
     getDailyTotal();
-  }, [getDailyTotal, invoices]);
+  }, [getDailyTotal, expenses]);
   console.log("total",total);
   return (
     <div className="w-auto grid mx-auto">
@@ -30,10 +30,11 @@ const List = ({ setid, setshow }) => {
         total={total}
         element={
           <>
-            {invoices?.reverse().map((a, index) => (
+            {expenses?.reverse().map((a, index) => (
               <tr key={a._id}>
-                <td className={tr}> {index+1} </td>
-                {/* <td className={tr}> {a._id}</td> */}
+                {/* <td className={tr}> {index + 1} </td> */}
+                {/* <td className={tr}> {index+1} </td> */}
+                <td className={tr}> {index+ 1}</td>
                 <td className={tr}>
                   <Moment date={a.date} format="MMM-DD-YYYY" />
                 </td>
@@ -52,7 +53,7 @@ const List = ({ setid, setshow }) => {
                   <BtnDelete
                     loading={loading}
                     onClick={() => {
-                      deleteInvoice(a._id);
+                      deleteExpense(a._id);
                     }}
                   />
                 </td>

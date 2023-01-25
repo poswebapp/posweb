@@ -4,8 +4,8 @@ import Notfound from "./component/Notfound";
 import Good from "./component/good/Good";
 import Login from "./component/user/Login";
 import Dashboard from "./component/dashboard/Dashboard";
-// import Outgoing from "./component/outgoing/Outgoing";
-// import Supplier from "./component/supplier/Supplier";
+import Sale from "./component/sale/Sale";
+import Expense from "./component/expense/Expense";
 import Incoming from "./component/incoming/Incoming";
 import Logout from "./component/Logout";
 import Reset from "./component/user/Reset";
@@ -23,10 +23,10 @@ function App() {
         <Routes>
           <Route path="/" element={ <Secure> <Dashboard /> </Secure> } />
           <Route path="/good" element={ <Secure> <Good /> </Secure> } />
-          {/* <Route path="/outgoing" element={ <Secure> <Outgoing /> </Secure> } /> */}
+          <Route path="/sale" element={ <Secure> <Sale /> </Secure> } />
           <Route path="/incoming" element={ <Secure> <Incoming /> </Secure> } />
           <Route path="/invoice" element={ <Secure> <Invoice /> </Secure> } />
-          {/* <Route path="/supplier" element={ <Secure> <Supplier /> </Secure> } /> */}
+          <Route path="/expense" element={ <Secure> <Expense /> </Secure> } />
           <Route path="/setting" element={ <Secure> <Setting /> </Secure> } />
           <Route path="/patchContact" element={ <Secure> <PatchContact /> </Secure> } />
           <Route path="/PatchEmail" element={ <Secure> <PatchEmail /> </Secure> } />

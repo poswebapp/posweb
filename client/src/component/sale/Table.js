@@ -1,15 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import ReactToPrint from "react-to-print";
 
-const Table = ({ element, total }) => {
-  const [cash, setcash] = useState(0);
-  const [out, setout] = useState(0);
-  const [onhand, setonhand] = useState(0);
-  const [gain, setgain] = useState(0);
+const Table = ({ element }) => {
   
-  useEffect(() => {
-    setgain(parseInt(total) + parseInt(cash) - out - onhand);
-  }, [cash, onhand, out, total]);
   
   let componentRef = useRef();
   const th = "px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase";
@@ -17,7 +10,7 @@ const Table = ({ element, total }) => {
     <div className=" bg-white shadow-md rounded-md flex flex-col mt-10 mx-auto p-2 w-auto">
       <ReactToPrint
         trigger={() => (
-          <button className="p-4 border-2 rounded-md text-white border-zinc-700 text-sm font-[600] bg-zinc-700  mr-5 mt-4 m-auto transition-all duration-300 ease-linear">
+          <button className="p-4 border-2 rounded-md text-white border-zinc-700 text-sm font-[600] bg-zinc-700  mr-5 mt-4 m-auto transition-all duration-300 ease-linear mb-4">
             Print this out!
           </button>
         )}
@@ -25,37 +18,6 @@ const Table = ({ element, total }) => {
       />
 
       <span ref={(el) => (componentRef = el)}>
-        <span className="flex flex-row justify-start gap-10">
-          <Content
-            border={"border-amber-800"}
-            name={"Gross Income"}
-            value={total}
-          />
-          <Input
-            border={"border-cyan-800"}
-            name={"Drawer Cash"}
-            value={cash}
-            onChange={(e) => setcash(e.target.value)}
-          />
-          <Input
-            border={"border-slate-800"}
-            name={"Expenses"}
-            value={out}
-            onChange={(e) => setout(e.target.value)}
-          />
-          <Input
-            border={"border-yellow-800"}
-            name={"Net Income"}
-            value={onhand}
-            onChange={(e) => setonhand(e.target.value)}
-          />
-          <Content
-            border={gain <= 0 ? "border-rose-800 " : "border-green "}
-            name={gain <= 0 ? "Daily Deficiet" : "Daily Gain"}
-            value={gain}
-          />
-        </span>
-
         <div className="overflow-x-scroll">
           <div className="p-1.5 w-full inline-block align-middle">
             <div className="overflow-x-scroll border rounded-lg">
@@ -66,7 +28,7 @@ const Table = ({ element, total }) => {
                     {/*   Transaction No */}
                     {/* </th> */}
                     <th scope="col" className={th}>
-                      Invoice No
+                      Expense No
                     </th>
                     <th scope="col" className={th}>
                       Date
