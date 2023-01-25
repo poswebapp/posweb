@@ -55,7 +55,7 @@ const Chart = ({ list }) => {
     labels,
     datasets: [
       {
-        label: "Monthly Incoming Goods",
+        label: "Monthly Invoice Total",
         data: list,
         borderColor: "#1d4e89",
         backgroundColor: "#1d4e89",

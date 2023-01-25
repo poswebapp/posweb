@@ -33,8 +33,8 @@ const List = ({ setid, setshow }) => {
             {invoices?.reverse().map((a, index) => (
               <tr key={a._id}>
                 {/* <td className={tr}> {index + 1} </td> */}
-                <td className={tr}> {a.transactionNo} </td>
-                <td className={tr}> {a.invoiceNo} </td>
+                <td className={tr}> {index+1} </td>
+                <td className={tr}> {index+ 1}</td>
                 <td className={tr}>
                   <Moment date={a.date} format="MMM-DD-YYYY" />
                 </td>

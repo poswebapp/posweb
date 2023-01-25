@@ -1,16 +1,16 @@
-import Invoice from "../models/invoice.js";
+import Sale from "../models/sale.js";
 import mongoose from "mongoose";
 import moment from "moment";
 
-export const getInvoices = async (req, res) => {
+export const getSales = async (req, res) => {
   try {
-    // const today = moment().startOf("day");
-    const result = await Invoice.find({
-      // date: {
-      //   $gte: today.toDate(),
-      //   $lte: moment(today).endOf("day").toDate(),
-      // },
-    }).sort({date: -1});
+    const today = moment().startOf("day");
+    const result = await Sale.find({
+      date: {
+        $gte: today.toDate(),
+        $lte: moment(today).endOf("day").toDate(),
+      },
+    });
     res.json(result);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -21,13 +21,13 @@ export const getInvoices = async (req, res) => {
 export const getDailyTotal = async (req, res) => {
   try {
     const today = moment().startOf("day");
-    const list = await Invoice.find({
+    const list = await Sale.find({
       date: {
         $gte: today.toDate(),
         $lte: moment(today).endOf("day").toDate(),
       },
     });
-    // TOTAL OF INVOICE IN A DAY
+    // TOTAL OF sale IN A DAY
     const total = list.map((a) => a.amount);
     const result = total.reduce((accumulator, value) => {
       return accumulator + value;
@@ -39,18 +39,18 @@ export const getDailyTotal = async (req, res) => {
   }
 };
 
-export const uploadInvoice = async (req, res) => {
+export const uploadSale = async (req, res) => {
   try {
-    const { date, transactionNo, invoiceNo, quantity, amount, time } = req.body;
-    const invoice = new Invoice({
+    const { date, quantity, amount, time } = req.body;
+    const sale = new Sale({
       date,
       time,
-      transactionNo,
-      invoiceNo,
+      // transactionNo,
+      // saleNo,
       quantity,
       amount,
     });
-    const result = await invoice.save();
+    const result = await sale.save();
     res.json(result);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -58,20 +58,20 @@ export const uploadInvoice = async (req, res) => {
   }
 };
 
-export const updateInvoice = async (req, res) => {
+export const updateSale = async (req, res) => {
   try {
     const { id } = req.params;
-    const { date, transactionNo, invoiceNo, quantity, amount,time } = req.body;
+    const { date, quantity, amount,time } = req.body;
     if (!mongoose.Types.ObjectId.isValid(id))
       return res.status(404).send({ message: `Not a valid id: ${id}` });
 
-    const result = await Invoice.findByIdAndUpdate(
+    const result = await Sale.findByIdAndUpdate(
       id,
       {
         date,
         time,
-        transactionNo,
-        invoiceNo,
+        // transactionNo,
+        // saleNo,
         quantity,
         amount,
       },
@@ -84,11 +84,11 @@ export const updateInvoice = async (req, res) => {
   }
 };
 
-export const deleteInvoice = async (req, res) => {
+export const deleteSale = async (req, res) => {
   try {
     const { id } = req.params;
-    await Invoice.findByIdAndDelete(id);
-    res.json({ mesagge: "Invoice deleted" });
+    await Sale.findByIdAndDelete(id);
+    res.json({ mesagge: "Sale deleted" });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: error.message });

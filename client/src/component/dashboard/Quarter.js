@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { totalStore } from "../../zustand/total";
 
-const TopContent = () => {
+const Quarter = () => {
   const total = totalStore((state)=> state.total)
   const getTotal = totalStore((state)=> state.getTotal)
   useEffect(()=>{
@@ -11,14 +11,14 @@ const TopContent = () => {
   return (
     <span className="flex flex-wrap flex-1 flex-row md:justify-between content-start grid-cols-4 gap-5 w-full h-auto">
       <Content name={"Total Goods"} value={total.good} border={"border-cyan-600"} />
-      <Content name={"Total Incoming"} value={total.incoming} border={"border-amber-600"} />
+      <Content name={"Total Suppliers"} value={total.supplier} border={"border-amber-600"} />
       <Content name={"Stocks of Goods"} value={total.stock} border={"border-violet-400"} />
       <Content name={"Total Earnings"} value={total.earning} border={"border-rose-500"} />
     </span>
   );
 };
 
-export default TopContent;
+export default Quarter;
 
 export const Content = ({ name, value, border }) => {
   return (

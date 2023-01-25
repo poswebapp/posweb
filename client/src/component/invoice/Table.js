@@ -51,7 +51,7 @@ const Table = ({ element, total }) => {
           />
           <Content
             border={gain <= 0 ? "border-rose-800 " : "border-green "}
-            name={gain <= 0 ? "Deficiet" : "Gain"}
+            name={gain <= 0 ? "Daily Deficiet" : "Daily Gain"}
             value={gain}
           />
         </span>

@@ -1,10 +1,10 @@
-import { RiLogoutBoxRFill } from "react-icons/ri";
+import { RiLogoutBoxRFill,RiMoneyDollarCircleFill } from "react-icons/ri";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { MdSpaceDashboard } from "react-icons/md";
 import { BsFillGridFill, BsFillShieldLockFill } from "react-icons/bs";
 import { SiGridsome } from "react-icons/si";
-import { FaUserTag } from "react-icons/fa";
+import { FaUserTag,FaMoneyCheckAlt } from "react-icons/fa";
 
 import { useLocation } from "react-router-dom";
 import { userStore } from "../../zustand/user";
@@ -31,10 +31,10 @@ const Navbar = () => {
       {/* content navbar */}
       <Content icon={<MdSpaceDashboard />} name={"Dashboard"} link={"/"} />
       <Content icon={<BsFillGridFill />} name={"Goods"} link={"/good"} />
-      <Content icon={<FaUserTag />} name={"Invoice"} link={"/invoice"} />
       <Content icon={<SiGridsome />} name={"Incoming"} link={"/incoming"} />
-      {/* <Content icon={<SiGriddotai />} name={"Outgoing"} link={"/outgoing"} /> */}
-      {/* <Content icon={<FaUserTag />} name={"Suppliers"} link={"/supplier"} /> */}
+      <Content icon={<FaUserTag />} name={"Invoice"} link={"/invoice"} />
+      <Content icon={<FaMoneyCheckAlt />} name={"Expense"} link={"/expense"} />
+      <Content icon={<RiMoneyDollarCircleFill />} name={"Sale"} link={"/sale"} />
       <Content icon={<BsFillShieldLockFill />} name={"Profile"} link={"/setting"} />
       {curUsr && (
         <Content icon={<RiLogoutBoxRFill />} name={"Logout"} link={"/logout"} />

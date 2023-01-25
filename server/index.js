@@ -4,10 +4,10 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import goodRoutes from './routes/good.js';
-import outgoingRoutes from './routes/outgoing.js';
+import expenseRoutes from './routes/expense.js';
 import incomingRoutes from './routes/incoming.js';
 import invoiceRoutes from './routes/invoice.js';
-import supplierRoutes from './routes/supplier.js';
+import saleRoutes from './routes/sale.js';
 import totalRoutes from './routes/total.js';
 import userRoutes from './routes/user.js';
 const app = express();
@@ -20,8 +20,8 @@ app.use('/user',userRoutes)
 app.use('/good', goodRoutes);
 app.use('/invoice', invoiceRoutes);
 app.use('/incoming', incomingRoutes);
-app.use('/outgoing', outgoingRoutes);
-app.use('/supplier', supplierRoutes);
+app.use('/expense', expenseRoutes);
+app.use('/sale', saleRoutes);
 app.use('/total', totalRoutes);
 
 app.get('/',(req,res) => {res.send('Pos Web App API');});

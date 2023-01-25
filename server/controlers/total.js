@@ -1,14 +1,11 @@
 import Good from "../models/good.js";
-import Supplier from "../models/supplier.js";
-import Outgoing from "../models/outgoing.js";
 import Incoming from "../models/incoming.js";
+import Invoice from "../models/invoice.js";
 
 export const getTotals = async (req, res) => {
   try {
     const good = await Good.countDocuments();
-    const supplier = await Supplier.countDocuments();
     const incoming = await Incoming.countDocuments();
-    const outgoing = await Outgoing.countDocuments();
 
     // STOCK
     const goodList = await Good.find();
@@ -17,22 +14,22 @@ export const getTotals = async (req, res) => {
       return accumulator + value;
     }, 0);
 
-    const outgoingList = await Outgoing.find();
-    const earningList = outgoingList.map((a) => a.total);
+    // Earning
+    const invoiceList = await Invoice.find();
+    const earningList = invoiceList.map((a) => a.amount);
     const earning = earningList.reduce((accumulator, value) => {
       return accumulator + value;
     }, 0);
-
+    
     res.status(200).json({
       result: {
         good,
-        supplier,
         incoming,
-        outgoing,
         stock,
         earning,
       },
     });
+    
   } catch (err) {
     console.log(err);
   }
@@ -48,7 +45,7 @@ export const getMontlyGood = async (req, res) => {
       const now = new Date()
       const firstDay = new Date(now.getFullYear(), i, 1);
       const lastDay = new Date(now.getFullYear(), i + 1, 0);
-      const good = await Incoming.countDocuments({
+      const good = await Invoice.countDocuments({
         date: { $gte: firstDay, $lte: lastDay },
       });
       result.push(good);
