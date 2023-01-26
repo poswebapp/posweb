@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import goodRoutes from './routes/good.js';
 import expenseRoutes from './routes/expense.js';
 import incomingRoutes from './routes/incoming.js';
+import drawerRoutes from './routes/drawer.js';
 import invoiceRoutes from './routes/invoice.js';
 import saleRoutes from './routes/sale.js';
 import totalRoutes from './routes/total.js';
@@ -19,6 +20,7 @@ app.use(cors());
 app.use('/user',userRoutes)
 app.use('/good', goodRoutes);
 app.use('/invoice', invoiceRoutes);
+app.use('/drawer', drawerRoutes);
 app.use('/incoming', incomingRoutes);
 app.use('/expense', expenseRoutes);
 app.use('/sale', saleRoutes);

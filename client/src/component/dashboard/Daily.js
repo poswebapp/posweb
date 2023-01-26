@@ -1,55 +1,65 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
+import { drawerStore } from "../../zustand/drawer";
+import { expenseStore } from "../../zustand/expense";
+import { invoiceStore } from "../../zustand/invoice";
 
 const Daily = () => {
-  const total = 55 
-  const [cash, setcash] = useState(0);
-  const [out, setout] = useState(0);
+  const invoice = invoiceStore((state) => state.total);
+  const drawer = drawerStore((state) => state.total);
+  const expense = expenseStore((state) => state.total);
+
+  const getDrawer = drawerStore((state) => state.getDailyTotal);
+  const getInvoice = drawerStore((state) => state.getDailyTotal);
+  const getExpense = drawerStore((state) => state.getDailyTotal);
+
   const [onhand, setonhand] = useState(0);
   const [gain, setgain] = useState(0);
-  
+
   useEffect(() => {
-    setgain(parseInt(total) + parseInt(cash) - out - onhand);
-  }, [cash, onhand, out, total]);
-  
+    getDrawer();
+    getInvoice();
+    getExpense();
+  }, [getDrawer, getExpense, getInvoice]);
+
+  useEffect(() => {
+    setgain(parseInt(invoice) + parseInt(drawer) - expense - onhand);
+  }, [drawer, onhand, expense, invoice]);
+
   return (
     <div>
-        <span className="flex flex-row justify-apart gap-5 gap-y-2 flex-wrap">
-          <Content
-            border={"border-amber-800"}
-            name={"Gross Income"}
-            value={total}
-          />
-          <Input
-            border={"border-cyan-800"}
-            name={"Drawer Cash"}
-            value={cash}
-            onChange={(e) => setcash(e.target.value)}
-          />
-          <Input
-            border={"border-slate-800"}
-            name={"Expenses"}
-            value={out}
-            onChange={(e) => setout(e.target.value)}
-          />
-          <Input
-            border={"border-yellow-800"}
-            name={"Net Income"}
-            value={onhand}
-            onChange={(e) => setonhand(e.target.value)}
-          />
-          <Content
-            border={gain <= 0 ? "border-rose-800 " : "border-green "}
-            name={gain <= 0 ? "Daily Deficiet" : "Daily Gain"}
-            value={gain}
-          />
-        </span>
+      <span className="flex flex-row justify-apart gap-5 gap-y-2 flex-wrap">
+        <Content
+          border={"border-amber-800"}
+          name={"Gross Income"}
+          value={invoice}
+        />
+        <Content
+          border={"border-cyan-800"}
+          name={"Drawer Cash"}
+          value={drawer}
+        />
+        <Content
+          border={"border-slate-800"}
+          name={"Expenses"}
+          value={expense}
+        />
+        <Input
+          border={"border-yellow-800"}
+          name={"Net Income"}
+          value={onhand}
+          onChange={(e) => setonhand(e.target.value)}
+        />
+        <Content
+          border={gain <= 0 ? "border-rose-800 " : "border-green "}
+          name={gain <= 0 ? "Daily Deficiet" : "Daily Gain"}
+          value={gain}
+        />
+      </span>
     </div>
-  )
-}
+  );
+};
 
-export default Daily
-
-
+export default Daily;
 
 export const Content = ({ name, value, border }) => {
   return (

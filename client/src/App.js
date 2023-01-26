@@ -14,6 +14,7 @@ import Setting from "./component/setting/Setting";
 import PatchContact from "./component/setting/PatchContact";
 import PatchEmail from "./component/setting/PatchEmail";
 import Invoice from "./component/invoice/Invoice";
+import Drawer from "./component/drawer/Drawer";
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           <Route path="/incoming" element={ <Secure> <Incoming /> </Secure> } />
           <Route path="/invoice" element={ <Secure> <Invoice /> </Secure> } />
           <Route path="/expense" element={ <Secure> <Expense /> </Secure> } />
+          <Route path="/drawer" element={ <Secure> <Drawer /> </Secure> } />
           <Route path="/setting" element={ <Secure> <Setting /> </Secure> } />
           <Route path="/patchContact" element={ <Secure> <PatchContact /> </Secure> } />
           <Route path="/PatchEmail" element={ <Secure> <PatchEmail /> </Secure> } />

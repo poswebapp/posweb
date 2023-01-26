@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Form from "./Form";
 import List from "./List";
-import { invoiceStore } from "../../zustand/invoice";
+import { drawerStore } from "../../zustand/drawer";
 import Layout from "../Layout";
 // import autoAnimate from "@formkit/auto-animate";
 import Loading from "../Loading";
 import PagesTitle from "../utility/PagesTitle";
 
-const Invoice = () => {
-  const invoices = invoiceStore((state) => state.invoices);
-  const loading = invoiceStore((state) => state.loading);
-  const updateInvoice = invoiceStore((state) => state.updateInvoice);
-  const uploadInvoice = invoiceStore((state) => state.uploadInvoice);
+const Drawer = () => {
+  const drawers = drawerStore((state) => state.drawers);
+  const loading = drawerStore((state) => state.loading);
+  const updateDrawer = drawerStore((state) => state.updateDrawer);
+  const uploadDrawer = drawerStore((state) => state.uploadDrawer);
 
   const [id, setid] = useState(0);
   const [list, setlist] = useState(null);
@@ -22,7 +22,7 @@ const Invoice = () => {
     time: "",
     amount: "",
     transactionNo: "",
-    invoiceNo: "",
+    drawerNo: "",
   });
 
   // const dom = React.useRef(null);
@@ -39,13 +39,13 @@ const Invoice = () => {
       quantity: "",
       amount: "",
       transactionNo: "",
-      invoiceNo: "",
+      drawerNo: "",
     });
   };
 
   useEffect(() => {
-    setlist(id ? invoices.find((r) => r._id === id) : null);
-  }, [invoices, id]);
+    setlist(id ? drawers.find((r) => r._id === id) : null);
+  }, [drawers, id]);
 
   useEffect(() => {
     if (list) setdata(list);
@@ -66,11 +66,11 @@ const Invoice = () => {
       ) {
         alert("Complete Form input");
       } else {
-        await uploadInvoice(data);
+        await uploadDrawer(data);
         clear();
       }
     } else {
-      await updateInvoice(data, id);
+      await updateDrawer(data, id);
       clear();
     }
   };
@@ -80,7 +80,7 @@ const Invoice = () => {
       element={
         // <div className="grid pt-20" ref={dom}>
         <div className="grid pt-20">
-          <PagesTitle text={"invoice"} />
+          <PagesTitle text={"Cash on Drawer"} />
           <button
             className="p-4 border-2 rounded-md text-white border-zinc-800 text-sm font-[400] bg-zinc-800 m-auto transition-all duration-300 ease-linear fixed right-10 bottom-10 z-50"
             onClick={() => {
@@ -106,4 +106,4 @@ const Invoice = () => {
   );
 };
 
-export default Invoice;
+export default Drawer;
