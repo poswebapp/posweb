@@ -15,6 +15,9 @@ export const expenseStore = create((set) => ({
   expenses: [],
   loading: false,
   err: null,
+  total: 0,
+  monthly: 0,
+  monthly: 0,
 
   getExpense: async () => {
     set({ loading: true });
@@ -33,6 +36,19 @@ export const expenseStore = create((set) => ({
     try {
       const result = await api.get("/expense/getDaily");
       set({ total: result.data });
+    } catch (err) {
+      console.log(err)
+      alert(err.response.data.message);
+      set({ err: err.response.data.message });
+    }
+    set({ loading: false });
+  },
+  
+  getMonthlyTotal: async () => {
+    set({ loading: true });
+    try {
+      const result = await api.get("/expense/getMonthly");
+      set({ monthly: result.data });
     } catch (err) {
       console.log(err)
       alert(err.response.data.message);

@@ -16,6 +16,8 @@ export const invoiceStore = create((set) => ({
   loading: false,
   err: null,
   total: 0,
+  monthly: 0,
+  monthly: 0,
 
   getInvoice: async () => {
     set({ loading: true });
@@ -42,6 +44,20 @@ export const invoiceStore = create((set) => ({
     }
     set({ loading: false });
   },
+  
+  getMonthlyTotal: async () => {
+    set({ loading: true });
+    try {
+      const result = await api.get("/invoice/getMonthly");
+      set({ monthly: result.data });
+    } catch (err) {
+      console.log(err)
+      alert(err.response.data.message);
+      set({ err: err.response.data.message });
+    }
+    set({ loading: false });
+  },
+
 
   uploadInvoice: async (data) => {
     set({ loading: true });

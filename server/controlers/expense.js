@@ -2,11 +2,9 @@ import Expense from "../models/expense.js";
 import mongoose from "mongoose";
 import moment from "moment";
 
-
 export const getExpenses = async (req, res) => {
   try {
-    const result = await Expense.find({
-    }).sort({date: -1}).limit(50);
+    const result = await Expense.find({}).sort({ date: -1 }).limit(50);
     res.json(result);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -35,6 +33,28 @@ export const getDailyTotal = async (req, res) => {
   }
 };
 
+export const getMonthlyTotal = async (req, res) => {
+  try {
+    const now = new Date();
+    const firstDay = new Date(now.getFullYear(), now.getMonth(), 1);
+    const lastDay = new Date(now.getFullYear() + 1, now.getMonth() + 1, 0);
+    const list = await Expense.find({
+      date: { $gte: firstDay, $lte: lastDay },
+    });
+
+    // TOTAL OF expense IN A DAY
+    const total = list.map((a) => a.amount);
+    const result = total.reduce((accumulator, value) => {
+      return accumulator + value;
+    }, 0);
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+    console.log(error);
+  }
+};
+
+
 export const uploadExpense = async (req, res) => {
   try {
     const { date, quantity, amount, time } = req.body;
@@ -57,7 +77,7 @@ export const uploadExpense = async (req, res) => {
 export const updateExpense = async (req, res) => {
   try {
     const { id } = req.params;
-    const { date, transactionNo, expenseNo, quantity, amount,time } = req.body;
+    const { date, transactionNo, expenseNo, quantity, amount, time } = req.body;
     if (!mongoose.Types.ObjectId.isValid(id))
       return res.status(404).send({ message: `Not a valid id: ${id}` });
 

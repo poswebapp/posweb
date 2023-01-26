@@ -5,6 +5,7 @@ import {
   updateInvoice,
   uploadInvoice,
   getDailyTotal,
+  getMonthlyTotal,
 } from "../controlers/invoice.js";
 
 const router = express.Router();
@@ -12,6 +13,7 @@ const router = express.Router();
 
 router.get("/get", getInvoices);
 router.get("/getDaily", getDailyTotal);
+router.get("/getMonthly", getMonthlyTotal);
 router.patch("/patch/:id", updateInvoice);
 router.post("/upload", uploadInvoice);
 router.delete("/delete/:id", deleteInvoice);
