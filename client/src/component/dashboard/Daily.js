@@ -9,8 +9,8 @@ const Daily = () => {
   const expense = expenseStore((state) => state.total);
 
   const getDrawer = drawerStore((state) => state.getDailyTotal);
-  const getInvoice = drawerStore((state) => state.getDailyTotal);
-  const getExpense = drawerStore((state) => state.getDailyTotal);
+  const getInvoice = invoiceStore((state) => state.getDailyTotal);
+  const getExpense = expenseStore((state) => state.getDailyTotal);
 
   const [onhand, setonhand] = useState(0);
   const [gain, setgain] = useState(0);
