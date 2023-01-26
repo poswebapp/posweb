@@ -4,7 +4,7 @@ import moment from "moment";
 
 export const getExpenses = async (req, res) => {
   try {
-    const result = await Expense.find({}).sort({ date: -1 }).limit(50);
+    const result = await Expense.find({}).sort({ date: 1 }).limit(50);
     res.json(result);
   } catch (error) {
     res.status(500).json({ message: error.message });

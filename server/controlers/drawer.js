@@ -10,7 +10,7 @@ export const getDrawers = async (req, res) => {
       //   $gte: today.toDate(),
       //   $lte: moment(today).endOf("day").toDate(),
       // },
-    }).sort({date: -1}).limit(50);
+    }).sort({date: 1}).limit(50);
     res.json(result);
   } catch (error) {
     res.status(500).json({ message: error.message });

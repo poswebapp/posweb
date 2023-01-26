@@ -11,7 +11,7 @@ export const getInvoices = async (req, res) => {
       //   $lte: moment(today).endOf("day").toDate(),
       // },
     })
-      .sort({ date: -1 })
+      .sort({ date: 1 })
       .limit(50);
     res.json(result);
   } catch (error) {
