@@ -9,7 +9,7 @@ const TopContent = () => {
   },[getTotal])
   
   return (
-    <span className="flex flex-wrap flex-1 flex-row md:justify-between content-start grid-cols-4 gap-5 w-full h-auto">
+    <span className="flex flex-wrap flex-1 flex-row md:justify-start content-start grid-cols-4 gap-5 w-full h-auto">
       <Content name={"Total Goods"} value={total.good} border={"border-cyan-600"} />
       <Content name={"Total Incoming"} value={total.incoming} border={"border-amber-600"} />
       <Content name={"Stocks of Goods"} value={total.stock} border={"border-violet-400"} />

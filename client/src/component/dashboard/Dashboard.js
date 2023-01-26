@@ -21,12 +21,12 @@ const Dashboard = () => {
         <div className="flex flex-col justify-center content-center w-full h-auto">
           {loading && <Loading />}
           <div className="m-auto md:bg-white md:shadow-lg rounded-2xl flex flex-col flex-wrap h-auto w-full p-4 md:border md:border-zinc-300 gap-y-5 justify-start content-start">
-            <TopContent />
+            <Daily />
             <span className="flex flex-wrap w-auto justify-between gap-5 flex-row">
               {/* <Chart /> */}
               <Recent />
             </span>
-            <Daily />
+            <TopContent />
             <ReportChart list={monthly} />
           </div>
         </div>
