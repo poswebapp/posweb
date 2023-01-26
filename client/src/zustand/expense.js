@@ -17,7 +17,6 @@ export const expenseStore = create((set) => ({
   err: null,
   total: 0,
   monthly: 0,
-  monthly: 0,
 
   getExpense: async () => {
     set({ loading: true });
