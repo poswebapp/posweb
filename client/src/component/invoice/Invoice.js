@@ -21,6 +21,8 @@ const Invoice = () => {
     quantity: "",
     time: "",
     amount: "",
+    transactionNo: "",
+    invoicesNo: "",
   });
 
   // const dom = React.useRef(null);
@@ -36,6 +38,8 @@ const Invoice = () => {
       time: "",
       quantity: "",
       amount: "",
+      transactionNo: "",
+      invoicesNo: "",
     });
   };
 
@@ -57,7 +61,7 @@ const Invoice = () => {
       if (
         data.date === "" ||
         data.quantity === "" ||
-        data.amount === "" || 
+        data.amount === "" ||
         data.time === ""
       ) {
         alert("Complete Form input");

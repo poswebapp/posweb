@@ -37,12 +37,12 @@ export const getDailyTotal = async (req, res) => {
 
 export const uploadSale = async (req, res) => {
   try {
-    const { date, quantity, amount, time } = req.body;
+    const { date, quantity, amount,transactionNo,saleNo, time } = req.body;
     const sale = new Sale({
       date,
       time,
-      // transactionNo,
-      // saleNo,
+      transactionNo,
+      saleNo,
       quantity,
       amount,
     });
@@ -57,7 +57,7 @@ export const uploadSale = async (req, res) => {
 export const updateSale = async (req, res) => {
   try {
     const { id } = req.params;
-    const { date, quantity, amount,time } = req.body;
+    const { date, quantity, amount,transactionNo,saleNo, time } = req.body;
     if (!mongoose.Types.ObjectId.isValid(id))
       return res.status(404).send({ message: `Not a valid id: ${id}` });
 
@@ -66,8 +66,8 @@ export const updateSale = async (req, res) => {
       {
         date,
         time,
-        // transactionNo,
-        // saleNo,
+        transactionNo,
+        saleNo,
         quantity,
         amount,
       },

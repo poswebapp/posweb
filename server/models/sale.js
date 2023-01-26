@@ -5,8 +5,8 @@ const saleSchema = mongoose.Schema({
   time: { type: String, require: true },
   quantity: { type: Number, require: true },
   amount: { type: Number, require: true },
-  // saleNo: { type: String, require: true },
-  // transactionNo: { type: String, require: true },
+  saleNo: { type: String, require: true },
+  transactionNo: { type: String, require: true },
 });
 
 var Sale = mongoose.model("Sale", saleSchema);

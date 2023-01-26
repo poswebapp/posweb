@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Layout from "../Layout";
-// import Chart from "./Chart";
+// import Chart from "./Chart"
+import Daily from "./Daily";
 import ReportChart from "./ReportChart";
 import TopContent from "./TopContent";
 import { totalStore } from "../../zustand/total";
@@ -25,6 +26,7 @@ const Dashboard = () => {
               {/* <Chart /> */}
               <Recent />
             </span>
+            <Daily />
             <ReportChart list={monthly} />
           </div>
         </div>

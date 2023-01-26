@@ -17,6 +17,8 @@ const Sale = () => {
   const [list, setlist] = useState(null);
   const [show, setshow] = useState(false);
   const [data, setdata] = useState({
+    transactionNo : "",
+    saleNo: "", 
     date: "",
     quantity: "",
     amount: "",
@@ -32,6 +34,8 @@ const Sale = () => {
     setid(0);
     setlist(null);
     setdata({
+    transactionNo : "",
+    saleNo: "", 
       date: "",
       time: "",
       quantity: "",
@@ -55,6 +59,8 @@ const Sale = () => {
     e.preventDefault();
     if (id === 0) {
       if (
+        data.transactionNo === "" ||
+        data.saleNo === "" ||
         data.date === "" ||
         data.time === "" ||
         data.quantity === "" ||

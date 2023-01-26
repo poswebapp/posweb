@@ -34,7 +34,8 @@ const List = ({ setid, setshow }) => {
               <tr key={a._id}>
                 {/* <td className={tr}> {index + 1} </td> */}
                 {/* <td className={tr}> {index+1} </td> */}
-                <td className={tr}> {index+ 1}</td>
+                <td className={tr}>{a.transactionNo}</td>
+                <td className={tr}>{a.saleNo}</td>
                 <td className={tr}>
                   <Moment date={a.date} format="MMM-DD-YYYY" />
                 </td>

@@ -24,11 +24,11 @@ const Table = ({ element }) => {
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
-                    {/* <th scope="col" className={th}> */}
-                    {/*   Transaction No */}
-                    {/* </th> */}
                     <th scope="col" className={th}>
-                      Expense No
+                      Transaction No
+                    </th>
+                    <th scope="col" className={th}>
+                      Sale No
                     </th>
                     <th scope="col" className={th}>
                       Date

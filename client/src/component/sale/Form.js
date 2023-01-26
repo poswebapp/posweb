@@ -13,6 +13,21 @@ const Form = ({ currentId, data, onChange, onSubmit }) => {
         {currentId ? "Update Invoice" : "Upload Invoice"}
       </h4>
       <hr className="text-zinc-400 " />
+      <Input
+        placeholder={"Transaction No."}
+        name={"transactionNo"}
+        value={data.transactionNo}
+        type={"number"}
+        onChange={onChange}
+      />
+      <Input
+        placeholder={"Sale No."}
+        name={"saleNo"}
+        value={data.saleNo}
+        type={"number"}
+        onChange={onChange}
+      />
+    
       <Date
         placeholder={"Date"}
         name={"date"}
