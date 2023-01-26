@@ -6,6 +6,7 @@ import { totalStore } from "../../zustand/total";
 const TopContent = () => {
   const getMonthlyExpense = expenseStore((state) => state.getMonthlyTotal);
   const getMonthlyIncome = invoiceStore((state) => state.getMonthlyTotal);
+  const getQuarterlyIncome = invoiceStore((state) => state.getQuarterlyTotal);
 
   const total = totalStore((state) => state.total);
   const getTotal = totalStore((state) => state.getTotal);
@@ -17,12 +18,19 @@ const TopContent = () => {
   const monthlyExpense = expenseStore((state) => state.monthly);
   const monthlyIncome = invoiceStore((state) => state.monthly);
   const monthlySale = monthlyIncome - monthlyExpense;
+  
+  const quarterlyExpense = expenseStore((state) => state.quarterly);
+  const quarterlyIncome = invoiceStore((state) => state.quarterly);
+  const quarterlySale = quarterlyIncome - quarterlyExpense;
+  
+  
 
   useEffect(() => {
     getTotal();
     getMonthlyExpense();
     getMonthlyIncome();
-  }, [getTotal, getMonthlyExpense, getMonthlyIncome]);
+    getQuarterlyIncome()
+  }, [getTotal, getMonthlyExpense, getMonthlyIncome, getQuarterlyIncome]);
 
   return (
     <span className="flex flex-wrap flex-1 flex-row md:justify-start content-start grid-cols-4 gap-5 w-full h-auto">
@@ -43,27 +51,37 @@ const TopContent = () => {
       />
 
       <Content
+        name={"Daily Income"}
+        value={dailyIncome}
+        border={"border-amber-800"}
+      />
+      <Content
         name={"Daily Sale"}
         value={dailySale}
         border={"border-amber-800"}
       />
+    
       <Content
-        name={"Daily Income"}
-        value={dailyIncome}
-        border={"border-amber-800"}
+        name={"Monthly Income"}
+        value={monthlyIncome}
+        border={"border-amber-600"}
       />
       <Content
         name={"Monthly Sale"}
         value={monthlySale}
         border={"border-amber-600"}
       />
+    
       <Content
-        name={"Monthly Income"}
-        value={monthlyIncome}
-        border={"border-amber-600"}
+        name={"Quarterly Income"}
+        value={quarterlyIncome}
+        border={"border-amber-400"}
       />
-      {/* <Content name={"Monthly Expense"} value={12345} border={"border-amber-400"} /> */}
-      {/* <Content name={"Monthly Income"} value={12345} border={"border-amber-400"} /> */}
+      <Content
+        name={"Quarterly Sale"}
+        value={quarterlySale}
+        border={"border-amber-400"}
+      />
     </span>
   );
 };

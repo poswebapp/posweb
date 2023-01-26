@@ -54,6 +54,64 @@ export const getMonthlyTotal = async (req, res) => {
   }
 };
 
+export const getQuarterlyTotal = async (req, res) => {
+  try {
+    const now = new Date();
+    const currentMonth = now.getMonth();
+    let currentYear = now.getFullYear();
+
+    let startDate, endDate;
+
+    if (currentMonth < 3) {
+      // first quarter
+      startDate = new Date(currentYear, 0, 1);
+      endDate = new Date(currentYear, 2, 31);
+    } else if (currentMonth < 6) {
+      // second quarter
+      startDate = new Date(currentYear, 3, 1);
+      endDate = new Date(currentYear, 5, 30);
+    } else if (currentMonth < 9) {
+      // third quarter
+      startDate = new Date(currentYear, 6, 1);
+      endDate = new Date(currentYear, 8, 30);
+    } else {
+      // fourth quarter
+      startDate = new Date(currentYear, 9, 1);
+      endDate = new Date(currentYear, 11, 31);
+    }
+
+    Expense.aggregate(
+      [
+        {
+          $match: {
+            date: {
+              $gte: startDate,
+              $lt: endDate,
+            },
+          },
+        },
+        {
+          $group: {
+            _id: null,
+            totalAmount: { $sum: "$amount" },
+          },
+        },
+      ],
+      (err, result) => {
+        if (err) {
+          console.log(err.message);
+        } else {
+          res.json(result[0].totalAmount);
+          console.log(result[0].totalAmount);
+        }
+      }
+    );
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+    console.log(error);
+  }
+};
+
 
 export const uploadExpense = async (req, res) => {
   try {

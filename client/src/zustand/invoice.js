@@ -17,6 +17,7 @@ export const invoiceStore = create((set) => ({
   err: null,
   total: 0,
   monthly: 0,
+  quarterly: 0,
 
   getInvoice: async () => {
     set({ loading: true });
@@ -56,6 +57,20 @@ export const invoiceStore = create((set) => ({
     }
     set({ loading: false });
   },
+  
+  getQuarterlyTotal: async () => {
+    set({ loading: true });
+    try {
+      const result = await api.get("/invoice/getQuarterly");
+      set({ quarterly: result.data });
+    } catch (err) {
+      console.log(err)
+      alert(err.response.data.message);
+      set({ err: err.response.data.message });
+    }
+    set({ loading: false });
+  },
+
 
 
   uploadInvoice: async (data) => {

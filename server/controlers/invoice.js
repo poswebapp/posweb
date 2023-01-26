@@ -10,7 +10,9 @@ export const getInvoices = async (req, res) => {
       //   $gte: today.toDate(),
       //   $lte: moment(today).endOf("day").toDate(),
       // },
-    }).sort({date: -1}).limit(50);
+    })
+      .sort({ date: -1 })
+      .limit(50);
     res.json(result);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -21,24 +23,42 @@ export const getInvoices = async (req, res) => {
 export const getMonthlyTotal = async (req, res) => {
   try {
     const now = new Date();
-    const firstDay = new Date(now.getFullYear(), now.getMonth(), 1);
-    const lastDay = new Date(now.getFullYear() + 1, now.getMonth() + 1, 0);
-    const list = await Invoice.find({
-      date: { $gte: firstDay, $lte: lastDay },
-    });
+    const currentMonth = now.getMonth();
+    const currentYear = now.getFullYear();
 
-    // TOTAL OF expense IN A DAY
-    const total = list.map((a) => a.amount);
-    const result = total.reduce((accumulator, value) => {
-      return accumulator + value;
-    }, 0);
-    res.json(result);
+    const startDate = new Date(currentYear, currentMonth, 1);
+    const endDate = new Date(currentYear, currentMonth + 1, 0);
+
+    Invoice.aggregate(
+      [
+        {
+          $match: {
+            date: {
+              $gte: startDate,
+              $lt: endDate,
+            },
+          },
+        },
+        {
+          $group: {
+            _id: null,
+            totalAmount: { $sum: "$amount" },
+          },
+        },
+      ],
+      (err, result) => {
+        if (err) {
+          console.log(err);
+        } else {
+          res.json(result[0].totalAmount);
+        }
+      }
+    );
   } catch (error) {
     res.status(500).json({ message: error.message });
     console.log(error);
   }
 };
-
 
 export const getDailyTotal = async (req, res) => {
   try {
@@ -55,6 +75,63 @@ export const getDailyTotal = async (req, res) => {
       return accumulator + value;
     }, 0);
     res.json(result);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+    console.log(error);
+  }
+};
+
+export const getQuarterlyTotal = async (req, res) => {
+  try {
+    const now = new Date();
+    const currentMonth = now.getMonth();
+    let currentYear = now.getFullYear();
+
+    let startDate, endDate;
+
+    if (currentMonth < 3) {
+      // first quarter
+      startDate = new Date(currentYear, 0, 1);
+      endDate = new Date(currentYear, 2, 31);
+    } else if (currentMonth < 6) {
+      // second quarter
+      startDate = new Date(currentYear, 3, 1);
+      endDate = new Date(currentYear, 5, 30);
+    } else if (currentMonth < 9) {
+      // third quarter
+      startDate = new Date(currentYear, 6, 1);
+      endDate = new Date(currentYear, 8, 30);
+    } else {
+      // fourth quarter
+      startDate = new Date(currentYear, 9, 1);
+      endDate = new Date(currentYear, 11, 31);
+    }
+
+    Invoice.aggregate(
+      [
+        {
+          $match: {
+            date: {
+              $gte: startDate,
+              $lt: endDate,
+            },
+          },
+        },
+        {
+          $group: {
+            _id: null,
+            totalAmount: { $sum: "$amount" },
+          },
+        },
+      ],
+      (err, result) => {
+        if (err) {
+          console.log(err.message);
+        } else {
+          res.json(result[0].totalAmount);
+        }
+      }
+    );
   } catch (error) {
     res.status(500).json({ message: error.message });
     console.log(error);
@@ -83,7 +160,7 @@ export const uploadInvoice = async (req, res) => {
 export const updateInvoice = async (req, res) => {
   try {
     const { id } = req.params;
-    const { date, transactionNo, invoiceNo, quantity, amount,time } = req.body;
+    const { date, transactionNo, invoiceNo, quantity, amount, time } = req.body;
     if (!mongoose.Types.ObjectId.isValid(id))
       return res.status(404).send({ message: `Not a valid id: ${id}` });
 
