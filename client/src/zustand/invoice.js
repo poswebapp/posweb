@@ -17,7 +17,6 @@ export const invoiceStore = create((set) => ({
   err: null,
   total: 0,
   monthly: 0,
-  monthly: 0,
 
   getInvoice: async () => {
     set({ loading: true });
