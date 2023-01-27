@@ -102,7 +102,6 @@ export const getQuarterlyTotal = async (req, res) => {
           console.log(err.message);
         } else {
           res.json(result[0].totalAmount);
-          console.log(result[0].totalAmount);
         }
       }
     );
@@ -112,6 +111,40 @@ export const getQuarterlyTotal = async (req, res) => {
   }
 };
 
+export const getYearlyTotal = async (req, res) => {
+  try {
+    const now = new Date();
+    Expense.aggregate(
+      [
+        {
+          $match: {
+            date: {
+              $gte: new Date(now.getFullYear(), 0, 1),
+              $lt: new Date(now.getFullYear(), 12, 0),
+            },
+          },
+        },
+        {
+          $group: {
+            _id: null,
+            totalAmount: { $sum: "$amount" },
+          },
+        },
+      ],
+      (err, result) => {
+        if (err) {
+          console.log(err.message);
+        } else {
+          console.log(result[0].totalAmount);
+          res.json(result[0].totalAmount);
+        }
+      }
+    );
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+    console.log(error);
+  }
+};
 
 export const uploadExpense = async (req, res) => {
   try {

@@ -18,6 +18,7 @@ export const expenseStore = create((set) => ({
   total: 0,
   monthly: 0,
   quarterly: 0,
+  yearly: 0,
 
   getExpense: async () => {
     set({ loading: true });
@@ -70,6 +71,18 @@ export const expenseStore = create((set) => ({
     set({ loading: false });
   },
 
+  getYearlyTotal: async () => {
+    set({ loading: true });
+    try {
+      const result = await api.get("/expense/getYearly");
+      set({ yearly: result.data });
+    } catch (err) {
+      console.log(err)
+      alert(err.response.data.message);
+      set({ err: err.response.data.message });
+    }
+    set({ loading: false });
+  },
 
 
   uploadExpense: async (data) => {

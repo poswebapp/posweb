@@ -6,7 +6,10 @@ import { totalStore } from "../../zustand/total";
 const TopContent = () => {
   const getMonthlyExpense = expenseStore((state) => state.getMonthlyTotal);
   const getMonthlyIncome = invoiceStore((state) => state.getMonthlyTotal);
+  const getQuarterlyExpense = expenseStore((state) => state.getQuarterlyTotal);
   const getQuarterlyIncome = invoiceStore((state) => state.getQuarterlyTotal);
+  const getYearlyExpense = expenseStore((state) => state.getYearlyTotal);
+  const getYearlyIncome = invoiceStore((state) => state.getYearlyTotal);
 
   const total = totalStore((state) => state.total);
   const getTotal = totalStore((state) => state.getTotal);
@@ -24,13 +27,21 @@ const TopContent = () => {
   const quarterlySale = quarterlyIncome - quarterlyExpense;
   
   
+  const yearlyExpense = expenseStore((state) => state.yearly);
+  const yearlyIncome = invoiceStore((state) => state.yearly);
+  const yearlySale = yearlyIncome - yearlyExpense;
+  
+  
 
   useEffect(() => {
     getTotal();
     getMonthlyExpense();
     getMonthlyIncome();
+    getQuarterlyExpense()
     getQuarterlyIncome()
-  }, [getTotal, getMonthlyExpense, getMonthlyIncome, getQuarterlyIncome]);
+    getYearlyExpense();
+    getYearlyIncome()
+  }, [getTotal, getMonthlyExpense, getMonthlyIncome, getQuarterlyIncome, getQuarterlyExpense, getYearlyExpense, getYearlyIncome]);
 
   return (
     <span className="flex flex-wrap flex-1 flex-row md:justify-start content-start grid-cols-4 gap-5 w-full h-auto">
@@ -80,6 +91,17 @@ const TopContent = () => {
       <Content
         name={"Quarterly Sale"}
         value={quarterlySale}
+        border={"border-amber-400"}
+      />
+    
+      <Content
+        name={"Annual Income"}
+        value={yearlyIncome}
+        border={"border-amber-400"}
+      />
+      <Content
+        name={"Annoul Sale"}
+        value={yearlySale}
         border={"border-amber-400"}
       />
     </span>
