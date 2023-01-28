@@ -163,7 +163,6 @@ export const getYearlyTotal = async (req, res) => {
           console.log(err.message);
         } else {
           res.json(result[0].totalAmount);
-          console.log(result[0].totalAmount);
         }
       }
     );
