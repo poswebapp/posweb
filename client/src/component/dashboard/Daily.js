@@ -27,7 +27,8 @@ const Daily = () => {
 
   return (
     <div>
-      <span className="flex flex-row justify-apart gap-5 gap-y-2 flex-wrap">
+      <span className="flex flex-row justify-apart gap-5 gap-y-2 flex-wrap border shadow-lg rounded-xl relative mt-5 pt-5">
+    <p className="absolute left-5 -top-4 bg-zinc-700 text-white font-bold uppercase rounded-lg p-1 px-4 shadow-lg">Daily</p>
         <Content
           border={"border-amber-800"}
           name={"Gross Income"}
