@@ -1,6 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import BtnDelete from "../utility/BtnDelete";
 import BtnEdit from "../utility/BtnEdit";
+import Btn from "../utility/Btn";
+import BtnCancel from "../utility/BtnCancel";
 import Table from "./Table";
 import { drawerStore } from "../../zustand/drawer";
 import Moment from "react-moment";
@@ -23,7 +25,8 @@ const List = ({ setid, setshow }) => {
   useEffect(() => {
     getDailyTotal();
   }, [getDailyTotal, drawers]);
-  console.log("total",total);
+
+  const [remove, setremove] = useState(false);
   return (
     <div className="w-auto grid mx-auto">
       <Table
@@ -42,20 +45,40 @@ const List = ({ setid, setshow }) => {
                 <td className={tr}> {a.quantity} </td>
                 <td className={tr}> {a.amount} </td>
                 <td className={act}>
-                  <BtnEdit
-                    loading={loading}
-                    onClick={() => {
-                      setid(a._id);
-                      setshow(true);
-                      window.scroll(0, 0);
-                    }}
-                  />
-                  <BtnDelete
-                    loading={loading}
-                    onClick={() => {
-                      deleteDrawer(a._id);
-                    }}
-                  />
+
+                  {remove ? (
+                    <BtnCancel
+                      loading={loading}
+                      onClick={() => {
+                        setremove(false);
+                      }}
+                    />
+                  ) : (
+                    <BtnEdit
+                      loading={loading}
+                      onClick={() => {
+                        setid(a._id);
+                        setshow(true);
+                        window.scroll(0, 0);
+                      }}
+                    />
+                  )}
+                  {remove ? (
+                    <BtnDelete
+                      loading={loading}
+                      onClick={() => {
+                        deleteDrawer(a._id);
+                        setremove(false);
+                      }}
+                    />
+                  ) : (
+                    <Btn
+                      loading={loading}
+                      onClick={() => {
+                        setremove(true);
+                      }}
+                    />
+                  )}
                 </td>
               </tr>
             ))}

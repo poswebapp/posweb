@@ -1,6 +1,8 @@
-import React,{useEffect} from 'react'
+import React,{useEffect, useState} from 'react'
 import BtnDelete from "../utility/BtnDelete";
 import BtnEdit from "../utility/BtnEdit";
+import Btn from "../utility/Btn";
+import BtnCancel from "../utility/BtnCancel";
 import  Table  from "./Table";
 import { incomingStore } from "../../zustand/incoming";
 import Moment from 'react-moment';
@@ -20,6 +22,7 @@ const List = ({setid,setshow}) => {
   useEffect(() => {
     getIncoming();
   }, [getIncoming]);
+  const [remove, setremove] = useState(false);
 
   return (
     <div className='w-auto grid mx-auto' >
@@ -35,20 +38,39 @@ const List = ({setid,setshow}) => {
                 <td className={tr}> {a.quantity} </td>
                 {/* <td className={tr}> {a._id} </td> */}
                 <td className={act}>
-                  <BtnEdit
-                    loading={loading}
-                    onClick={() => {
-                      setid(a._id);
-                      setshow(true);
-                      window.scroll(0,0);
-                    }}
-                  />
-                  <BtnDelete
-                    loading={loading}
-                    onClick={() => {
-                      deleteIncoming(a._id);
-                    }}
-                  />
+                  {remove ? (
+                    <BtnCancel
+                      loading={loading}
+                      onClick={() => {
+                        setremove(false);
+                      }}
+                    />
+                  ) : (
+                    <BtnEdit
+                      loading={loading}
+                      onClick={() => {
+                        setid(a._id);
+                        setshow(true);
+                        window.scroll(0, 0);
+                      }}
+                    />
+                  )}
+                  {remove ? (
+                    <BtnDelete
+                      loading={loading}
+                      onClick={() => {
+                        deleteIncoming(a._id);
+                        setremove(false);
+                      }}
+                    />
+                  ) : (
+                    <Btn
+                      loading={loading}
+                      onClick={() => {
+                        setremove(true);
+                      }}
+                    />
+                  )}
                 </td>
               </tr>
             ))}
