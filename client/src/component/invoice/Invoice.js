@@ -6,6 +6,8 @@ import Layout from "../Layout";
 // import autoAnimate from "@formkit/auto-animate";
 import Loading from "../Loading";
 import PagesTitle from "../utility/PagesTitle";
+import { ToastContainer } from "react-toastify";
+import { errNotify, okNotify } from "../utility/alert";
 
 const Invoice = () => {
   const invoices = invoiceStore((state) => state.invoices);
@@ -29,6 +31,7 @@ const Invoice = () => {
   // useEffect(() => {
   //   dom.current && autoAnimate(dom.current);
   // }, [dom]);
+ 
 
   const clear = () => {
     setid(0);
@@ -66,11 +69,11 @@ const Invoice = () => {
       ) {
         alert("Complete Form input");
       } else {
-        await uploadInvoice(data);
+        await uploadInvoice(data,okNotify,errNotify);
         clear();
       }
     } else {
-      await updateInvoice(data, id);
+      await updateInvoice(data, id, okNotify,errNotify);
       clear();
     }
   };
@@ -80,6 +83,7 @@ const Invoice = () => {
       element={
         // <div className="grid pt-20" ref={dom}>
         <div className="grid pt-20">
+         <ToastContainer/> 
           <PagesTitle text={"invoice"} />
           <button
             className="p-4 border-2 rounded-md text-white border-zinc-800 text-sm font-[400] bg-zinc-800 m-auto transition-all duration-300 ease-linear fixed right-10 bottom-10 z-50"

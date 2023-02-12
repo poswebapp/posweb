@@ -6,6 +6,7 @@ import BtnCancel from "../utility/BtnCancel";
 import Table from "./Table";
 import { invoiceStore } from "../../zustand/invoice";
 import Moment from "react-moment";
+import { errNotify, okNotify } from "../utility/alert";
 
 const List = ({ setid, setshow }) => {
   const tr = "px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap ";
@@ -65,7 +66,7 @@ const List = ({ setid, setshow }) => {
                     <BtnDelete
                       loading={loading}
                       onClick={() => {
-                        deleteInvoice(a._id);
+                        deleteInvoice(a._id,okNotify,errNotify);
                         setremove(false);
                       }}
                     />

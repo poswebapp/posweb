@@ -85,19 +85,21 @@ export const invoiceStore = create((set) => ({
     set({ loading: false });
   },
 
-  uploadInvoice: async (data) => {
+  uploadInvoice: async (data,okNotify,errNotify) => {
     set({ loading: true });
     try {
       const result = await api.post("/invoice/upload", data);
       set((state) => ({ invoices: [...state.invoices, result.data] }));
+      okNotify("Invoice Uploaded!")
     } catch (err) {
       alert(err.response.data.message);
+      errNotify("Something went Wrong!")
       set({ err: err.response.data.message });
     }
     set({ loading: false });
   },
 
-  updateInvoice: async (data, id) => {
+  updateInvoice: async (data, id,okNotify,errNotify) => {
     set({ loading: true });
     try {
       const result = await api.patch(`/invoice/patch/${id}`, data);
@@ -106,21 +108,25 @@ export const invoiceStore = create((set) => ({
           ...state.invoices.map((a) => (a._id === id ? result.data : a)),
         ],
       }));
+      okNotify("Invoice Updated!")
     } catch (err) {
+      errNotify("Something went Wrong!")
       alert(err.response.data.message);
       set({ err: err.response.data.message });
     }
     set({ loading: false });
   },
 
-  deleteInvoice: async (id) => {
+  deleteInvoice: async (id,okNotify,errNotify) => {
     set({ loading: true });
     try {
       await api.delete(`/invoice/delete/${id}`);
       set((state) => ({
         invoices: state.invoices.filter((a) => a._id !== id),
       }));
+     okNotify("Invoice deleted!") 
     } catch (err) {
+      errNotify("Something went Wrong!")
       alert(err.response.data.message);
       set({ err: err.response.data.message });
     }
