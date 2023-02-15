@@ -6,7 +6,7 @@ import BtnCancel from "../utility/BtnCancel";
 import Table from "./Table";
 import { invoiceStore } from "../../zustand/invoice";
 import Moment from "react-moment";
-import { errNotify, okNotify } from "../utility/alert";
+import { errNotify, warnNotify } from "../utility/alert";
 
 const List = ({ setid, setshow }) => {
   const tr = "px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap ";
@@ -36,7 +36,7 @@ const List = ({ setid, setshow }) => {
             {invoices?.reverse().map((a, index) => (
               <tr key={a._id}>
                 {/* <td className={tr}> {index+1} </td> */}
-                <td className={tr}> {a.transactionNo}</td>
+                <td className={tr}> {a._id}</td>
                 <td className={tr}> {a.invoiceNo}</td>
                 <td className={tr}>
                   <Moment date={a.date} format="MMM-DD-YYYY" />
@@ -66,7 +66,7 @@ const List = ({ setid, setshow }) => {
                     <BtnDelete
                       loading={loading}
                       onClick={() => {
-                        deleteInvoice(a._id,okNotify,errNotify);
+                        deleteInvoice(a._id,errNotify,warnNotify);
                         setremove(false);
                       }}
                     />

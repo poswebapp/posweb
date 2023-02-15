@@ -1,6 +1,7 @@
 import Invoice from "../models/invoice.js";
 import mongoose from "mongoose";
 import moment from "moment";
+import { nanoid } from 'nanoid'
 
 export const getInvoices = async (req, res) => {
   try {
@@ -174,12 +175,13 @@ export const getYearlyTotal = async (req, res) => {
 
 export const uploadInvoice = async (req, res) => {
   try {
-    const { date, transactionNo, invoiceNo, quantity, amount, time } = req.body;
+    const { quantity, amount, time } = req.body;
+    const now = new Date();
     const invoice = new Invoice({
-      date,
+      date: new Date(now.getFullYear(),now.getMonth(),now.getDate()),
       time,
-      transactionNo,
-      invoiceNo,
+      // transactionNo,
+      invoiceNo: nanoid(),
       quantity,
       amount,
     });
@@ -194,7 +196,7 @@ export const uploadInvoice = async (req, res) => {
 export const updateInvoice = async (req, res) => {
   try {
     const { id } = req.params;
-    const { date, transactionNo, invoiceNo, quantity, amount, time } = req.body;
+    const { date, quantity, amount, time } = req.body;
     if (!mongoose.Types.ObjectId.isValid(id))
       return res.status(404).send({ message: `Not a valid id: ${id}` });
 
@@ -203,8 +205,8 @@ export const updateInvoice = async (req, res) => {
       {
         date,
         time,
-        transactionNo,
-        invoiceNo,
+        // transactionNo,
+        // invoiceNo,
         quantity,
         amount,
       },

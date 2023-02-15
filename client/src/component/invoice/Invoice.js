@@ -19,12 +19,12 @@ const Invoice = () => {
   const [list, setlist] = useState(null);
   const [show, setshow] = useState(false);
   const [data, setdata] = useState({
-    date: "",
+    // date: "",
     quantity: "",
     time: "",
     amount: "",
-    transactionNo: "",
-    invoiceNo: "",
+    // transactionNo: "",
+    // invoiceNo: "",
   });
 
   // const dom = React.useRef(null);
@@ -37,12 +37,12 @@ const Invoice = () => {
     setid(0);
     setlist(null);
     setdata({
-      date: "",
+      // date: "",
       time: "",
       quantity: "",
       amount: "",
-      transactionNo: "",
-      invoiceNo: "",
+      // transactionNo: "",
+      // invoiceNo: "",
     });
   };
 
@@ -62,7 +62,7 @@ const Invoice = () => {
     e.preventDefault();
     if (id === 0) {
       if (
-        data.date === "" ||
+        // data.date === "" ||
         data.quantity === "" ||
         data.amount === "" ||
         data.time === ""

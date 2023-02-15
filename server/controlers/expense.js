@@ -168,7 +168,7 @@ export const uploadExpense = async (req, res) => {
 export const updateExpense = async (req, res) => {
   try {
     const { id } = req.params;
-    const { date, transactionNo, expenseNo, quantity, amount, time } = req.body;
+    const { date, quantity, amount, time } = req.body;
     if (!mongoose.Types.ObjectId.isValid(id))
       return res.status(404).send({ message: `Not a valid id: ${id}` });
 
@@ -177,8 +177,8 @@ export const updateExpense = async (req, res) => {
       {
         date,
         time,
-        transactionNo,
-        expenseNo,
+        // transactionNo,
+        // expenseNo,
         quantity,
         amount,
       },
