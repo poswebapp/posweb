@@ -88,6 +88,7 @@ export const goodStore = create((set) => ({
       await api.delete(`/good/delete/${id}`);
       set((state) => ({ goods: state.goods.filter((a) => a._id !== id) }));
     } catch (err) {
+     console.log(err) 
       alert(err.response.data.message);
       set({ err: err.response.data.message });
     }
