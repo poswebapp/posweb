@@ -35,7 +35,6 @@ export const drawerStore = create((set) => ({
     try {
       const result = await api.get("/drawer/getDaily");
       set({ total: result.data });
-      console.log(result)
     } catch (err) {
       console.log(err)
       alert(err.response.data.message);

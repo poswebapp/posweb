@@ -26,8 +26,6 @@ export const invoiceStore = create((set) => ({
       set({ invoices: result.data });
     } catch (err) {
       console.log(err);
-      alert(err.response.data.message);
-      set({ err: err.response.data.message });
     }
     set({ loading: false });
   },
@@ -39,8 +37,6 @@ export const invoiceStore = create((set) => ({
       set({ total: result.data });
     } catch (err) {
       console.log(err);
-      alert(err.response.data.message);
-      set({ err: err.response.data.message });
     }
     set({ loading: false });
   },
@@ -52,8 +48,6 @@ export const invoiceStore = create((set) => ({
       set({ monthly: result.data });
     } catch (err) {
       console.log(err);
-      alert(err.response.data.message);
-      set({ err: err.response.data.message });
     }
     set({ loading: false });
   },
@@ -65,8 +59,6 @@ export const invoiceStore = create((set) => ({
       set({ quarterly: result.data });
     } catch (err) {
       console.log(err);
-      alert(err.response.data.message);
-      set({ err: err.response.data.message });
     }
     set({ loading: false });
   },
@@ -76,11 +68,8 @@ export const invoiceStore = create((set) => ({
     try {
       const result = await api.get("/invoice/getYearly");
       set({ yearly: result.data });
-      console.log(result.data)
     } catch (err) {
       console.log(err);
-      alert(err.response.data.message);
-      set({ err: err.response.data.message });
     }
     set({ loading: false });
   },
@@ -92,9 +81,7 @@ export const invoiceStore = create((set) => ({
       set((state) => ({ invoices: [...state.invoices, result.data] }));
       okNotify("Invoice Uploaded!")
     } catch (err) {
-      alert(err.response.data.message);
       errNotify("Something went Wrong!")
-      set({ err: err.response.data.message });
     }
     set({ loading: false });
   },
@@ -111,8 +98,6 @@ export const invoiceStore = create((set) => ({
       okNotify("Invoice Updated!")
     } catch (err) {
       errNotify("Something went Wrong!")
-      alert(err.response.data.message);
-      set({ err: err.response.data.message });
     }
     set({ loading: false });
   },
@@ -127,8 +112,6 @@ export const invoiceStore = create((set) => ({
      okNotify("Invoice deleted!") 
     } catch (err) {
       errNotify("Something went Wrong!")
-      alert(err.response.data.message);
-      set({ err: err.response.data.message });
     }
     set({ loading: false });
   },
