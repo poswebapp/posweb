@@ -1,14 +1,12 @@
-import React,{useEffect, useState} from 'react'
+import React, { useEffect, useState } from "react";
 import BtnDelete from "../utility/BtnDelete";
 import BtnEdit from "../utility/BtnEdit";
 import Btn from "../utility/Btn";
 import BtnCancel from "../utility/BtnCancel";
-import  Table  from "./Table";
+import Table from "./Table";
 import { goodStore } from "../../zustand/good";
 
-
-const List = ({setid,setshow}) => {
-  
+const List = ({ setid, setshow }) => {
   const tr = "px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap";
   const act =
     "px-6 py-4 text-sm font-medium text-gray-800 whitespace-wrap flex flex-rows gap-2";
@@ -16,15 +14,18 @@ const List = ({setid,setshow}) => {
   const loading = goodStore((state) => state.loading);
   const getGood = goodStore((state) => state.getGood);
   const deleteGood = goodStore((state) => state.deleteGood);
-  
 
   useEffect(() => {
     getGood();
   }, [getGood]);
+  const handleDelete = (a) => {
+    deleteGood(a._id);
+    setremove(false);
+  };
 
   const [remove, setremove] = useState(false);
   return (
-    <div className='w-auto grid mx-auto' >
+    <div className="w-auto grid mx-auto">
       <Table
         element={
           <>
@@ -56,13 +57,7 @@ const List = ({setid,setshow}) => {
                     />
                   )}
                   {remove ? (
-                    <BtnDelete
-                      loading={loading}
-                      onClick={() => {
-                        deleteGood(a._id);
-                        setremove(false);
-                      }}
-                    />
+                    <BtnDelete loading={loading} onClick={handleDelete(a)} />
                   ) : (
                     <Btn
                       loading={loading}
@@ -78,7 +73,7 @@ const List = ({setid,setshow}) => {
         }
       />
     </div>
-  )
-}
+  );
+};
 
-export default List
+export default List;
