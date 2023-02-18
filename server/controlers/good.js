@@ -87,6 +87,7 @@ export const updateGood = async (req, res) => {
 export const deleteGood = async (req, res) => {
   try {
     const { id } = req.params;
+    console.log(id);
     await Good.findByIdAndDelete(id);
     res.json({ message: "Good deleted" });
   } catch (error) {

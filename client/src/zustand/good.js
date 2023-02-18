@@ -44,7 +44,7 @@ export const goodStore = create((set) => ({
       const result = await api.get("/good/getMinimum");
       set({ minimum: result.data[0].doc[0] });
     } catch (err) {
-      alert(err.response.data.message);
+      console.log(err)
     }
     set({ loading: false });
   },
@@ -78,6 +78,7 @@ export const goodStore = create((set) => ({
   deleteGood: async (id) => {
     set({ loading: true });
     try {
+      console.log(id);
       await api.delete(`/good/delete/${id}`);
       set((state) => ({ goods: state.goods.filter((a) => a._id !== id) }));
     } catch (err) {

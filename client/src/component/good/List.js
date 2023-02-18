@@ -18,10 +18,6 @@ const List = ({ setid, setshow }) => {
   useEffect(() => {
     getGood();
   }, [getGood]);
-  const handleDelete = (a) => {
-    deleteGood(a._id);
-    setremove(false);
-  };
 
   const [remove, setremove] = useState(false);
   return (
@@ -37,7 +33,6 @@ const List = ({ setid, setshow }) => {
                 <td className={tr}> {a.stock} </td>
                 <td className={tr}> {a.unit} </td>
                 <td className={tr}> {a.price} </td>
-                {/* <td className={tr}> {a._id} </td> */}
                 <td className={act}>
                   {remove ? (
                     <BtnCancel
@@ -57,7 +52,13 @@ const List = ({ setid, setshow }) => {
                     />
                   )}
                   {remove ? (
-                    <BtnDelete loading={loading} onClick={handleDelete(a)} />
+                    <BtnDelete
+                      loading={loading}
+                      onClick={() => {
+                        deleteGood(a._id);
+                        setremove(false);
+                      }}
+                    />
                   ) : (
                     <Btn
                       loading={loading}
