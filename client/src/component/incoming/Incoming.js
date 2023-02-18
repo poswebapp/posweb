@@ -15,6 +15,7 @@ const Incoming = () => {
     date: "",
     supplier: "",
     name: "",
+    unit: "",
     quantity: "",
   });
 
@@ -30,6 +31,7 @@ const Incoming = () => {
       date: "",
       supplier: "",
       name: "",
+      unit: "",
       quantity: "",
     });
   };
@@ -57,6 +59,7 @@ const Incoming = () => {
         data.date === "" ||
         data.supplier === "" ||
         data.name === "" ||
+        data.unit === "" ||
         data.quantity === ""
       ) {
         alert("Complete Form input");
@@ -73,7 +76,7 @@ const Incoming = () => {
     <Layout
       element={
         <div className="grid pt-20">
-        <PagesTitle text={"incoming"}/>
+          <PagesTitle text={"incoming"} />
           <button
             className="p-4 border-2 rounded-md text-white border-zinc-800 text-sm font-[400] bg-zinc-800 m-auto transition-all duration-300 ease-linear fixed right-10 bottom-10 z-50"
             onClick={() => {

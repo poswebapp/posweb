@@ -35,8 +35,8 @@ const List = ({setid,setshow}) => {
                 <td className={tr}> <Moment date={a.date} format="MMM-DD-YYYY"/> </td>
                 <td className={tr}> {a.supplier} </td>
                 <td className={tr}> {a.name} </td>
+                <td className={tr}> {a.unit} </td>
                 <td className={tr}> {a.quantity} </td>
-                {/* <td className={tr}> {a._id} </td> */}
                 <td className={act}>
                   {remove ? (
                     <BtnCancel

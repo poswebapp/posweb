@@ -1,5 +1,5 @@
 import Incoming from "../models/incoming.js";
-import mongoose from 'mongoose'
+import mongoose from "mongoose";
 
 export const getIncomings = async (req, res) => {
   try {
@@ -13,7 +13,7 @@ export const getIncomings = async (req, res) => {
 
 export const uploadIncoming = async (req, res) => {
   try {
-    const { date, supplier, name, quantity } = req.body;
+    const { date, supplier, name, unit, quantity } = req.body;
     // if (!mongoose.Types.ObjectId.isValid(user))
     //   return res.status(404).send({ message: `Not a valid User: ${user}` });
     const incoming = new Incoming({
@@ -21,6 +21,7 @@ export const uploadIncoming = async (req, res) => {
       supplier,
       name,
       quantity,
+      unit,
     });
     const result = await incoming.save();
     res.json(result);
@@ -33,7 +34,7 @@ export const uploadIncoming = async (req, res) => {
 export const updateIncoming = async (req, res) => {
   try {
     const { id } = req.params;
-    const { date, supplier, name, quantity } = req.body;
+    const { date, supplier, name, unit, quantity } = req.body;
     if (!mongoose.Types.ObjectId.isValid(id))
       return res.status(404).send({ message: `Not a valid id: ${id}` });
 
@@ -44,6 +45,7 @@ export const updateIncoming = async (req, res) => {
         supplier,
         name,
         quantity,
+        unit,
       },
       { new: true }
     );

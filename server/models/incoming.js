@@ -5,6 +5,7 @@ const incomingSchema = mongoose.Schema({
   supplier: { type: String, require: true },
   name: { type: String, require: true },
   quantity: { type: Number, require: true },
+  unit: { type: String, require: true },
   // price: { type: Number, require: true },
 });
 

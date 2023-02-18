@@ -7,7 +7,7 @@ const Form = ({ currentId, data, onChange , onSubmit }) => {
   const loading = goodStore((state) => state.loading);
   return (
     <span className=" z-30 fixed top-0 w-screen h-screen left-0 right-0 flex justify-center content-center bg-zinc-800/20 backdrop-blur-sm">
-    <form className="w-[20rem] grid gap-2 h-auto p-4 place-content-start bg-white border rounded-lg m-auto shadow-md">
+    <form className="w-[20rem] grid gap-2 h-auto p-4 place-content-start justify-items-center bg-white border rounded-lg m-auto shadow-md">
       <h4 className="text-md text-zinc-500 font-bold ml-2">
         {currentId ? "Update Good" : "Upload Good"}
       </h4>
