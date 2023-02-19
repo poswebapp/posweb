@@ -6,6 +6,7 @@ import BtnCancel from "../utility/BtnCancel";
 import Table from "./Table";
 import { drawerStore } from "../../zustand/drawer";
 import Moment from "react-moment";
+import { errNotify, warnNotify } from "../utility/alert";
 
 const List = ({ setid, setshow }) => {
   const tr = "px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap ";
@@ -67,7 +68,7 @@ const List = ({ setid, setshow }) => {
                     <BtnDelete
                       loading={loading}
                       onClick={() => {
-                        deleteDrawer(a._id);
+                        deleteDrawer(a._id,errNotify,warnNotify);
                         setremove(false);
                       }}
                     />

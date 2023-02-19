@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { ToastContainer } from "react-toastify";
 import Form from "./Form";
 import List from "./List";
 import { drawerStore } from "../../zustand/drawer";
@@ -6,6 +7,7 @@ import Layout from "../Layout";
 // import autoAnimate from "@formkit/auto-animate";
 import Loading from "../Loading";
 import PagesTitle from "../utility/PagesTitle";
+import { errNotify, okNotify, warnNotify } from "../utility/alert";
 
 const Drawer = () => {
   const drawers = drawerStore((state) => state.drawers);
@@ -64,13 +66,13 @@ const Drawer = () => {
         data.amount === "" ||
         data.time === ""
       ) {
-        alert("Complete Form input");
+        warnNotify("Complete Form input");
       } else {
-        await uploadDrawer(data);
+        await uploadDrawer(data,okNotify,errNotify);
         clear();
       }
     } else {
-      await updateDrawer(data, id);
+      await updateDrawer(data, id, okNotify,errNotify);
       clear();
     }
   };
@@ -80,6 +82,7 @@ const Drawer = () => {
       element={
         // <div className="grid pt-20" ref={dom}>
         <div className="grid pt-20">
+       <ToastContainer/> 
           <PagesTitle text={"Cash on Drawer"} />
           <button
             className="p-4 border-2 rounded-md text-white border-zinc-800 text-sm font-[400] bg-zinc-800 m-auto transition-all duration-300 ease-linear fixed right-10 bottom-10 z-50"

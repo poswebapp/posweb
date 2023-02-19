@@ -5,6 +5,7 @@ import Btn from "../utility/Btn";
 import BtnCancel from "../utility/BtnCancel";
 import Table from "./Table";
 import { goodStore } from "../../zustand/good";
+import { errNotify, warnNotify } from "../utility/alert";
 
 const List = ({ setid, setshow }) => {
   const tr = "px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap";
@@ -55,7 +56,7 @@ const List = ({ setid, setshow }) => {
                     <BtnDelete
                       loading={loading}
                       onClick={() => {
-                        deleteGood(a._id);
+                        deleteGood(a._id,errNotify,warnNotify);
                         setremove(false);
                       }}
                     />
