@@ -7,7 +7,7 @@ import Layout from "../Layout";
 // import autoAnimate from "@formkit/auto-animate";
 import Loading from "../Loading";
 import PagesTitle from "../utility/PagesTitle";
-import { errNotify, okNotify, warnNotify } from "../utility/alert";
+import { errNotify, okNotify } from "../utility/alert";
 
 const Drawer = () => {
   const drawers = drawerStore((state) => state.drawers);
@@ -66,7 +66,7 @@ const Drawer = () => {
         data.amount === "" ||
         data.time === ""
       ) {
-        warnNotify("Complete Form input");
+        errNotify("Complete Form input");
       } else {
         await uploadDrawer(data,okNotify,errNotify);
         clear();

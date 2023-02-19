@@ -28,19 +28,20 @@ export const incomingStore = create((set) => ({
     set({ loading: false });
   },
 
-  uploadIncoming: async (data) => {
+  uploadIncoming: async (data,okNotify,errNotify) => {
     set({ loading: true });
     try {
       const result = await api.post("/incoming/upload", data);
       set((state) => ({ incomings: [...state.incomings, result.data] }));
+      okNotify("Data Updated!")
     } catch (err) {
-      alert(err.response.data.message);
+      errNotify(err.response.data.message);
       set({ err: err.response.data.message });
     }
     set({ loading: false });
   },
 
-  updateIncoming: async (data, id) => {
+  updateIncoming: async (data, id,okNotify,errNotify) => {
     set({ loading: true });
     try {
       const result = await api.patch(`/incoming/patch/${id}`, data);
@@ -49,20 +50,22 @@ export const incomingStore = create((set) => ({
           ...state.incomings.map((a) => (a._id === id ? result.data : a)),
         ],
       }));
+      okNotify("Data Updated!")
     } catch (err) {
-      alert(err.response.data.message);
+      errNotify(err.response.data.message);
       set({ err: err.response.data.message });
     }
     set({ loading: false });
   },
 
-  deleteIncoming: async (id) => {
+  deleteIncoming: async (id,okNotify,errNotify) => {
     set({ loading: true });
     try {
       await api.delete(`/incoming/delete/${id}`);
       set((state) => ({ incomings: state.incomings.filter((a) => a._id !== id) }));
+      okNotify("Data Deleted!")
     } catch (err) {
-      alert(err.response.data.message);
+      errNotify(err.response.data.message);
       set({ err: err.response.data.message });
     }
     set({ loading: false });

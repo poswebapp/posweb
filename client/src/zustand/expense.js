@@ -85,19 +85,19 @@ export const expenseStore = create((set) => ({
   },
 
 
-  uploadExpense: async (data) => {
+  uploadExpense: async (data,okNotify,errNotify) => {
     set({ loading: true });
     try {
       const result = await api.post("/expense/upload", data);
       set((state) => ({ expenses: [...state.expenses, result.data] }));
+      okNotify("Data Uploaded!")
     } catch (err) {
-      alert(err.response.data.message);
-      set({ err: err.response.data.message });
+      errNotify(err.response.data.message);
     }
     set({ loading: false });
   },
 
-  updateExpense: async (data, id) => {
+  updateExpense: async (data, id,okNotify,errNotify) => {
     set({ loading: true });
     try {
       const result = await api.patch(`/expense/patch/${id}`, data);
@@ -106,21 +106,21 @@ export const expenseStore = create((set) => ({
           ...state.expenses.map((a) => (a._id === id ? result.data : a)),
         ],
       }));
+      okNotify("Data Updated!")
     } catch (err) {
-      alert(err.response.data.message);
-      set({ err: err.response.data.message });
+      errNotify(err.response.data.message);
     }
     set({ loading: false });
   },
 
-  deleteExpense: async (id) => {
+  deleteExpense: async (id,okNotify,errNotify) => {
     set({ loading: true });
     try {
       await api.delete(`/expense/delete/${id}`);
       set((state) => ({ expenses: state.expenses.filter((a) => a._id !== id) }));
+      okNotify("Data deleted!")
     } catch (err) {
-      alert(err.response.data.message);
-      set({ err: err.response.data.message });
+      errNotify(err.response.data.message);
     }
     set({ loading: false });
   },

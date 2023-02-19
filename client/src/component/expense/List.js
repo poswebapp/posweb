@@ -6,6 +6,7 @@ import BtnCancel from "../utility/BtnCancel";
 import Table from "./Table";
 import { expenseStore } from "../../zustand/expense";
 import Moment from "react-moment";
+import { errNotify, okNotify } from "../utility/alert";
 
 const List = ({ setid, setshow }) => {
   const tr = "px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap ";
@@ -65,7 +66,7 @@ const List = ({ setid, setshow }) => {
                     <BtnDelete
                       loading={loading}
                       onClick={() => {
-                        deleteExpense(a._id);
+                        deleteExpense(a._id,errNotify,okNotify);
                         setremove(false);
                       }}
                     />

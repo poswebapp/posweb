@@ -5,7 +5,8 @@ import { incomingStore } from "../../zustand/incoming";
 import Layout from "../Layout";
 import Loading from "../Loading";
 import PagesTitle from "../utility/PagesTitle";
-// import autoAnimate from "@formkit/auto-animate";
+import { ToastContainer } from "react-toastify";
+import { errNotify, okNotify } from "../utility/alert";
 
 const Incoming = () => {
   const [id, setid] = useState(0);
@@ -18,11 +19,6 @@ const Incoming = () => {
     unit: "",
     quantity: "",
   });
-
-  // const dom = React.useRef(null);
-  // useEffect(() => {
-  //   dom.current && autoAnimate(dom.current);
-  // }, [dom]);
 
   const clear = () => {
     setid(0);
@@ -62,13 +58,13 @@ const Incoming = () => {
         data.unit === "" ||
         data.quantity === ""
       ) {
-        alert("Complete Form input");
+        errNotify("Complete Form input");
       } else {
-        await uploadIncoming(data);
+        await uploadIncoming(data,okNotify,errNotify);
         clear();
       }
     } else {
-      await updateIncoming(data, id);
+      await updateIncoming(data, id,okNotify,errNotify);
       clear();
     }
   };
@@ -76,6 +72,7 @@ const Incoming = () => {
     <Layout
       element={
         <div className="grid pt-20">
+       <ToastContainer/> 
           <PagesTitle text={"incoming"} />
           <button
             className="p-4 border-2 rounded-md text-white border-zinc-800 text-sm font-[400] bg-zinc-800 m-auto transition-all duration-300 ease-linear fixed right-10 bottom-10 z-50"

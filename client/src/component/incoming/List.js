@@ -1,15 +1,14 @@
-import React,{useEffect, useState} from 'react'
+import React, { useEffect, useState } from "react";
 import BtnDelete from "../utility/BtnDelete";
 import BtnEdit from "../utility/BtnEdit";
 import Btn from "../utility/Btn";
 import BtnCancel from "../utility/BtnCancel";
-import  Table  from "./Table";
+import Table from "./Table";
 import { incomingStore } from "../../zustand/incoming";
-import Moment from 'react-moment';
+import Moment from "react-moment";
+import { errNotify, warnNotify } from "../utility/alert";
 
-
-const List = ({setid,setshow}) => {
-  
+const List = ({ setid, setshow }) => {
   const tr = "px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap ";
   const act =
     "px-6 py-4 text-sm font-medium text-gray-800 whitespace-wrap flex flex-rows gap-2";
@@ -17,7 +16,6 @@ const List = ({setid,setshow}) => {
   const loading = incomingStore((state) => state.loading);
   const getIncoming = incomingStore((state) => state.getIncoming);
   const deleteIncoming = incomingStore((state) => state.deleteIncoming);
-  
 
   useEffect(() => {
     getIncoming();
@@ -25,14 +23,17 @@ const List = ({setid,setshow}) => {
   const [remove, setremove] = useState(false);
 
   return (
-    <div className='w-auto grid mx-auto' >
+    <div className="w-auto grid mx-auto">
       <Table
         element={
           <>
             {incomings?.reverse().map((a, index) => (
               <tr key={a._id}>
                 <td className={tr}> {index + 1} </td>
-                <td className={tr}> <Moment date={a.date} format="MMM-DD-YYYY"/> </td>
+                <td className={tr}>
+                  {" "}
+                  <Moment date={a.date} format="MMM-DD-YYYY" />{" "}
+                </td>
                 <td className={tr}> {a.supplier} </td>
                 <td className={tr}> {a.name} </td>
                 <td className={tr}> {a.unit} </td>
@@ -59,7 +60,7 @@ const List = ({setid,setshow}) => {
                     <BtnDelete
                       loading={loading}
                       onClick={() => {
-                        deleteIncoming(a._id);
+                        deleteIncoming(a._id, errNotify, warnNotify);
                         setremove(false);
                       }}
                     />
@@ -78,7 +79,7 @@ const List = ({setid,setshow}) => {
         }
       />
     </div>
-  )
-}
+  );
+};
 
-export default List
+export default List;

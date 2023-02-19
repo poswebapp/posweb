@@ -64,7 +64,7 @@ const Good = () => {
         data.type === "" ||
         data.stock === ""
       ) {
-        alert("Complete Form input");
+        errNotify("Complete Form input");
       } else {
         await uploadGood(data,okNotify,errNotify);
         clear();

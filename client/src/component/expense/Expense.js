@@ -4,8 +4,10 @@ import List from "./List";
 import { expenseStore } from "../../zustand/expense";
 import Layout from "../Layout";
 // import autoAnimate from "@formkit/auto-animate";
+import { ToastContainer } from "react-toastify";
 import Loading from "../Loading";
 import PagesTitle from "../utility/PagesTitle";
+import { errNotify, okNotify } from "../utility/alert";
 
 const Expense = () => {
   const expenses = expenseStore((state) => state.expenses);
@@ -60,13 +62,13 @@ const Expense = () => {
         data.quantity === "" ||
         data.amount === ""
       ) {
-        alert("Complete Form input");
+        errNotify("Complete Form input");
       } else {
-        await uploadExpense(data);
+        await uploadExpense(data,okNotify,errNotify);
         clear();
       }
     } else {
-      await updateExpense(data, id);
+      await updateExpense(data, id,okNotify,errNotify);
       clear();
     }
   };
@@ -76,6 +78,7 @@ const Expense = () => {
       element={
         // <div className="grid pt-20" ref={dom}>
         <div className="grid pt-20">
+       <ToastContainer/> 
           <PagesTitle text={"expense"} />
           <button
             className="p-4 border-2 rounded-md text-white border-zinc-800 text-sm font-[400] bg-zinc-800 m-auto transition-all duration-300 ease-linear fixed right-10 bottom-10 z-50"

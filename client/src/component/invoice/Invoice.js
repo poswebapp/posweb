@@ -67,7 +67,7 @@ const Invoice = () => {
         data.amount === "" ||
         data.time === ""
       ) {
-        alert("Complete Form input");
+        errNotify("Complete Form input");
       } else {
         await uploadInvoice(data,okNotify,errNotify);
         clear();
