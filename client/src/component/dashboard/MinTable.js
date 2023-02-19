@@ -16,7 +16,10 @@ const MinTable = ({ element }) => {
                     Stock
                   </th>
                   <th scope="col" className={th}>
-                    Date
+                    Unit
+                  </th>
+                  <th scope="col" className={th}>
+                    Type
                   </th>
                 </tr>
               </thead>

@@ -11,13 +11,16 @@ const Table = ({ element }) => {
               <thead className="bg-gray-50">
                 <tr>
                   <th scope="col" className={th}>
-                    Date
+                    Type
                   </th>
                   <th scope="col" className={th}>
                     Name
                   </th>
                   <th scope="col" className={th}>
                     Stock
+                  </th>
+                  <th scope="col" className={th}>
+                    Unit
                   </th>
                 </tr>
               </thead>

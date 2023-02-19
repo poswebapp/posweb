@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Table from "./Table";
-import Moment from "react-moment";
+// import Moment from "react-moment";
 import { goodStore } from "../../zustand/good";
 import MinTable from "./MinTable";
 
@@ -25,14 +25,13 @@ const Recent = () => {
             {recent?.map((a) => (
               <tr key={a._id}>
                 <td className={tr}>
-                  <Moment date={a.date} format="MMM-DD-YYYY" />
+                  {/* <Moment date={a.date} format="MMM-DD-YYYY" /> */}
+              {a.type}
                 </td>
                 <td className={tr}> {a.name} </td>
+                <td className={tr}>{a.stock}</td>
                 <td className={tr}>
-                  {a.stock}
-                  <p className=" lowercase ml-2  inline text-zinc-400 text-[.7rem] ">
-                    litter
-                  </p>
+                  <p className="lowercase">{a.unit}</p>
                 </td>
               </tr>
             ))}
@@ -44,12 +43,11 @@ const Recent = () => {
           <>
             <tr key={minimum._id}>
               <td className={tr}>{minimum?.name}</td>
-              <td className={tr}> {minimum?.stock}
-                  <p className=" lowercase ml-2 inline text-zinc-400 text-[.7rem] ">
-                    litter</p>
-          </td>
+              <td className={tr}> {minimum?.stock}</td>
+              <td className={tr}> <p className="lowercase">{minimum?.unit}</p></td>
               <td className={tr}>
-                <Moment date={minimum?.date} format="MMM-DD-YYYY" />
+                {/* <Moment date={minimum?.date} format="MMM-DD-YYYY" /> */}
+              {minimum?.type}
               </td>
             </tr>
           </>
