@@ -135,7 +135,6 @@ export const getYearlyTotal = async (req, res) => {
         if (err) {
           console.log(err.message);
         } else {
-          console.log(result[0]?.totalAmount);
           res.json(result[0]?.totalAmount);
         }
       }
