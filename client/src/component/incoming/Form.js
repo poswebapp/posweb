@@ -33,6 +33,20 @@ const Form = ({ currentId, data, onChange, onSubmit }) => {
           onChange={onChange}
         />
         <Input
+          placeholder={"ProductName"}
+          name={"productName"}
+          value={data.productName}
+          type={"text"}
+          onChange={onChange}
+        />
+        <Input
+          placeholder={"Type"}
+          name={"type"}
+          value={data.type}
+          type={"text"}
+          onChange={onChange}
+        />
+        <Input
           placeholder={"Unit"}
           name={"unit"}
           value={data.unit}

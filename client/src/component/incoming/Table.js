@@ -22,6 +22,12 @@ const Table = ({ element }) => {
                     Name
                   </th>
                   <th scope="col" className={th}>
+                    Product Name
+                  </th>
+                  <th scope="col" className={th}>
+                    Type
+                  </th>
+                  <th scope="col" className={th}>
                     Unit
                   </th>
                   <th scope="col" className={th}>

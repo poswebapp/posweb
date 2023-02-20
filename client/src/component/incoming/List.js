@@ -36,6 +36,8 @@ const List = ({ setid, setshow }) => {
                 </td>
                 <td className={tr}> {a.supplier} </td>
                 <td className={tr}> {a.name} </td>
+                <td className={tr}> {a.productName} </td>
+                <td className={tr}> {a.type} </td>
                 <td className={tr}> {a.unit} </td>
                 <td className={tr}> {a.quantity} </td>
                 <td className={act}>

@@ -13,7 +13,7 @@ export const getIncomings = async (req, res) => {
 
 export const uploadIncoming = async (req, res) => {
   try {
-    const { date, supplier, name, unit, quantity } = req.body;
+    const { date, supplier, name, productName,type, unit, quantity } = req.body;
     // if (!mongoose.Types.ObjectId.isValid(user))
     //   return res.status(404).send({ message: `Not a valid User: ${user}` });
     const incoming = new Incoming({
@@ -21,6 +21,8 @@ export const uploadIncoming = async (req, res) => {
       supplier,
       name,
       quantity,
+      productName,
+      type,
       unit,
     });
     const result = await incoming.save();
@@ -34,7 +36,7 @@ export const uploadIncoming = async (req, res) => {
 export const updateIncoming = async (req, res) => {
   try {
     const { id } = req.params;
-    const { date, supplier, name, unit, quantity } = req.body;
+    const { date, supplier, name,productName,type, unit, quantity } = req.body;
     if (!mongoose.Types.ObjectId.isValid(id))
       return res.status(404).send({ message: `Not a valid id: ${id}` });
 
@@ -44,7 +46,9 @@ export const updateIncoming = async (req, res) => {
         date,
         supplier,
         name,
+        productName,
         quantity,
+        type,
         unit,
       },
       { new: true }

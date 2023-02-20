@@ -16,7 +16,9 @@ const Incoming = () => {
     date: "",
     supplier: "",
     name: "",
+    productName: "",
     unit: "",
+    type: "",
     quantity: "",
   });
 
@@ -27,7 +29,9 @@ const Incoming = () => {
       date: "",
       supplier: "",
       name: "",
+      productName: "",
       unit: "",
+      type: "",
       quantity: "",
     });
   };
@@ -55,16 +59,18 @@ const Incoming = () => {
         data.date === "" ||
         data.supplier === "" ||
         data.name === "" ||
+        data.productName === "" ||
         data.unit === "" ||
+        data.type === "" ||
         data.quantity === ""
       ) {
         errNotify("Complete Form input");
       } else {
-        await uploadIncoming(data,okNotify,errNotify);
+        await uploadIncoming(data, okNotify, errNotify);
         clear();
       }
     } else {
-      await updateIncoming(data, id,okNotify,errNotify);
+      await updateIncoming(data, id, okNotify, errNotify);
       clear();
     }
   };
@@ -72,7 +78,7 @@ const Incoming = () => {
     <Layout
       element={
         <div className="grid pt-20">
-       <ToastContainer/> 
+          <ToastContainer />
           <PagesTitle text={"incoming"} />
           <button
             className="p-4 border-2 rounded-md text-white border-zinc-800 text-sm font-[400] bg-zinc-800 m-auto transition-all duration-300 ease-linear fixed right-10 bottom-10 z-50"
