@@ -176,7 +176,7 @@ export const getYearlyTotal = async (req, res) => {
 
 export const uploadInvoice = async (req, res) => {
   try {
-    const { quantity, amount, time, goodID } = req.body;
+    const { quantity, time, goodID } = req.body;
     const now = new Date();
 // Update Goods stock
     const good = await Good.findById(goodID);
@@ -191,7 +191,7 @@ export const uploadInvoice = async (req, res) => {
       goodID,
       invoiceNo: nanoid(),
       quantity,
-      amount,
+      amount : good.price * quantity,
     });
     const result = await invoice.save();
     res.json(result);

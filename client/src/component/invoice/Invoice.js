@@ -19,10 +19,8 @@ const Invoice = () => {
   const [list, setlist] = useState(null);
   const [show, setshow] = useState(false);
   const [data, setdata] = useState({
-    // date: "",
     quantity: "",
     time: "",
-    amount: "",
     goodID: "",
     // transactionNo: "",
     // invoiceNo: "",
@@ -37,10 +35,8 @@ const Invoice = () => {
     setid(0);
     setlist(null);
     setdata({
-      // date: "",
       time: "",
       quantity: "",
-      amount: "",
       goodID: "",
       // transactionNo: "",
       // invoiceNo: "",
@@ -64,10 +60,8 @@ const Invoice = () => {
    console.log(data.goodID) 
     if (id === 0) {
       if (
-        // data.date === "" ||
         data.quantity === "" ||
         data.goodID === "" ||
-        data.amount === "" ||
         data.time === ""
       ) {
         errNotify("Complete Form input");

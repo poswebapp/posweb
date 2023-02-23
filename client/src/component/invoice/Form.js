@@ -53,13 +53,6 @@ const Form = ({ currentId, data, onChange, onSubmit }) => {
         type={"number"}
         onChange={onChange}
       />
-      <Input
-        placeholder={"Amount"}
-        name={"amount"}
-        value={data.amount}
-        type={"number"}
-        onChange={onChange}
-      />
       <button
         type="submit"
         disabled={loading}
