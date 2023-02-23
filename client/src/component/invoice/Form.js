@@ -3,6 +3,7 @@ import Input from "../utility/Input";
 // import Date from "../utility/Date";
 import { invoiceStore } from "../../zustand/invoice";
 import Time from "../utility/Time";
+import GoodId from "./GoodId";
 
 const Form = ({ currentId, data, onChange, onSubmit }) => {
   const loading = invoiceStore((state) => state.loading);
@@ -33,6 +34,12 @@ const Form = ({ currentId, data, onChange, onSubmit }) => {
       {/*   value={data.date} */}
       {/*   onChange={onChange} */}
       {/* /> */}
+      <GoodId
+        placeholder={"Good ID "}
+        name={"goodID"}
+        value={data.goodID }
+        onChange={onChange}
+      />
       <Time
         placeholder={"Time"}
         name={"time"}

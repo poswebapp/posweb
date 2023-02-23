@@ -28,7 +28,7 @@ const List = ({ setid, setshow }) => {
           <>
             {list?.reverse().map((a, index) => (
               <tr key={a._id}>
-                <td className={tr}> {index + 1} </td>
+                <td className={tr}> {a._id} </td>
                 <td className={tr}> {a.name} </td>
                 <td className={tr}> {a.type} </td>
                 <td className={tr}> {a.stock} </td>

@@ -23,6 +23,7 @@ const Invoice = () => {
     quantity: "",
     time: "",
     amount: "",
+    goodID: "",
     // transactionNo: "",
     // invoiceNo: "",
   });
@@ -31,7 +32,6 @@ const Invoice = () => {
   // useEffect(() => {
   //   dom.current && autoAnimate(dom.current);
   // }, [dom]);
- 
 
   const clear = () => {
     setid(0);
@@ -41,6 +41,7 @@ const Invoice = () => {
       time: "",
       quantity: "",
       amount: "",
+      goodID: "",
       // transactionNo: "",
       // invoiceNo: "",
     });
@@ -60,20 +61,22 @@ const Invoice = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+   console.log(data.goodID) 
     if (id === 0) {
       if (
         // data.date === "" ||
         data.quantity === "" ||
+        data.goodID === "" ||
         data.amount === "" ||
         data.time === ""
       ) {
         errNotify("Complete Form input");
       } else {
-        await uploadInvoice(data,okNotify,errNotify);
+        await uploadInvoice(data, okNotify, errNotify);
         clear();
       }
     } else {
-      await updateInvoice(data, id, okNotify,errNotify);
+      await updateInvoice(data, id, okNotify, errNotify);
       clear();
     }
   };
@@ -83,7 +86,7 @@ const Invoice = () => {
       element={
         // <div className="grid pt-20" ref={dom}>
         <div className="grid pt-20">
-         <ToastContainer/> 
+          <ToastContainer />
           <PagesTitle text={"invoice"} />
           <button
             className="p-4 border-2 rounded-md text-white border-zinc-800 text-sm font-[400] bg-zinc-800 m-auto transition-all duration-300 ease-linear fixed right-10 bottom-10 z-50"
