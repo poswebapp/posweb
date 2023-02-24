@@ -178,7 +178,7 @@ export const uploadInvoice = async (req, res) => {
   try {
     const { quantity, time, goodID } = req.body;
     const now = new Date();
-// Update Goods stock
+    // Update Goods stock
     const good = await Good.findById(goodID);
     await Good.findByIdAndUpdate(
       goodID,
@@ -191,9 +191,10 @@ export const uploadInvoice = async (req, res) => {
       goodID,
       invoiceNo: nanoid(),
       quantity,
-      amount : good.price * quantity,
+      amount: good.price * quantity,
     });
     const result = await invoice.save();
+    console.log(result);
     res.json(result);
   } catch (error) {
     res.status(500).json({ message: error.message });
