@@ -34,8 +34,8 @@ const Navbar = () => {
       <Content icon={<SiGridsome />} name={"Incoming"} link={"/incoming"} />
       <Content icon={<FaUserTag />} name={"Invoice"} link={"/invoice"} />
       <Content icon={<FaMoneyCheckAlt />} name={"Expense"} link={"/expense"} />
-      {/* <Content icon={<RiMoneyDollarCircleFill />} name={"Sale"} link={"/sale"} /> */}
       <Content icon={<RiMoneyDollarCircleFill />} name={"Drawer"} link={"/drawer"} />
+      <Content icon={<RiMoneyDollarCircleFill />} name={"History"} link={"/history"} />
       <Content icon={<BsFillShieldLockFill />} name={"Profile"} link={"/setting"} />
       {curUsr && (
         <Content icon={<RiLogoutBoxRFill />} name={"Logout"} link={"/logout"} />

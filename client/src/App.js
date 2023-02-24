@@ -7,6 +7,7 @@ import Dashboard from "./component/dashboard/Dashboard";
 import Sale from "./component/sale/Sale";
 import Expense from "./component/expense/Expense";
 import Incoming from "./component/incoming/Incoming";
+import History from "./component/history/History";
 import Logout from "./component/Logout";
 import Reset from "./component/user/Reset";
 import OTP from "./component/user/OTP";
@@ -29,6 +30,7 @@ function App() {
           <Route path="/invoice" element={ <Secure> <Invoice /> </Secure> } />
           <Route path="/expense" element={ <Secure> <Expense /> </Secure> } />
           <Route path="/drawer" element={ <Secure> <Drawer /> </Secure> } />
+          <Route path="/history" element={ <Secure> <History /> </Secure> } />
           <Route path="/setting" element={ <Secure> <Setting /> </Secure> } />
           <Route path="/patchContact" element={ <Secure> <PatchContact /> </Secure> } />
           <Route path="/PatchEmail" element={ <Secure> <PatchEmail /> </Secure> } />

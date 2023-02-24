@@ -11,6 +11,7 @@ import invoiceRoutes from './routes/invoice.js';
 import saleRoutes from './routes/sale.js';
 import totalRoutes from './routes/total.js';
 import userRoutes from './routes/user.js';
+import historyRoutes from './routes/history.js';
 const app = express();
 dotenv.config();
 
@@ -22,6 +23,7 @@ app.use('/good', goodRoutes);
 app.use('/invoice', invoiceRoutes);
 app.use('/drawer', drawerRoutes);
 app.use('/incoming', incomingRoutes);
+app.use('/history', historyRoutes);
 app.use('/expense', expenseRoutes);
 app.use('/sale', saleRoutes);
 app.use('/total', totalRoutes);
