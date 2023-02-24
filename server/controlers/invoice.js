@@ -194,7 +194,6 @@ export const uploadInvoice = async (req, res) => {
       amount: good.price * quantity,
     });
     const result = await invoice.save();
-    console.log(result);
     res.json(result);
   } catch (error) {
     res.status(500).json({ message: error.message });
