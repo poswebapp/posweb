@@ -52,7 +52,7 @@ export const getMonthlyTotal = async (req, res) => {
         if (err) {
           console.log(err);
         } else {
-          res.json(result[0].totalAmount);
+          res.json(result[0]?.totalAmount);
         }
       }
     );
@@ -130,7 +130,7 @@ export const getQuarterlyTotal = async (req, res) => {
         if (err) {
           console.log(err.message);
         } else {
-          res.json(result[0].totalAmount);
+          res.json(result[0]?.totalAmount);
         }
       }
     );
@@ -164,7 +164,7 @@ export const getYearlyTotal = async (req, res) => {
         if (err) {
           console.log(err.message);
         } else {
-          res.json(result[0].totalAmount);
+          res.json(result[0]?.totalAmount);
         }
       }
     );
