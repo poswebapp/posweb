@@ -19,10 +19,10 @@ export const invoiceStore = create((set) => ({
   quarterly: 0,
   yearly: 0,
 
-  getInvoice: async () => {
+  getInvoice: async (data) => {
     set({ loading: true });
     try {
-      const result = await api.get("/invoice/get");
+      const result = await api.get(`/invoice/get?month=${data.month}&year=${data.year}`,);
       set({ invoices: result.data });
     } catch (err) {
       console.log(err);

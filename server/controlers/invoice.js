@@ -6,8 +6,9 @@ import { nanoid } from "nanoid";
 
 export const getInvoices = async (req, res) => {
   try {
-    const currentMonth = new Date().getMonth();
-    const currentYear = new Date().getFullYear();
+    const { month,year } = req.query
+    const currentMonth = month ? month : new Date().getMonth();
+    const currentYear = year ? year : new Date().getFullYear();
     const startOfMonth = new Date(currentYear, currentMonth, 1);
     const endOfMonth = new Date(currentYear, currentMonth + 1, 0);
     const result = await Invoice.find({

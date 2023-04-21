@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import BtnDelete from "../utility/BtnDelete";
 import BtnEdit from "../utility/BtnEdit";
@@ -17,28 +18,37 @@ const List = ({ setid, setshow }) => {
   const loading = invoiceStore((state) => state.loading);
   const total = invoiceStore((state) => state.total);
   const getInvoice = invoiceStore((state) => state.getInvoice);
-  const getYear = invoiceStore((state) => state.getYear);
   const getDailyTotal = invoiceStore((state) => state.getDailyTotal);
   const deleteInvoice = invoiceStore((state) => state.deleteInvoice);
 
-  const [filter, setfilter] = useState("month");
-
-  useEffect(() => {
-    if (filter === "month") {
-      getInvoice();
-    } else if (filter === "year") {
-      getYear();
-    }
-  }, [filter, getInvoice, getYear]);
+  const [filter, setfilter] = useState({
+    month: "",
+    year: "",
+  });
 
   useEffect(() => {
     getDailyTotal();
   }, [getDailyTotal, invoices]);
 
+  const handleGetInvoice = () => {
+    const regex = /^\d{4}$/;
+    if (!filter.month) {
+      alert("Select a month");
+    } else if (!regex.test(filter.year)) {
+      alert("Enter a valid year");
+    } else {
+      getInvoice(filter);
+    }
+  };
+
   const [remove, setremove] = useState(false);
   return (
     <div className="w-auto grid mx-auto">
-      <Filter filter={filter} setfilter={setfilter} />
+      <Filter
+        filter={filter}
+        setfilter={setfilter}
+        handleGetInvoice={handleGetInvoice}
+      />
       <Table
         total={total}
         element={
