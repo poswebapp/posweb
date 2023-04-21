@@ -6,6 +6,7 @@ import BtnCancel from "../utility/BtnCancel";
 import Table from "./Table";
 import { invoiceStore } from "../../zustand/invoice";
 import Moment from "react-moment";
+import Filter from "./Filter";
 import { errNotify, warnNotify } from "../utility/alert";
 
 const List = ({ setid, setshow }) => {
@@ -16,19 +17,28 @@ const List = ({ setid, setshow }) => {
   const loading = invoiceStore((state) => state.loading);
   const total = invoiceStore((state) => state.total);
   const getInvoice = invoiceStore((state) => state.getInvoice);
+  const getYear = invoiceStore((state) => state.getYear);
   const getDailyTotal = invoiceStore((state) => state.getDailyTotal);
   const deleteInvoice = invoiceStore((state) => state.deleteInvoice);
 
+  const [filter, setfilter] = useState("month");
+
   useEffect(() => {
-    getInvoice();
-  }, [getInvoice]);
+    if (filter === "month") {
+      getInvoice();
+    } else if (filter === "year") {
+      getYear();
+    }
+  }, [filter, getInvoice, getYear]);
 
   useEffect(() => {
     getDailyTotal();
   }, [getDailyTotal, invoices]);
+
   const [remove, setremove] = useState(false);
   return (
     <div className="w-auto grid mx-auto">
+      <Filter filter={filter} setfilter={setfilter} />
       <Table
         total={total}
         element={
@@ -66,7 +76,7 @@ const List = ({ setid, setshow }) => {
                     <BtnDelete
                       loading={loading}
                       onClick={() => {
-                        deleteInvoice(a._id,errNotify,warnNotify);
+                        deleteInvoice(a._id, errNotify, warnNotify);
                         setremove(false);
                       }}
                     />

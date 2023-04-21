@@ -29,6 +29,18 @@ export const invoiceStore = create((set) => ({
     }
     set({ loading: false });
   },
+  
+  getYear: async () => {
+    set({ loading: true });
+    try {
+      const result = await api.get("/invoice/getYear");
+      set({ invoices: result.data });
+      console.log(result.data)
+    } catch (err) {
+      console.log(err);
+    }
+    set({ loading: false });
+  },
 
   getDailyTotal: async () => {
     set({ loading: true });
