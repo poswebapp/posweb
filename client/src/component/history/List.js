@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import BtnDelete from "../utility/BtnDelete";
-import BtnEdit from "../utility/BtnEdit";
 import Btn from "../utility/Btn";
 import BtnCancel from "../utility/BtnCancel";
 import Table from "./Table";

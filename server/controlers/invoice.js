@@ -6,15 +6,36 @@ import { nanoid } from "nanoid";
 
 export const getInvoices = async (req, res) => {
   try {
-    // const today = moment().startOf("day");
+    const currentMonth = new Date().getMonth();
+    const currentYear = new Date().getFullYear();
+    const startOfMonth = new Date(currentYear, currentMonth, 1);
+    const endOfMonth = new Date(currentYear, currentMonth + 1, 0);
     const result = await Invoice.find({
-      // date: {
-      //   $gte: today.toDate(),
-      //   $lte: moment(today).endOf("day").toDate(),
-      // },
-    })
-      .sort({ date: 1 })
-      .limit(50);
+      date: {
+        $gte: startOfMonth,
+        $lte: endOfMonth,
+      },
+    });
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+    console.log(error);
+  }
+};
+
+export const getYearly = async (req, res) => {
+  try {
+
+    const currentMonth = new Date().getMonth();
+    const currentYear = new Date().getFullYear();
+    const yearStart = new Date(currentYear, 0, 1);
+    const yearEnd = new Date(currentYear, 11, 31);
+    const result = await Invoice.find({
+      date: {
+        $gte: yearStart,
+        $lte: yearEnd,
+      },
+    });
     res.json(result);
   } catch (error) {
     res.status(500).json({ message: error.message });

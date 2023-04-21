@@ -31,8 +31,8 @@ const Navbar = () => {
       {/* content navbar */}
       <Content icon={<MdSpaceDashboard />} name={"Dashboard"} link={"/"} />
       <Content icon={<BsFillGridFill />} name={"Goods"} link={"/good"} />
-      <Content icon={<SiGridsome />} name={"Incoming"} link={"/incoming"} />
       <Content icon={<FaUserTag />} name={"Invoice"} link={"/invoice"} />
+      <Content icon={<SiGridsome />} name={"Incoming"} link={"/incoming"} />
       <Content icon={<FaMoneyCheckAlt />} name={"Expense"} link={"/expense"} />
       <Content icon={<RiMoneyDollarCircleFill />} name={"Drawer"} link={"/drawer"} />
       <Content icon={<RiMoneyDollarCircleFill />} name={"History"} link={"/history"} />
