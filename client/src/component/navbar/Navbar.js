@@ -2,7 +2,7 @@ import { RiLogoutBoxRFill,RiMoneyDollarCircleFill } from "react-icons/ri";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { MdSpaceDashboard } from "react-icons/md";
-import { BsFillShieldLockFill } from "react-icons/bs";
+import { BsFillGridFill, BsFillShieldLockFill } from "react-icons/bs";
 import { SiGridsome } from "react-icons/si";
 import { FaUserTag,FaMoneyCheckAlt } from "react-icons/fa";
 
@@ -31,6 +31,7 @@ const Navbar = () => {
       {/* content navbar */}
       <Content icon={<MdSpaceDashboard />} name={"Dashboard"} link={"/"} />
       <Content icon={<FaUserTag />} name={"Invoice"} link={"/invoice"} />
+      <Content icon={<BsFillGridFill />} name={"Goods"} link={"/good"} />
       <Content icon={<SiGridsome />} name={"Incoming"} link={"/incoming"} />
       <Content icon={<FaMoneyCheckAlt />} name={"Expense"} link={"/expense"} />
       <Content icon={<RiMoneyDollarCircleFill />} name={"Drawer"} link={"/drawer"} />

@@ -22,8 +22,6 @@ const Invoice = () => {
     quantity: "",
     time: "",
     goodID: "",
-    // transactionNo: "",
-    // invoiceNo: "",
   });
 
   // const dom = React.useRef(null);
@@ -57,13 +55,9 @@ const Invoice = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-   console.log(data.goodID) 
+    console.log(data.goodID);
     if (id === 0) {
-      if (
-        data.quantity === "" ||
-        data.goodID === "" ||
-        data.time === ""
-      ) {
+      if (data.quantity === "" || data.goodID === "" || data.time === "") {
         errNotify("Complete Form input");
       } else {
         await uploadInvoice(data, okNotify, errNotify);
@@ -101,6 +95,7 @@ const Invoice = () => {
           )}
           {loading && <Loading />}
           <List setid={setid} setshow={setshow} />
+          {invoices.length === 0 && <span className="text-[1.5rem] mt-5 ml-4 text-zinc-800">No data result based on your filter!</span>}
         </div>
       }
     />
