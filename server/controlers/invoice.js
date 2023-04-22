@@ -6,11 +6,13 @@ import { nanoid } from "nanoid";
 
 export const getInvoices = async (req, res) => {
   try {
-    const { month,year } = req.query
-    const currentMonth = month ? month : new Date().getMonth();
-    const currentYear = year ? year : new Date().getFullYear();
-    const startOfMonth = new Date(currentYear, currentMonth, 1);
-    const endOfMonth = new Date(currentYear, currentMonth + 1, 0);
+    const { month, year } = req.query;
+    const currentMonth = month; //? month : new Date().getMonth();
+    console.log("month: ", currentMonth);
+    const currentYear = year; //? year : new Date().getFullYear();
+    const startOfMonth = new Date(currentYear, parseInt(currentMonth), 1);
+    const endOfMonth = new Date(currentYear, parseInt(currentMonth) + 1, 0);
+    console.log(startOfMonth);
     const result = await Invoice.find({
       date: {
         $gte: startOfMonth,
@@ -26,7 +28,6 @@ export const getInvoices = async (req, res) => {
 
 export const getYearly = async (req, res) => {
   try {
-
     const currentMonth = new Date().getMonth();
     const currentYear = new Date().getFullYear();
     const yearStart = new Date(currentYear, 0, 1);
