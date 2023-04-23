@@ -7,6 +7,7 @@ const invoiceSchema = mongoose.Schema({
   transactionNo: { type: String, require: true },
   invoiceNo: { type: String, require: true },
   quantity: { type: Number, require: true },
+  birNo: { type: String, require: true },
   amount: { type: Number, require: true },
 });
 

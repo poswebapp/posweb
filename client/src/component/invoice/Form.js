@@ -21,19 +21,19 @@ const Form = ({ currentId, data, onChange, onSubmit }) => {
       {/*   type={"number"} */}
       {/*   onChange={onChange} */}
       {/* /> */}
-      {/* <Input */}
-      {/*   placeholder={"Invoice No"} */}
-      {/*   name={"invoiceNo"} */}
-      {/*   value={data.invoiceNo} */}
-      {/*   type={"number"} */}
-      {/*   onChange={onChange} */}
-      {/* /> */}
       {/* <Date */}
       {/*   placeholder={"Date"} */}
       {/*   name={"date"} */}
       {/*   value={data.date} */}
       {/*   onChange={onChange} */}
       {/* /> */}
+      <Input
+        placeholder={"BIR No"}
+        name={"birNo"}
+        value={data.birNo}
+        type={"text"}
+        onChange={onChange}
+      />
       <GoodId
         placeholder={"Good ID "}
         name={"goodID"}

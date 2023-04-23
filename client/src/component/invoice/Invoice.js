@@ -36,8 +36,8 @@ const Invoice = () => {
       time: "",
       quantity: "",
       goodID: "",
+      birNo: "",
       // transactionNo: "",
-      // invoiceNo: "",
     });
   };
 

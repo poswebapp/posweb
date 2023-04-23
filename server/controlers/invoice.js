@@ -8,11 +8,9 @@ export const getInvoices = async (req, res) => {
   try {
     const { month, year } = req.query;
     const currentMonth = month; //? month : new Date().getMonth();
-    console.log("month: ", currentMonth);
     const currentYear = year; //? year : new Date().getFullYear();
     const startOfMonth = new Date(currentYear, parseInt(currentMonth), 1);
     const endOfMonth = new Date(currentYear, parseInt(currentMonth) + 1, 0);
-    console.log(startOfMonth);
     const result = await Invoice.find({
       date: {
         $gte: startOfMonth,
@@ -199,7 +197,7 @@ export const getYearlyTotal = async (req, res) => {
 
 export const uploadInvoice = async (req, res) => {
   try {
-    const { quantity, time, goodID } = req.body;
+    const { quantity, time, goodID, birNo } = req.body;
     const now = new Date();
     // Update Goods stock
     const good = await Good.findById(goodID);
@@ -212,6 +210,7 @@ export const uploadInvoice = async (req, res) => {
       date: new Date(now.getFullYear(), now.getMonth(), now.getDate()),
       time,
       goodID,
+      birNo,
       invoiceNo: nanoid(),
       quantity,
       amount: good.price * quantity,
@@ -227,7 +226,7 @@ export const uploadInvoice = async (req, res) => {
 export const updateInvoice = async (req, res) => {
   try {
     const { id } = req.params;
-    const { goodID, quantity, amount, time } = req.body;
+    const { goodID, quantity, amount, time, birNo } = req.body;
     if (!mongoose.Types.ObjectId.isValid(id))
       return res.status(404).send({ message: `Not a valid id: ${id}` });
 
@@ -238,6 +237,7 @@ export const updateInvoice = async (req, res) => {
         quantity,
         amount,
         goodID,
+        birNo,
       },
       { new: true }
     );

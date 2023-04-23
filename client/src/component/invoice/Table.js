@@ -30,6 +30,9 @@ const Table = ({ element}) => {
                       Invoice No
                     </th>
                     <th scope="col" className={th}>
+                      BIR No
+                    </th>
+                    <th scope="col" className={th}>
                       Date
                     </th>
                     <th scope="col" className={th}>
