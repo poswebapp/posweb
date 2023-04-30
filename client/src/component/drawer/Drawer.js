@@ -103,6 +103,7 @@ const Drawer = () => {
           )}
           {loading && <Loading />}
           <List setid={setid} setshow={setshow} />
+          {drawers.length === 0 && <span className="text-[1.5rem] mt-5 mx-auto text-zinc-800">No data result based on your filter!</span>}
         </div>
       }
     />

@@ -23,7 +23,7 @@ export const expenseStore = create((set) => ({
   getExpense: async (data) => {
     set({ loading: true });
     try {
-      const result = await api.get(`/invoice/get?month=${data.month}&year=${data.year}`,);
+      const result = await api.get(`/expense/get?month=${data.month}&year=${data.year}`,);
       set({ expenses: result.data });
     } catch (err) {
       console.log(err);

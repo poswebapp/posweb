@@ -9,7 +9,7 @@ export const getExpenses = async (req, res) => {
     const currentMonth = month; //? month : new Date().getMonth();
     const currentYear = year; //? year : new Date().getFullYear();
     const startOfMonth = new Date(currentYear, parseInt(currentMonth), 1);
-    const endOfMonth = new Date(currentYear, parseInt(currentMonth) + 1, 0);
+    const endOfMonth = new Date(currentYear, parseInt(currentMonth) + 1, 1);
     const result = await Expense.find({
       date: {
         $gte: startOfMonth,

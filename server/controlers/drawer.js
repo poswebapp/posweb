@@ -4,19 +4,24 @@ import moment from "moment";
 
 export const getDrawers = async (req, res) => {
   try {
-    // const today = moment().startOf("day");
+    const { month, year } = req.query;
+    const currentMonth = month; //? month : new Date().getMonth();
+    const currentYear = year; //? year : new Date().getFullYear();
+    const startOfMonth = new Date(currentYear, parseInt(currentMonth), 1);
+    const endOfMonth = new Date(currentYear, parseInt(currentMonth) + 1, 1);
     const result = await Drawer.find({
-      // date: {
-      //   $gte: today.toDate(),
-      //   $lte: moment(today).endOf("day").toDate(),
-      // },
-    }).sort({date: 1}).limit(50);
+      date: {
+        $gte: startOfMonth,
+        $lte: endOfMonth,
+      },
+    });
     res.json(result);
   } catch (error) {
     res.status(500).json({ message: error.message });
     console.log(error);
   }
 };
+
 
 export const getDailyTotal = async (req, res) => {
   try {

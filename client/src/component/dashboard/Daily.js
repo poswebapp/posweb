@@ -32,28 +32,28 @@ const Daily = () => {
         <Content
           border={"border-amber-800"}
           name={"Gross Income"}
-          value={invoice}
+          value={invoice.toFixed(2)}
         />
         <Content
           border={"border-cyan-800"}
           name={"Drawer Cash"}
-          value={drawer}
+          value={drawer.toFixed(2)}
         />
         <Content
           border={"border-slate-800"}
           name={"Expenses"}
-          value={expense}
+          value={expense.toFixed(2)}
         />
         <Input
           border={"border-yellow-800"}
           name={"Net Income"}
-          value={onhand}
+          value={onhand.toFixed(2)}
           onChange={(e) => setonhand(e.target.value)}
         />
         <Content
           border={gain <= 0 ? "border-rose-800 " : "border-green "}
           name={gain <= 0 ? "Daily Deficiet" : "Daily Gain"}
-          value={gain}
+          value={gain.toFixed(2)}
         />
       </span>
     </div>

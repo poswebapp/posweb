@@ -7,6 +7,7 @@ import Table from "./Table";
 import { drawerStore } from "../../zustand/drawer";
 import Moment from "react-moment";
 import { errNotify, warnNotify } from "../utility/alert";
+import Filter from "../invoice/Filter";
 
 const List = ({ setid, setshow }) => {
   const tr = "px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap ";
@@ -19,17 +20,34 @@ const List = ({ setid, setshow }) => {
   const getDailyTotal = drawerStore((state) => state.getDailyTotal);
   const deleteDrawer = drawerStore((state) => state.deleteDrawer);
 
-  useEffect(() => {
-    getDrawer();
-  }, [getDrawer]);
 
   useEffect(() => {
     getDailyTotal();
   }, [getDailyTotal, drawers]);
+  
+  const [filter, setfilter] = useState({
+    month: "",
+    year: "",
+  });
+  const handleGetDrawer= () => {
+    const regex = /^\d{4}$/;
+    if (!filter.month) {
+      alert("Select a month");
+    } else if (!regex.test(filter.year)) {
+      alert("Enter a valid year");
+    } else {
+      getDrawer(filter);
+    }
+  };
 
   const [remove, setremove] = useState(false);
   return (
     <div className="w-auto grid mx-auto">
+      <Filter
+        filter={filter}
+        setfilter={setfilter}
+        handleGetInvoice={handleGetDrawer}
+      />
       <Table
         total={total}
         element={

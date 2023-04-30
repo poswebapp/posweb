@@ -16,14 +16,13 @@ export const drawerStore = create((set) => ({
   err: null,
   total: 0,
 
-  getDrawer: async () => {
+  getDrawer: async (data) => {
     set({ loading: true });
     try {
-      const result = await api.get("/drawer/get");
+      const result = await api.get(`/drawer/get?month=${data.month}&year=${data.year}`,);
       set({ drawers: result.data });
     } catch (err) {
       console.log(err);
-      alert(err.response.data.message);
     }
     set({ loading: false });
   },

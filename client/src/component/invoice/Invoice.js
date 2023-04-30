@@ -24,10 +24,6 @@ const Invoice = () => {
     goodID: "",
   });
 
-  // const dom = React.useRef(null);
-  // useEffect(() => {
-  //   dom.current && autoAnimate(dom.current);
-  // }, [dom]);
 
   const clear = () => {
     setid(0);
