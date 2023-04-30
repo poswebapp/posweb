@@ -2,9 +2,20 @@ import Expense from "../models/expense.js";
 import mongoose from "mongoose";
 import moment from "moment";
 
+
 export const getExpenses = async (req, res) => {
   try {
-    const result = await Expense.find({}).sort({ date: 1 }).limit(50);
+    const { month, year } = req.query;
+    const currentMonth = month; //? month : new Date().getMonth();
+    const currentYear = year; //? year : new Date().getFullYear();
+    const startOfMonth = new Date(currentYear, parseInt(currentMonth), 1);
+    const endOfMonth = new Date(currentYear, parseInt(currentMonth) + 1, 0);
+    const result = await Expense.find({
+      date: {
+        $gte: startOfMonth,
+        $lte: endOfMonth,
+      },
+    });
     res.json(result);
   } catch (error) {
     res.status(500).json({ message: error.message });

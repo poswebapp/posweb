@@ -7,6 +7,7 @@ import Table from "./Table";
 import { expenseStore } from "../../zustand/expense";
 import Moment from "react-moment";
 import { errNotify, okNotify } from "../utility/alert";
+import Filter from "../invoice/Filter";
 
 const List = ({ setid, setshow }) => {
   const tr = "px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap ";
@@ -18,17 +19,36 @@ const List = ({ setid, setshow }) => {
   const getExpense = expenseStore((state) => state.getExpense);
   const getDailyTotal = expenseStore((state) => state.getDailyTotal);
   const deleteExpense = expenseStore((state) => state.deleteExpense);
+  
+  const [filter, setfilter] = useState({
+    month: "",
+    year: "",
+  });
+  
+  const handleGetExpense = () => {
+    const regex = /^\d{4}$/;
+    if (!filter.month) {
+      alert("Select a month");
+    } else if (!regex.test(filter.year)) {
+      alert("Enter a valid year");
+    } else {
+      getExpense(filter);
+    }
+  };
 
-  useEffect(() => {
-    getExpense();
-  }, [getExpense]);
 
   useEffect(() => {
     getDailyTotal();
   }, [getDailyTotal, expenses]);
+  
   const [remove, setremove] = useState(false);
   return (
     <div className="w-auto grid mx-auto">
+      <Filter
+        filter={filter}
+        setfilter={setfilter}
+        handleGetInvoice={handleGetExpense}
+      />
       <Table
         total={total}
         element={

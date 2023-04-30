@@ -20,14 +20,13 @@ export const expenseStore = create((set) => ({
   quarterly: 0,
   yearly: 0,
 
-  getExpense: async () => {
+  getExpense: async (data) => {
     set({ loading: true });
     try {
-      const result = await api.get("/expense/get");
+      const result = await api.get(`/invoice/get?month=${data.month}&year=${data.year}`,);
       set({ expenses: result.data });
     } catch (err) {
-      alert(err.response.data.message);
-      set({ err: err.response.data.message });
+      console.log(err);
     }
     set({ loading: false });
   },

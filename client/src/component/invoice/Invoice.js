@@ -95,7 +95,7 @@ const Invoice = () => {
           )}
           {loading && <Loading />}
           <List setid={setid} setshow={setshow} />
-          {invoices.length === 0 && <span className="text-[1.5rem] mt-5 ml-4 text-zinc-800">No data result based on your filter!</span>}
+          {invoices.length === 0 && <span className="text-[1.5rem] mt-5 mx-auto text-zinc-800">No data result based on your filter!</span>}
         </div>
       }
     />
