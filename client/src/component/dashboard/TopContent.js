@@ -52,71 +52,71 @@ const TopContent = () => {
     <span className="flex flex-wrap flex-1 flex-row md:justify-start content-start grid-cols-4 gap-5 w-full h-auto">
       <Content
         name={"Total Goods"}
-        value={total.good.toFixed(2)}
+        value={total.good?.toFixed(2)}
         border={"border-cyan-600"}
         unit={""}
       />
       <Content
         name={"Total Incoming"}
-        value={total.incoming.toFixed(2)}
+        value={total.incoming?.toFixed(2)}
         border={"border-violet-700"}
         unit={""}
       />
       <Content
         name={"Stocks of Goods"}
-        value={total.stock.toFixed(2)}
+        value={total.stock?.toFixed(2)}
         border={"border-violet-400"}
         unit={""}
       />
 
       <Content
         name={"Daily Income"}
-        value={dailyIncome.toFixed(2)}
+        value={dailyIncome?.toFixed(2)}
         border={"border-amber-800"}
         unit={"php"}
       />
       <Content
         name={"Daily Sale"}
-        value={dailySale.toFixed(2)}
+        value={dailySale?.toFixed(2)}
         border={"border-amber-800"}
         unit={"php"}
       />
 
       <Content
         name={"Monthly Income"}
-        value={monthlyIncome.toFixed(2)}
+        value={monthlyIncome?.toFixed(2)}
         border={"border-amber-600"}
         unit={"php"}
       />
       <Content
         name={"Monthly Sale"}
-        value={monthlySale.toFixed(2)}
+        value={monthlySale?.toFixed(2)}
         border={"border-amber-600"}
         unit={"php"}
       />
 
       <Content
         name={"Quarterly Income"}
-        value={quarterlyIncome.toFixed(2)}
+        value={quarterlyIncome?.toFixed(2)}
         border={"border-amber-400"}
         unit={"php"}
       />
       <Content
         name={"Quarterly Sale"}
-        value={quarterlySale.toFixed(2)}
+        value={quarterlySale?.toFixed(2)}
         border={"border-amber-400"}
         unit={"php"}
       />
 
       <Content
         name={"Annual Income"}
-        value={yearlyIncome.toFixed(2)}
+        value={yearlyIncome?.toFixed(2)}
         border={"border-amber-400"}
         unit={"php"}
       />
       <Content
         name={"Annoul Sale"}
-        value={yearlySale.toFixed(2)}
+        value={yearlySale?.toFixed(2)}
         border={"border-amber-400"}
         unit={"php"}
       />
