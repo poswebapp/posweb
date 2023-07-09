@@ -84,7 +84,7 @@ const TopContent = () => {
 
       <Content
         name={"Monthly Income"}
-        value={monthlyIncome?.toFixed(2)}
+        value={parseFloat(monthlyIncome)?.toFixed(2)}
         border={"border-amber-600"}
         unit={"php"}
       />
@@ -97,7 +97,7 @@ const TopContent = () => {
 
       <Content
         name={"Quarterly Income"}
-        value={quarterlyIncome?.toFixed(2)}
+        value={parseFloat(quarterlyIncome)?.toFixed(2)}
         border={"border-amber-400"}
         unit={"php"}
       />
