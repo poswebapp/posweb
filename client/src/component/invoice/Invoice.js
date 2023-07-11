@@ -53,7 +53,7 @@ const Invoice = () => {
     e.preventDefault();
     console.log(data.goodID);
     if (id === 0) {
-      if (data.quantity === "" || data.goodID === "" || data.time === "" || data.birNo) {
+      if (data.quantity === "" || data.goodID === "" || data.time === "" || data.birNo === "") {
         errNotify("Complete Form input");
       } else {
         await uploadInvoice(data, okNotify, errNotify);
