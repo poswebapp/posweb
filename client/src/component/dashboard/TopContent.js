@@ -110,7 +110,7 @@ const TopContent = () => {
 
       <Content
         name={"Annual Income"}
-        value={yearlyIncome?.toFixed(2)}
+        value={parseFloat(yearlyIncome)?.toFixed(2)}
         border={"border-amber-400"}
         unit={"php"}
       />
